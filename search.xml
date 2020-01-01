@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>JAVAEE 关于spring整合struts2和hibernate(超详细，附带配置文件示例)</title>
-    <url>/2019/12/30/JAVAEE%20%E5%85%B3%E4%BA%8Espring%E6%95%B4%E5%90%88struts2%E5%92%8Chibernate(%E8%B6%85%E8%AF%A6%E7%BB%86%EF%BC%8C%E9%99%84%E5%B8%A6%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%A4%BA%E4%BE%8B)/</url>
+    <title>JAVAEE 关于spring整合struts2和hibernate(超详细，附带配置文件示例以及整合struts出现的奇葩错误)</title>
+    <url>/2019/12/30/JAVAEE%20%E5%85%B3%E4%BA%8Espring%E6%95%B4%E5%90%88struts2%E5%92%8Chibernate(%E8%B6%85%E8%AF%A6%E7%BB%86%EF%BC%8C%E9%99%84%E5%B8%A6%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%A4%BA%E4%BE%8B%E4%BB%A5%E5%8F%8A%E6%95%B4%E5%90%88struts%E5%87%BA%E7%8E%B0%E7%9A%84%E5%A5%87%E8%91%A9%E9%94%99%E8%AF%AF)/</url>
     <content><![CDATA[<h2 id="一、整合struts2"><a href="#一、整合struts2" class="headerlink" title="一、整合struts2"></a>一、整合struts2</h2><p><strong>要特别注意struts2、hibernate、spring的版本下述方法对于struts2.1、hibernate3.3.2、spring3.0.5有效</strong>(版本不匹配会导致很多问题，卡了俺超长时间)</p>
 <p><strong>遇到下述问题：</strong><br><img src="https://img-blog.csdnimg.cn/20191230145716685.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>将applicationContext.xml文件复制到src目录下一份即可解决。</strong></p>
 <p>/WEB-INF/web.xml配置</p>
