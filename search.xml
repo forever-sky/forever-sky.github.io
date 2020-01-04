@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Python修改文件中的内容</title>
+    <url>/2020/01/03/%E8%AE%B0%E5%BD%95%E4%B8%8BPython%E4%B8%AD%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E5%AD%97%E7%AC%A6/</url>
+    <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">alter</span><span class="params">(file,old_str,new_str)</span>:</span></span><br><span class="line"><span class="comment">#   :param file: 文件路径</span></span><br><span class="line"><span class="comment">#   :param old_str: 需要替换的字符串</span></span><br><span class="line"><span class="comment">#   :param new_str: 替换的字符串</span></span><br><span class="line">    <span class="keyword">with</span> open(file, <span class="string">"r"</span>, encoding=<span class="string">"utf-8"</span>) <span class="keyword">as</span> f1,open(<span class="string">"%s.bak"</span> % file, <span class="string">"w"</span>, encoding=<span class="string">"utf-8"</span>) <span class="keyword">as</span> f2:</span><br><span class="line">        le=<span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> lin <span class="keyword">in</span> f1:</span><br><span class="line">            <span class="keyword">if</span> le&gt;=<span class="number">5</span>:</span><br><span class="line">                s = lin.split(<span class="string">" "</span>)</span><br><span class="line">                lin = s[<span class="number">0</span>] + <span class="string">" "</span>+s[<span class="number">2</span>]+<span class="string">"\n"</span>            </span><br><span class="line">            le+=<span class="number">1</span></span><br><span class="line">            f2.write(lin)</span><br><span class="line">    os.remove(file)</span><br><span class="line">    os.rename(<span class="string">f"file.bak"</span>, file)</span><br><span class="line"></span><br><span class="line">alter(<span class="string">r"1.txt"</span>)</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+  </entry>
+  <entry>
     <title>JAVAEE 关于spring整合struts2和hibernate(超详细，附带配置文件示例以及整合struts出现的奇葩错误)</title>
     <url>/2019/12/30/JAVAEE%20%E5%85%B3%E4%BA%8Espring%E6%95%B4%E5%90%88struts2%E5%92%8Chibernate(%E8%B6%85%E8%AF%A6%E7%BB%86%EF%BC%8C%E9%99%84%E5%B8%A6%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%A4%BA%E4%BE%8B%E4%BB%A5%E5%8F%8A%E6%95%B4%E5%90%88struts%E5%87%BA%E7%8E%B0%E7%9A%84%E5%A5%87%E8%91%A9%E9%94%99%E8%AF%AF)/</url>
     <content><![CDATA[<h2 id="一、整合struts2"><a href="#一、整合struts2" class="headerlink" title="一、整合struts2"></a>一、整合struts2</h2><p><strong>要特别注意struts2、hibernate、spring的版本下述方法对于struts2.1、hibernate3.3.2、spring3.0.5有效</strong>(版本不匹配会导致很多问题，卡了俺超长时间)</p>
