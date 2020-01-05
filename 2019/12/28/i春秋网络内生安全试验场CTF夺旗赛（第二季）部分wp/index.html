@@ -696,6 +696,12 @@
 
   
 
+  <script type="text/javascript">
+  var windowWidth = $(window).width();
+  if (windowWidth > 480) {
+    document.write('<script type="text/javascript" src="/js/src/snow.js"><\/script>');
+  }
+</script>
 
 <script>
 NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
