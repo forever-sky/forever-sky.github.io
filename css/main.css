@@ -1200,7 +1200,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ff1f6f;
+  background: #0d87ff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2324,7 +2324,7 @@ embed {
   width: 320px;
 }
 body {
-  background: url("https://source.unsplash.com/random/1600x900");
+  background: url("/images/gaming-pattern.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 50% 50%;
