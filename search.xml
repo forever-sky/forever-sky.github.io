@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Powershell ________ 对目标进行屏幕监控</title>
-    <url>/2020/03/25/Powershell%20________%20%E5%AF%B9%E7%9B%AE%E6%A0%87%E8%BF%9B%E8%A1%8C%E5%B1%8F%E5%B9%95%E7%9B%91%E6%8E%A7/</url>
+    <title>Powershell------对目标进行屏幕监控</title>
+    <url>/2020/03/25/Powershell------%E5%AF%B9%E7%9B%AE%E6%A0%87%E8%BF%9B%E8%A1%8C%E5%B1%8F%E5%B9%95%E7%9B%91%E6%8E%A7/</url>
     <content><![CDATA[<font face="微软雅黑" size = 5.5 color = red >
 
 <h2 id="Bind模式："><a href="#Bind模式：" class="headerlink" title="Bind模式："></a><strong>Bind模式：</strong></h2><p>出现下面这种情况<br><img src="https://img-blog.csdnimg.cn/20200325191322855.png" alt="在这里插入图片描述"></p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">管理员powershell：执行 set-ExecutionPolicy RemoteSigned</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">PS C:\Users\evi1cg\Desktop&gt; . .\Show-TargetScreen.ps1</span><br><span class="line">PS C:\Users\evi1cg\Desktop&gt; Show-TargetScreen -Bind -Port <span class="number">3333</span></span><br></pre></td></tr></table></figure>
-
+ <a id="more"></a>
 <p>然后在自己的计算机上使用火狐访问目标3333端口，结果如下图：<br><img src="https://img-blog.csdnimg.cn/20200325191758673.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <h2 id="Reverse模式"><a href="#Reverse模式" class="headerlink" title="Reverse模式"></a><strong>Reverse模式</strong></h2><p><strong>attacker：</strong></p>
 <p>在这里可以使用创宇的py脚本转发：</p>
