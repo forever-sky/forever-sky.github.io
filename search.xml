@@ -47,13 +47,13 @@
 
 
 
-<h1 id="0x04-信息收集"><a href="#0x04-信息收集" class="headerlink" title="0x04.信息收集"></a>0x04.信息收集</h1><p><strong>信息收集的脚本位于</strong></p>
+<h2 id="0x04-信息收集"><a href="#0x04-信息收集" class="headerlink" title="0x04.信息收集"></a><strong>0x04.信息收集</strong></h2><p><strong>信息收集的脚本位于</strong></p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">/usr/share/metasploit-framework/modules/post/windows/gather</span><br><span class="line">/usr/share/metasploit-framework/modules/post/linux/gather</span><br></pre></td></tr></table></figure>
 
 <p><strong>信息收集的脚本较多，仅列几个常用的：</strong></p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">run post/windows/gather/checkvm <span class="comment">#是否虚拟机</span></span><br><span class="line">run post/linux/gather/checkvm <span class="comment">#是否虚拟机</span></span><br><span class="line">run post/windows/gather/forensics/enum_drives <span class="comment">#查看分区</span></span><br><span class="line">run post/windows/gather/enum_applications <span class="comment">#获取安装软件信息</span></span><br><span class="line">run post/windows/gather/dumplinks   <span class="comment">#获取最近的文件操作</span></span><br><span class="line">run post/windows/gather/enum_ie  <span class="comment">#获取IE缓存</span></span><br><span class="line">run post/windows/gather/enum_chrome   <span class="comment">#获取Chrome缓存</span></span><br><span class="line">run post/windows/gather/enum_patches  <span class="comment">#补丁信息</span></span><br><span class="line">run post/windows/gather/enum_domain  <span class="comment">#查找域控</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="0x05-提权"><a href="#0x05-提权" class="headerlink" title="0x05.提权"></a>0x05.提权</h1><p><strong>1)getsystem提权</strong></p>
+<h2 id="0x05-提权"><a href="#0x05-提权" class="headerlink" title="*0x05.提权"></a><em>*0x05.提权</em></h2><p><strong>1)getsystem提权</strong></p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">getsystem</span><br><span class="line">getsystem工作原理：</span><br><span class="line">①getsystem创建一个新的Windows服务，设置为SYSTEM运行，当它启动时连接到一个命名管道。</span><br><span class="line">②getsystem产生一个进程，它创建一个命名管道并等待来自该服务的连接。</span><br><span class="line">③Windows服务已启动，导致与命名管道建立连接。</span><br><span class="line">④该进程接收连接并调用ImpersonateNamedPipeClient，从而为SYSTEM用户创建模拟令牌。</span><br><span class="line">然后用新收集的SYSTEM模拟令牌产生cmd.exe，并且我们有一个SYSTEM特权进程。</span><br></pre></td></tr></table></figure>
 
 <p><strong>2)bypassuac</strong></p>
