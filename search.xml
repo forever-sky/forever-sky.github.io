@@ -3,7 +3,7 @@
   <entry>
     <title>metasploit后渗透</title>
     <url>/2020/03/25/metasploit%E5%90%8E%E6%B8%97%E9%80%8F/</url>
-    <content><![CDATA[<font face="微软雅黑" size = 4.5 color = red > 
+    <content><![CDATA[<font face="微软雅黑" size = 5.5 color = red > 
 
 <h2 id="转载：https-xz-aliyun-com-t-2536-toc-6"><a href="#转载：https-xz-aliyun-com-t-2536-toc-6" class="headerlink" title="转载：https://xz.aliyun.com/t/2536#toc-6"></a><strong>转载：<a href="https://xz.aliyun.com/t/2536#toc-6">https://xz.aliyun.com/t/2536#toc-6</a></strong></h2><h2 id="系统命令"><a href="#系统命令" class="headerlink" title="系统命令"></a><strong>系统命令</strong></h2><p><strong>1）基本系统命令</strong></p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sessions    <span class="comment">#sessions –h 查看帮助</span></span><br><span class="line">sessions -i &lt;ID值&gt;  <span class="comment">#进入会话   -k  杀死会话</span></span><br><span class="line">background  <span class="comment">#将当前会话放置后台</span></span><br><span class="line">run  <span class="comment">#执行已有的模块，输入run后按两下tab，列出已有的脚本</span></span><br><span class="line">info <span class="comment">#查看已有模块信息</span></span><br><span class="line">getuid <span class="comment"># 查看权限 </span></span><br><span class="line">getpid <span class="comment"># 获取当前进程的pid</span></span><br><span class="line">sysinfo <span class="comment"># 查看目标机系统信息</span></span><br><span class="line">ps <span class="comment"># 查看当前活跃进程    kill &lt;PID值&gt; 杀死进程</span></span><br><span class="line">idletime <span class="comment">#查看目标机闲置时间</span></span><br><span class="line">reboot / shutdown   <span class="comment">#重启/关机</span></span><br><span class="line">shell <span class="comment">#进入目标机cmd shell</span></span><br></pre></td></tr></table></figure>
