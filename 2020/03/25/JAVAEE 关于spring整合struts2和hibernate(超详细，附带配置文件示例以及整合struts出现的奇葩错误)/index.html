@@ -1,227 +1,259 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
+
+  
 <head>
-    <meta charset="utf-8">
-    
-    
-    <title>JAVAEE 关于spring整合struts2和hibernate(超详细，附带配置文件示例以及整合struts出现的奇葩错误) | skyeの博客 | 记录生活每一刻</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="keywords" content="">
-    <link rel="shortcut icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" />
-    <link rel="stylesheet" href="/css/style.css?v=1.4.4">
-    
-    <script type="text/javascript">
-        // Data Center
-        var DC = {
-            reward:	true,
-            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
-            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
-            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
-            d: JSON.parse('{"app_id":null}')
-        };
-    </script>
-    <script type="text/javascript">
-        window.lazyScripts=[];
-    </script>
-    
+  <meta charset="utf-8">
+  <meta name="author" content="董沅鑫, yuanxin.me@gmail.com" />
+  
+  
+  
+  <title>JAVAEE 关于spring整合struts2和hibernate(超详细，附带配置文件示例以及整合struts出现的奇葩错误) | skyeの博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="JAVAEE," />
+  
+
+  <script>
+    console.log('\n%c Hexo-theme-bmw v4.0 ' + '%c 🎉 https://github.com/dongyuanxin/theme-bmw 🎉\n' + '\n%c View demo online ' + '%c 🔍 https://godbmw.com/ 🔍  \n' , 'color: #fadfa3; background: #030307; padding:3px 0;', '', 'color: #fadfa3; background: #030307; padding:3px 0;', '');
+  </script>
+
+  
+    <meta name="description" content="斯是陋室,惟吾德馨">
+  
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/touch-icon.png">
+  
+
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/icon/iconfont.css">
+<link rel="stylesheet" href="/css/github-markdown.css">
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+  
+<script src="/js/util.js"></script>
+<script src="/js/valine.min.js"></script>
+
+
+  
+
+  
+    <link href="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js" async></script>
+  
+
+  
+    <link href="https://cdn.bootcss.com/social-share.js/1.0.16/css/share.min.css" rel="stylesheet">
+  
+  
+  <script src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js" async></script>
+  
+  
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.0/dist/av-min.js"></script>
+  
+
 <meta name="generator" content="Hexo 4.2.0"></head>
 
+  <body>
 
-<body>
-    <div id="loading" class="active"></div>
-
-    <aside id="menu" class="">
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
-    </a>
-    <div class="brand-wrap">
-      
-      <img src="/img/brand.jpg" class="brand-bg">
-      
-      <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/pika.jpg">
-        </a>
-        <hgroup class="introduce">
-          <h5 class="nickname">skye</h5>
-          <a href="mailto:277133779@qq.com" title="277133779@qq.com" class="mail">
-            
-              <span>2</span>
-            
-              <span>7</span>
-            
-              <span>7</span>
-            
-              <span>1</span>
-            
-              <span>3</span>
-            
-              <span>3</span>
-            
-              <span>7</span>
-            
-              <span>7</span>
-            
-              <span>9</span>
-            
-              <span>@</span>
-            
-              <span>q</span>
-            
-              <span>q</span>
-            
-              <span>.</span>
-            
-              <span>c</span>
-            
-              <span>o</span>
-            
-              <span>m</span>
-            
-          </a>
-        </hgroup>
-        
-        <ul class="menu-link">
-          
-              <li>
-                <a href="https://github.com/codefine" target="_blank">
-                  <i class="icon icon-lg icon-github"></i>
-                </a>
-              </li>
-            
-        </ul>
-        
-      </div>
-    </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
-        
-            <li class="">
-              <a href="/"  >
-                <i class="icon icon-lg icon-home"></i>
-                HOME
-              </a>
-            </li>
-        
-            <li class="">
-              <a href="/categories"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                CATEGORIES
-              </a>
-            </li>
-        
-            <li class="">
-              <a href="/tags"  >
-                <i class="icon icon-lg icon-tags"></i>
-                TAGS
-              </a>
-            </li>
-        
-            <li class="">
-              <a href="/archives"  >
-                <i class="icon icon-lg icon-archives"></i>
-                ARCHIVES
-              </a>
-            </li>
-        
-            <li class="">
-              <a href="/custom"  >
-                <i class="icon icon-lg icon-plus-square"></i>
-                CUSTOM
-              </a>
-            </li>
-        
-      </ul>
-    </div>
-  </div>
-</aside>
-
-    <main id="main">
-        <header class="top-header" id="header">
-    <div class="flex-row clearfix">
-        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">
-            <span>JAVAEE 关于spring整合struts2和hibernate(超详细，附带配置文件示例以及整合struts出现的奇葩错误)</span>
-            
-        </div>
-        
-        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
-            <i class="icon icon-lg icon-search"></i>
-        </a>
-        
-    </div>
-</header>
-<header class="content-header post-header">
-    <img src="/img/banner.jpg" class="header-bg">
-    <div class="container fade-scale">
-        <h1 class="title">JAVAEE 关于spring整合struts2和hibernate(超详细，附带配置文件示例以及整合struts出现的奇葩错误)</h1>
-        <h5 class="subtitle">
-            
-                <time datetime="2020-03-25T00:01:14.329Z" itemprop="datePublished" class="page-time">
-  2020-03-25
-</time>
-
-
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JAVAEE/">JAVAEE</a></li></ul>
-
-            
-        </h5>
-        
-    </div>
     
 
-</header>
+    <div id="app">
 
-<div id="site_search">
-    <div class="search-title clearfix">
-        <span class="pull-left">
-          <i class="icon icon-lg icon-search"></i>
-        </span>
-        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
-        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
-          <i class="icon icon-lg icon-close"></i>
-        </a>
+      <div class="header-wrap">
+  <header>
+    <div class="site-brand">
+      <div class="site-title">
+        <a href="/">GODBMW.com</a>
+      </div>
     </div>
-    <div id="local-search-result"></div>
+    <nav class="site-navigation">
+      <ul class="nav-menu">
+      
+        <li class="nav-item" data-path="/">
+          
+            <a 
+              href="/"
+              target="_self"
+            >
+              主页
+            </a>
+          
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          
+            <a 
+              href="/archives/"
+              target="_self"
+            >
+              归档
+            </a>
+          
+        </li>
+      
+        <li class="nav-item" data-path="/categories/">
+          
+            <a 
+              href="/categories/"
+              target="_self"
+            >
+              分类
+            </a>
+          
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          
+            <a 
+              href="/tags/"
+              target="_self"
+            >
+              标签
+            </a>
+          
+        </li>
+      
+        <li class="nav-item" data-path="/friends/">
+          
+            <a 
+              href="/friends/"
+              target="_self"
+            >
+              友链
+            </a>
+          
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          
+            <a 
+              href="/about/"
+              target="_self"
+            >
+              关于
+            </a>
+          
+        </li>
+      
+        <li class="nav-item" data-path="">
+          
+            <a href="javascript:void(0);" v-else>抓到我</a>
+            <ul class="nav-menu--dropdown">
+              
+                <li>
+                  <a 
+                    href="https://github.com/dongyuanxin" 
+                    target="_blank"
+                  >
+                    Github
+                  </a>
+                </li>
+              
+                <li>
+                  <a 
+                    href="https://www.zhihu.com/people/godbmw/activities" 
+                    target="_blank"
+                  >
+                    知乎
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+      
+      </ul>
+    </nav>
+    <i class="iconfont icon-menu"></i>
+  </header>
 </div>
 
+<script>
+  let links = document.querySelectorAll('.nav-item');
+  for(let link of links){
+    let childrenLink = link.querySelector('ul');
+    link.addEventListener('mouseenter', () => {
+      if(childrenLink) {
+        childrenLink.className = "nav-menu--dropdown active";
+      }
+    })
+    link.addEventListener('mouseleave', () => {
+      if(childrenLink) {
+        childrenLink.className = "nav-menu--dropdown";
+      }
+    })
+  }
+  let rootRealPath = getRealPath(window.location.pathname, true);
+  for(let link of links) {
+    let linkPath = link.getAttribute("data-path");
+    if(linkPath && getRealPath(linkPath, true) === rootRealPath) {
+      link.className = "nav-item hover";
+    }
+  }
 
-<div class="container body-wrap">
-    <article id="post-JAVAEE 关于spring整合struts2和hibernate(超详细，附带配置文件示例以及整合struts出现的奇葩错误)"
-  class="post-article article-type-post" itemprop="blogPost">
-    <div class="post-card">
-        <h1 class="post-card-title">JAVAEE 关于spring整合struts2和hibernate(超详细，附带配置文件示例以及整合struts出现的奇葩错误)</h1>
-        <div class="post-meta">
-            <time class="post-time" title="2020-03-25 08:01:14" datetime="2020-03-25T00:01:14.329Z"  itemprop="datePublished">2020-03-25</time>
+  let iconMenu = document.querySelector("i.iconfont.icon-menu"),
+    iconMenuClicked = false;
+  let navDOM = document.querySelector("nav.site-navigation");
+  iconMenu.addEventListener("click", () => {
+    iconMenuClicked 
+      ? navDOM.className = "site-navigation active"
+      : navDOM.className = "site-navigation";
+    iconMenuClicked = !iconMenuClicked;
+  })
+</script>
 
-            
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JAVAEE/">JAVAEE</a></li></ul>
-
-
-
-            
-
-            
+      
 
 
-            
-        </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
-            
-            <h2 id="一、整合struts2"><a href="#一、整合struts2" class="headerlink" title="一、整合struts2"></a>一、整合struts2</h2><p><strong>要特别注意struts2、hibernate、spring的版本下述方法对于struts2.1、hibernate3.3.2、spring3.0.5有效</strong>(版本不匹配会导致很多问题，卡了俺超长时间)</p>
-<p><strong>遇到下述问题：</strong></p>
-<figure class="image-box">
-                <a rel=JAVAEE 关于spring整合struts2和hibernate(超详细，附带配置文件示例以及整合struts出现的奇葩错误) href="https://img-blog.csdnimg.cn/20191230145716685.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" title="在这里插入图片描述" data-fancybox="images"><img src="https://img-blog.csdnimg.cn/20191230145716685.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" title="" class=""></a>
-                <p>在这里插入图片描述</p>
-            </figure>
-<p><strong>将applicationContext.xml文件复制到src目录下一份即可解决。</strong></p>
-<a id="more"></a>
-<p>/WEB-INF/web.xml配置</p>
+
+
+
+
+
+
+<div class="container post-index">
+
+  
+
+<div class="post">
+  <h1 class="article-title">
+    <span>JAVAEE 关于spring整合struts2和hibernate(超详细，附带配置文件示例以及整合struts出现的奇葩错误)</span>
+  </h1>
+  <div class="article-top-meta">
+    <span>
+      发布 : 
+      2020-03-25
+    </span>
+    
+      <span>
+        分类 : 
+          <a href="/categories/JAVAEE/">
+            JAVAEE
+          </a>
+      </span>
+    
+    
+      <span>
+        浏览 : <span class="article-timer" data-identity="JAVAEE 关于spring整合struts2和hibernate(超详细，附带配置文件示例以及整合struts出现的奇葩错误)"></span>
+      </span>
+    
+  </div>
+
+  
+
+  <div class="article-content">
+    <div class="markdown-body">
+      <p>/WEB-INF/web.xml配置</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;web-app xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> xmlns=<span class="string">"http://xmlns.jcp.org/xml/ns/javaee"</span> xsi:schemaLocation=<span class="string">"http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"</span> version=<span class="string">"3.1"</span>&gt;</span><br><span class="line">  &lt;display-name&gt;plane2&lt;/display-name&gt;</span><br><span class="line">  &lt;listener&gt;</span><br><span class="line">    &lt;listener-<span class="class"><span class="keyword">class</span>&gt;<span class="title">org</span>.<span class="title">springframework</span>.<span class="title">web</span>.<span class="title">context</span>.<span class="title">ContextLoaderListener</span>&lt;/<span class="title">listener</span>-<span class="title">class</span>&gt;</span></span><br><span class="line"><span class="class">  &lt;/<span class="title">listener</span>&gt;</span></span><br><span class="line"><span class="class">  //&lt;<span class="title">context</span>-<span class="title">param</span>&gt;  </span></span><br><span class="line"><span class="class">    //&lt;<span class="title">param</span>-<span class="title">name</span>&gt;<span class="title">contextConfigLocation</span>&lt;/<span class="title">param</span>-<span class="title">name</span>&gt;  </span></span><br><span class="line">  //  &lt;param-value&gt;classpath*:config/applicationContext.xml&lt;/param-value&gt;</span><br><span class="line"><span class="comment">//&lt;/context-param&gt;	(默认去/WEB-INF/applicationContext.xml 下找)</span></span><br><span class="line"></span><br><span class="line">  &lt;filter&gt;</span><br><span class="line">    &lt;filter-name&gt;struts2&lt;/filter-name&gt;</span><br><span class="line">    &lt;filter-<span class="class"><span class="keyword">class</span>&gt;<span class="title">org</span>.<span class="title">apache</span>.<span class="title">struts2</span>.<span class="title">dispatcher</span>.<span class="title">ng</span>.<span class="title">filter</span>.<span class="title">StrutsPrepareAndExecuteFilter</span>&lt;/<span class="title">filter</span>-<span class="title">class</span>&gt;</span></span><br><span class="line"><span class="class">  &lt;/<span class="title">filter</span>&gt;</span></span><br><span class="line"><span class="class">  &lt;<span class="title">filter</span>-<span class="title">mapping</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">filter</span>-<span class="title">name</span>&gt;<span class="title">struts2</span>&lt;/<span class="title">filter</span>-<span class="title">name</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">url</span>-<span class="title">pattern</span>&gt;/*&lt;/<span class="title">url</span>-<span class="title">pattern</span>&gt;</span></span><br><span class="line"><span class="class">  &lt;/<span class="title">filter</span>-<span class="title">mapping</span>&gt;</span></span><br><span class="line"><span class="class">&lt;/<span class="title">web</span>-<span class="title">app</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>/src/struts.xml</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span> ?&gt;</span><br><span class="line">&lt;!DOCTYPE struts PUBLIC <span class="string">"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"</span> <span class="string">"http://struts.apache.org/dtds/struts-2.1.dtd"</span>&gt;</span><br><span class="line">&lt;struts&gt;</span><br><span class="line"></span><br><span class="line">     &lt;<span class="keyword">package</span> name=<span class="string">"form"</span> extends=<span class="string">"struts-default"</span> namespace=<span class="string">"/"</span> &gt;</span><br><span class="line">     </span><br><span class="line">		&lt;action name=<span class="string">"RegisterAction"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"RegisterAction"</span> method=<span class="string">"register"</span>&gt; </span><br><span class="line">		</span><br><span class="line">			&lt;result name="success"&gt;/login.jsp&lt;/result&gt;</span><br><span class="line">		&lt;/action&gt; </span><br><span class="line">		&lt;action name=<span class="string">"LoginAction"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"LoginAction"</span> method=<span class="string">"login"</span>&gt; </span><br><span class="line">		</span><br><span class="line">			&lt;result name="success"&gt;/userMain.jsp&lt;/result&gt;</span><br><span class="line">			&lt;result name="no"&gt;/login.jsp&lt;/result&gt;</span><br><span class="line">			&lt;result name="adminmain"&gt;/adminmain.jsp&lt;/result&gt;</span><br><span class="line">		&lt;/action&gt; </span><br><span class="line">		&lt;action name=<span class="string">"changepassAction"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.action.changepassAction"</span> method=<span class="string">"change"</span>&gt; </span><br><span class="line">		</span><br><span class="line">			&lt;result name="success"&gt;/changepasssuccess.jsp&lt;/result&gt;</span><br><span class="line">			&lt;result name="no"&gt;/error.jsp&lt;/result&gt;</span><br><span class="line">		&lt;/action&gt; </span><br><span class="line">		&lt;action name=<span class="string">"modifyuserAction"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.action.modifyuserAction"</span> method=<span class="string">"modi"</span>&gt; </span><br><span class="line">		</span><br><span class="line">			&lt;result name="success"&gt;/info.jsp&lt;/result&gt;</span><br><span class="line">			&lt;result name="no"&gt;/error.jsp&lt;/result&gt;</span><br><span class="line">		&lt;/action&gt; </span><br><span class="line">		&lt;action name=<span class="string">"realmodifyuserAction"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.action.realmodifyuserAction"</span> method=<span class="string">"modify"</span>&gt; </span><br><span class="line">		</span><br><span class="line">			&lt;result name="success"&gt;/userMain.jsp&lt;/result&gt;</span><br><span class="line">			&lt;result name="no"&gt;/error.jsp&lt;/result&gt;</span><br><span class="line">		&lt;/action&gt; </span><br><span class="line">		&lt;action name=<span class="string">"havingflightAction"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.action.havingflightAction"</span> method=<span class="string">"have"</span>&gt; </span><br><span class="line">		</span><br><span class="line">			&lt;result name="showingflight"&gt;/showflight.jsp&lt;/result&gt;</span><br><span class="line">				&lt;result name="playflight"&gt;/playflight.jsp&lt;/result&gt;</span><br><span class="line">			&lt;result name="no"&gt;/error.jsp&lt;/result&gt;</span><br><span class="line">			</span><br><span class="line">		&lt;/action&gt; </span><br><span class="line">		&lt;action name=<span class="string">"myzhifubaoAction"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.action.myzhifubaoAction"</span> method=<span class="string">"zhifu"</span>&gt; </span><br><span class="line">		</span><br><span class="line">			&lt;result name="success"&gt;/zhifusuccess.jsp&lt;/result&gt;</span><br><span class="line">			&lt;result name="error"&gt;/error.jsp&lt;/result&gt;</span><br><span class="line">		&lt;/action&gt; </span><br><span class="line">	</span><br><span class="line">		&lt;action name=<span class="string">"firmAction"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.action.firmAction"</span> method=<span class="string">"afirm"</span>&gt; </span><br><span class="line">		</span><br><span class="line">			&lt;result name="success"&gt;/afirm.jsp&lt;/result&gt;</span><br><span class="line">			&lt;result name="dinerror"&gt;/dinerror.jsp&lt;/result&gt;</span><br><span class="line">		&lt;/action&gt; </span><br><span class="line">		</span><br><span class="line">		&lt;action name=<span class="string">"showorderAction"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.action.showorderAction"</span> method=<span class="string">"show"</span>&gt; </span><br><span class="line">		</span><br><span class="line">			&lt;result name="showingorder"&gt;/showorder.jsp&lt;/result&gt;</span><br><span class="line">			&lt;result name="error"&gt;/error.jsp&lt;/result&gt;</span><br><span class="line">				&lt;result name="back"&gt;/back.jsp&lt;/result&gt;</span><br><span class="line">		&lt;/action&gt; </span><br><span class="line">			&lt;action name=<span class="string">"backticketAction"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.action.backticketAction"</span> method=<span class="string">"back"</span>&gt; </span><br><span class="line">		</span><br><span class="line">			&lt;result name="success"&gt;/backsuccess.jsp&lt;/result&gt;</span><br><span class="line">			&lt;result name="error"&gt;/error.jsp&lt;/result&gt;</span><br><span class="line">		&lt;/action&gt; </span><br><span class="line">		</span><br><span class="line">		&lt;action name=<span class="string">"insertflightAction"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.action.insertflightAction"</span> method=<span class="string">"insert"</span>&gt; </span><br><span class="line">		</span><br><span class="line">			&lt;result name="success"&gt;/adminmain.jsp&lt;/result&gt;</span><br><span class="line">			&lt;result name="error"&gt;/error.jsp&lt;/result&gt;</span><br><span class="line">		&lt;/action&gt; </span><br><span class="line">	 </span><br><span class="line">			&lt;action name=<span class="string">"makeflightAction"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.action.makeflightAction"</span> method=<span class="string">"make"</span>&gt; </span><br><span class="line">		</span><br><span class="line">			&lt;result name="success"&gt;/makeingflight.jsp&lt;/result&gt;</span><br><span class="line">			&lt;result name="error"&gt;/error.jsp&lt;/result&gt;</span><br><span class="line">		&lt;/action&gt; </span><br><span class="line">	</span><br><span class="line">    &lt;/package&gt;</span><br><span class="line"></span><br><span class="line">	&lt;constant name="struts.objectFactory" value="spring"&gt;&lt;/constant&gt;</span><br><span class="line"></span><br><span class="line">&lt;/struts&gt;</span><br></pre></td></tr></table></figure>
@@ -232,302 +264,436 @@
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;beans</span><br><span class="line">	xmlns=<span class="string">"http://www.springframework.org/schema/beans"</span></span><br><span class="line">    xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span><br><span class="line">  </span><br><span class="line">    xmlns:context=<span class="string">"http://www.springframework.org/schema/context"</span></span><br><span class="line">    xmlns:tx=<span class="string">"http://www.springframework.org/schema/tx"</span></span><br><span class="line">    xsi:schemaLocation=<span class="string">"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd</span></span><br><span class="line"><span class="string">        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd</span></span><br><span class="line"><span class="string">         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd</span></span><br><span class="line"><span class="string">        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd"</span>&gt;</span><br><span class="line">	&lt;bean id=<span class="string">"loginAction"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.action.loginAction"</span>&gt;	</span><br><span class="line">	&lt;/bean&gt;</span><br><span class="line">		&lt;bean id=<span class="string">"RegisterAction"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.action.RegisterAction"</span>&gt;	</span><br><span class="line">	&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">		&lt;bean id=<span class="string">"passenger"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.po.passenger"</span>&gt;	</span><br><span class="line">	&lt;/bean&gt;</span><br><span class="line">	&lt;bean id=<span class="string">"passengerDAO"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.dao.passengerDAO"</span> &gt;</span><br><span class="line">	</span><br><span class="line">	&lt;/bean&gt;</span><br><span class="line">		 </span><br><span class="line">		&lt;bean id=<span class="string">"passengerService"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.service.passengerService"</span>&gt;</span><br><span class="line">	&lt;property name=<span class="string">"pa"</span> ref=<span class="string">"passengerDAO"</span>/&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br><span class="line">	&lt;bean id=<span class="string">"transactionManager"</span></span><br><span class="line">		<span class="class"><span class="keyword">class</span></span>=<span class="string">"org.springframework.orm.hibernate3.HibernateTransactionManager"</span>&gt;</span><br><span class="line">		&lt;property name=<span class="string">"sessionFactory"</span> ref=<span class="string">"sessionFactory"</span> /&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br><span class="line">	&lt;tx:annotation-driven transaction-manager=<span class="string">"transactionManager"</span> /&gt;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	&lt;bean id=<span class="string">"sessionFactory"</span></span><br><span class="line">		<span class="class"><span class="keyword">class</span></span>=<span class="string">"org.springframework.orm.hibernate3.LocalSessionFactoryBean"</span>&gt;</span><br><span class="line">		&lt;property name=<span class="string">"configLocation"</span></span><br><span class="line">			value=<span class="string">"classpath:hibernate.cfg.xml"</span>&gt;</span><br><span class="line">		&lt;/property&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br><span class="line">	&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
 <p>/src/hibernate.cfg.xml</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;!DOCTYPE hibernate-configuration PUBLIC</span><br><span class="line">	<span class="string">"-//Hibernate/Hibernate Configuration DTD 3.0//EN"</span></span><br><span class="line">	<span class="string">"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd"</span>&gt;</span><br><span class="line"> </span><br><span class="line">&lt;hibernate-configuration&gt;</span><br><span class="line"></span><br><span class="line">&lt;session-factory&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!-- 配置关于数据库连接的四个项 driverClass url username password --&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&lt;!-- 设置连接提供者 --&gt;</span><br><span class="line">	&lt;!-- &lt;property name=<span class="string">"hibernate.connection.provider_class"</span>&gt;</span><br><span class="line">		org.hibernate.connection.C3P0ConnectionProvider</span><br><span class="line">		&lt;/property&gt; --&gt;</span><br><span class="line">	&lt;!-- c3p0连接池的配置 --&gt;</span><br><span class="line">	&lt;!-- &lt;property name="hibernate.c3p0.max_size"&gt;20&lt;/property&gt; --&gt;</span><br><span class="line">	&lt;!-- 最大连接池 --&gt;</span><br><span class="line">	&lt;!-- &lt;property name="hibernate.c3p0.min_size"&gt;5&lt;/property&gt; --&gt;</span><br><span class="line">	&lt;!-- 最小连接数 --&gt;</span><br><span class="line">	&lt;!-- &lt;property name="hibernate.c3p0.timeout"&gt;120&lt;/property&gt; --&gt;</span><br><span class="line">	&lt;!-- 超时 --&gt;</span><br><span class="line">	&lt;!-- &lt;property name="hibernate.c3p0.idle_test_period"&gt;3000&lt;/property&gt; --&gt;</span><br><span class="line">	&lt;!-- 空闲连接 --&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!-- 可以将向数据库发送的sql显示出来 --&gt;</span><br><span class="line">	&lt;property name="hibernate.show_sql"&gt;true&lt;/property&gt;</span><br><span class="line">	&lt;!-- 格式化sql --&gt;</span><br><span class="line">	&lt;property name="hibernate.format_sql"&gt;true&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!-- hibernate的方言 --&gt;</span><br><span class="line">	&lt;property name="hibernate.dialect"&gt;org.hibernate.dialect.MySQL5Dialect&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!-- 自动创建表 --&gt;</span><br><span class="line">	&lt;property name="hibernate.hbm2ddl.auto"&gt;update&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!-- 用于设置事务提交方式 --&gt;</span><br><span class="line">	&lt;property name="hibernate.connection.autocommit"&gt;false&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!-- 配置hibernate的映射文件所在位置 --&gt;</span><br><span class="line">	&lt;property name="myeclipse.connection.profile"&gt;ddq&lt;/property&gt;</span><br><span class="line">	&lt;property name=<span class="string">"connection.url"</span>&gt;jdbc:mysql:<span class="comment">//localhost:3306/plane?useSSL=true&amp;amp;user=root&amp;amp;password=1234567hy&amp;amp;characterEncoding=utf8&lt;/property&gt;</span></span><br><span class="line">	&lt;property name="connection.username"&gt;root&lt;/property&gt;</span><br><span class="line">	&lt;property name="connection.password"&gt;1234567hy&lt;/property&gt;</span><br><span class="line">	&lt;property name="connection.driver_class"&gt;com.mysql.jdbc.Driver&lt;/property&gt;</span><br><span class="line">	&lt;property name="dialect"&gt;org.hibernate.dialect.MySQLDialect&lt;/property&gt;</span><br><span class="line">	&lt;mapping resource=<span class="string">"com/po/passenger.hbm.xml"</span> /&gt;</span><br><span class="line">	&lt;mapping resource=<span class="string">"com/po/orders.hbm.xml"</span> /&gt;</span><br><span class="line">	&lt;mapping resource=<span class="string">"com/po/plane.hbm.xml"</span> /&gt;</span><br><span class="line">	&lt;mapping resource=<span class="string">"com/po/flight.hbm.xml"</span> /&gt;</span><br><span class="line">&lt;/session-factory&gt;</span><br><span class="line"></span><br><span class="line">&lt;/hibernate-configuration&gt;</span><br></pre></td></tr></table></figure>
-
-
-        </div>
-        
-<blockquote class="post-copyright">
-    <div class="content">
-        
-<span class="post-time">
-    最后更新时间：<time datetime="2020-03-25T00:01:14.329Z" itemprop="dateUpdated">2020-03-25 08:01:14</time>
-</span><br>
-
-
-        
-        转载注明出处，原文地址：<a href="/2020/03/25/JAVAEE%20%E5%85%B3%E4%BA%8Espring%E6%95%B4%E5%90%88struts2%E5%92%8Chibernate(%E8%B6%85%E8%AF%A6%E7%BB%86%EF%BC%8C%E9%99%84%E5%B8%A6%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%A4%BA%E4%BE%8B%E4%BB%A5%E5%8F%8A%E6%95%B4%E5%90%88struts%E5%87%BA%E7%8E%B0%E7%9A%84%E5%A5%87%E8%91%A9%E9%94%99%E8%AF%AF)/" target="_blank" rel="external">http://forever-sky.github.io/2020/03/25/JAVAEE%20%E5%85%B3%E4%BA%8Espring%E6%95%B4%E5%90%88struts2%E5%92%8Chibernate(%E8%B6%85%E8%AF%A6%E7%BB%86%EF%BC%8C%E9%99%84%E5%B8%A6%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%A4%BA%E4%BE%8B%E4%BB%A5%E5%8F%8A%E6%95%B4%E5%90%88struts%E5%87%BA%E7%8E%B0%E7%9A%84%E5%A5%87%E8%91%A9%E9%94%99%E8%AF%AF)/</a>
-        
     </div>
-    <footer>
-        <a href="http://forever-sky.github.io">
-            <img src="/img/pika.jpg" alt="skye">
-            skye
-        </a>
-    </footer>
-</blockquote>
-
-        
-            <div class="page-reward">
-    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
-</div>
-
-            
-        
-        <div class="post-footer">
-            
-            <div class="page-share-wrap">
-    
-
-<div class="page-share" id="pageShare">
-    <ul class="reset share-icons">
-      
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://forever-sky.github.io/2020/03/25/JAVAEE%20%E5%85%B3%E4%BA%8Espring%E6%95%B4%E5%90%88struts2%E5%92%8Chibernate(%E8%B6%85%E8%AF%A6%E7%BB%86%EF%BC%8C%E9%99%84%E5%B8%A6%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%A4%BA%E4%BE%8B%E4%BB%A5%E5%8F%8A%E6%95%B4%E5%90%88struts%E5%87%BA%E7%8E%B0%E7%9A%84%E5%A5%87%E8%91%A9%E9%94%99%E8%AF%AF)/&title=《JAVAEE 关于spring整合struts2和hibernate(超详细，附带配置文件示例以及整合struts出现的奇葩错误)》 — skyeの博客&pic=http://forever-sky.github.io/img/pika.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://forever-sky.github.io/2020/03/25/JAVAEE%20%E5%85%B3%E4%BA%8Espring%E6%95%B4%E5%90%88struts2%E5%92%8Chibernate(%E8%B6%85%E8%AF%A6%E7%BB%86%EF%BC%8C%E9%99%84%E5%B8%A6%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%A4%BA%E4%BE%8B%E4%BB%A5%E5%8F%8A%E6%95%B4%E5%90%88struts%E5%87%BA%E7%8E%B0%E7%9A%84%E5%A5%87%E8%91%A9%E9%94%99%E8%AF%AF)/&title=《JAVAEE 关于spring整合struts2和hibernate(超详细，附带配置文件示例以及整合struts出现的奇葩错误)》 — skyeの博客&source=一、整合struts2要特别注意struts2、hibernate、spring的版本下述方法对于struts2.1、hibernate3.3.2、spr..." data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      
-    </ul>
- </div>
-
-
-
-    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
-        <i class="icon icon-share-alt icon-lg"></i>
-    </a>
-</div>
-
-        </div>
-        
-            
-
-
-        
-    </div>
-    
-<nav class="post-nav flex-row flex-justify-between">
+  </div>
   
-    <div class="prev">
-      <a href="/2020/03/25/ospf%E5%8D%8F%E8%AE%AE%E9%82%BB%E6%8E%A5%E5%85%B3%E7%B3%BB%E5%BB%BA%E7%AB%8B%E5%92%8C%E9%82%BB%E5%B1%85%E5%85%B3%E7%B3%BB/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">ospf协议邻接关系建立和邻居关系</h4>
-      </a>
+    <div class="copy-right">
+      <div class="markdown-body">
+        <blockquote>
+        
+        
+          本文作者 : GODBMW <br/>
+        
+        原文链接 : <a href="">http://forever-sky.github.io/2020/03/25/JAVAEE%20%E5%85%B3%E4%BA%8Espring%E6%95%B4%E5%90%88struts2%E5%92%8Chibernate(%E8%B6%85%E8%AF%A6%E7%BB%86%EF%BC%8C%E9%99%84%E5%B8%A6%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%A4%BA%E4%BE%8B%E4%BB%A5%E5%8F%8A%E6%95%B4%E5%90%88struts%E5%87%BA%E7%8E%B0%E7%9A%84%E5%A5%87%E8%91%A9%E9%94%99%E8%AF%AF)/</a><br>
+        版权声明 : 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+        </blockquote>
+      </div>
     </div>
+  
+  
+  
+    <div class="social-share"
+  style="margin-top: -2rem"
+  data-wechat-qrcode-title="<p>微信扫一扫</p>"
+  data-wechat-qrcode-helper="<p>微信右上角, 扫一扫分享</p>"
+   data-sites="qzone, qq, weibo, wechat, douban, google, facebook, twitter" 
+  
+>
+  <span style="color: #6b7487; font-size: 1.4rem;">分享到: </span>
+</div>
+<script src="https://cdn.bootcss.com/social-share.js/1.0.16/js/social-share.min.js" async>
   
 
   
-    <div class="next">
-      <a href="/2020/03/25/i%E6%98%A5%E7%A7%8B%E7%BD%91%E7%BB%9C%E5%86%85%E7%94%9F%E5%AE%89%E5%85%A8%E8%AF%95%E9%AA%8C%E5%9C%BACTF%E5%A4%BA%E6%97%97%E8%B5%9B%EF%BC%88%E7%AC%AC%E4%BA%8C%E5%AD%A3%EF%BC%89%E9%83%A8%E5%88%86wp/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">i春秋网络内生安全试验场CTF夺旗赛（第二季）部分wp</h4>
-      </a>
-    </div>
+    <div id="reward">
   
-</nav>
-
-
+    <p id="reward-meta">知识 & 情怀 | 二者兼得</p>
+  
+  <button id="reward-btn">
     
+    <span>投食</span>
+  </button>
+  <div id="reward-qrcode">
     
-        <aside class="post-widget">
-            <nav class="post-toc-wrap" id="post-toc">
-                <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一、整合struts2"><span class="post-toc-number">1.</span> <span class="post-toc-text">一、整合struts2</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二、整合hibernate"><span class="post-toc-number">2.</span> <span class="post-toc-text">二、整合hibernate</span></a></li></ol>
-            </nav>
-            <div class="toc-bar"><div>
-        </aside>
+      <div class="reward-qrcode--container">
+        <img class="qrcode-img" src="/images/wechat.png" alt="微信扫一扫, 向我投食">
+        <p class="qrcode-meta">微信扫一扫, 向我投食</p>
+      </div>
     
-</article>
-
-    <div id="reward" class="page-modal reward-lay">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <h3 class="reward-title">
-        <i class="icon icon-quote-left"></i>
-        我们一起来让这个世界有趣一点
-        <i class="icon icon-quote-right"></i>
-    </h3>
-    <div class="reward-content">
-        
-        <div class="reward-code">
-            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
-        </div>
-        
-        <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
-                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
-            <div class="reward-toggle-ctrol">
-                <span class="reward-toggle-item wechat">微信</span>
-                <span class="reward-toggle-label"></span>
-                <span class="reward-toggle-item alipay">支付宝</span>
-            </div>
-        </label>
-        
-    </div>
-</div>
-
+      <div class="reward-qrcode--container">
+        <img class="qrcode-img" src="/images/alipay.png" alt="支付宝扫一扫, 向我投食">
+        <p class="qrcode-meta">支付宝扫一扫, 向我投食</p>
+      </div>
     
+  </div>
 
 </div>
 
-    </main>
-    <footer class="footer ">
+<script>
+  (() => {
+    let button = document.querySelector('#reward-btn'),
+      qrcode = document.querySelector('#reward-qrcode'),
+      display = false;
     
-    <div class="top">
+    button.addEventListener('click', () => {
+      qrcode.style.display = display ? 'none' : 'block'
+      display = !display
+    }, false)
+  })()
+</script>
+  
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+      <span>
         
-            <p>
-    <span>Links：</span>
-    
-    <span class="blogroll-item">
-        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
-    </span>
-    
-</p>
-
-        
+      </span>
     </div>
-    
-    <div class="bottom">
-        <p>
-            <span>
-                skye &copy; 2017 - 2020
-            </span>
-        		
-           	
-            
-            
-            <span>
-	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">hexo-theme-mellow</a>
-            </span>
-            
-            
-            
-
-            
-                
-<span class="site-uv" title="总访客量">
-    <i class="icon icon-user"></i>
-    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
-</span>
-
-
-<span class="site-pv" title="总访问量">
-    <i class="icon icon-eye"></i>
-    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
-</span>
-
-            
-        </p>
+    <div class="article-meta pull-right">
     </div>
+  </div>
+</div>
+
+
+  <aside id="sidebar">
+    <p id="sidebar-header"></p>
+    <ol id="sidebar-toc"></ol>
+  </aside>
+  <script async>setTimeout(generateToc, 10);</script>
+
+
+  <nav class="post-navigation">
+    
+      <div class="nav-pre">
+        <i class="iconfont icon-prev"></i>
+        上一篇:
+        <a href="/2020/03/25/i%E6%98%A5%E7%A7%8B%E7%BD%91%E7%BB%9C%E5%86%85%E7%94%9F%E5%AE%89%E5%85%A8%E8%AF%95%E9%AA%8C%E5%9C%BACTF%E5%A4%BA%E6%97%97%E8%B5%9B%EF%BC%88%E7%AC%AC%E4%BA%8C%E5%AD%A3%EF%BC%89%E9%83%A8%E5%88%86wp/" target="_self">i春秋网络内生安全试验场CTF夺旗赛（第二季）部分wp</a>
+      </div>
+    
+    
+      <div class="nav-next">
+        下一篇:
+        <a href="/2020/03/25/ospf%E5%8D%8F%E8%AE%AE%E9%82%BB%E6%8E%A5%E5%85%B3%E7%B3%BB%E5%BB%BA%E7%AB%8B%E5%92%8C%E9%82%BB%E5%B1%85%E5%85%B3%E7%B3%BB/" target="_self">ospf协议邻接关系建立和邻居关系</a>
+        <i class="iconfont icon-next"></i>
+      </div>
+    
+  </nav>
+
+  
+    <a href="#comment" class="comment-anchor"></a>
+<div class="comment-title"><i class="iconfont icon-footprint"></i> 留下足迹 <i class="iconfont icon-footprint"></i></div>
+<div id="vcomments"></div>
+
+<script defer>
+  if( true ) {
+    let path = getRealPath()
+    new Valine({
+      el: "#vcomments",
+      appId: "Hyq9wkH495DgNHWhDQCOfQSp-gzGzoHsz",
+      appKey: "WaR7nrzhliHj9aVwdQzkdlGd",
+      notify: false,
+      verify: false,
+      avatar: "robohash",
+      placeholder: "正确填写邮箱, 才能及时收到回复哦♪(^∇^*)",
+      path
+    });
+  }
+</script>
+   
+
+  
+    <script defer>
+const valineAPI = (() => {
+  try {
+    AV.init("Hyq9wkH495DgNHWhDQCOfQSp-gzGzoHsz", "WaR7nrzhliHj9aVwdQzkdlGd");
+  } catch(error) {}
+  const isExist = (identity) => {
+    identity = identity || getRealPath();
+    let query = new AV.Query('Timer');
+    return new Promise((resolve, reject) => {
+      query.equalTo("identity", identity);
+      query.find().then(results => {
+        resolve(results.length > 0);
+      }, error => reject(error));
+    })
+  }
+
+  const _get = (identity) => {
+    let query = null;
+    if(identity && identity instanceof Array){
+      let querys = [];
+      for(let i = 0; i < identity.length; ++i) {
+        querys[i] = new AV.Query('Timer');
+        querys[i].equalTo('identity', identity[i]);
+      }
+      query = AV.Query.or.apply(null ,querys);
+    } else {
+      identity = identity || getRealPath();
+      query = new AV.Query("Timer");
+      query.equalTo("identity", identity);
+    }
+
+    return new Promise((resolve, reject) => {
+      query.find()
+      .then(results => resolve(results))
+      .catch(error => reject(error))
+    })
+  }
+
+  const create = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+      let Todo = AV.Object.extend('Timer');
+      let todo = new Todo();
+      todo.set("times", 1);
+      todo.set("identity", identity);
+      todo.save().then(res => resolve(true), error => reject(error));
+    })
+  }
+
+  const update = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+      let query = new AV.Query('Timer');
+      query.equalTo("identity", identity);
+      query.find().then(todos => {
+        todos.forEach(todo => {
+          todo.set("times", todo.attributes.times + 1);
+        });
+        return AV.Object.saveAll(todos);
+      }).then(todos => resolve(true), error => reject(error));
+    })
+  }
+
+  return {
+    isExist,
+    _get,
+    update,
+    create
+  }
+})()
+
+const calcAndWriteTimes = () => {
+  let isPost = true;
+
+  let timerAllDOM = document.querySelectorAll(".article-timer");
+
+  if(isPost) {
+    let identity = timerAllDOM[0].getAttribute("data-identity");
+    valineAPI.isExist(identity)
+    .then(exist => {
+      if(exist) {
+        return valineAPI.update(identity);
+      }
+      return new Promise(resolve => resolve(true));
+    })
+    .then( succuess => valineAPI._get(identity))
+    .then( result => timerAllDOM[0].innerText = result[0].attributes.times)
+    .catch(error => console.log(error.message))
+    return ;
+  }
+
+  let timerDOMCache = {};
+
+  for(let timerDOM of timerAllDOM) {
+    let identity = timerDOM.getAttribute("data-identity");
+    if(timerDOMCache.hasOwnProperty(identity)){
+      timerDOMCache[identity].dom.push(timerDOM);
+    }else{
+      timerDOMCache[identity] = {
+        dom: [timerDOM],
+        times: undefined
+      };
+    }
+  }
+
+  let identities = Object.keys(timerDOMCache);
+  valineAPI._get(identities).then(results => {
+    for(let result of results) {
+      let {identity, times} = result.attributes;
+      timerDOMCache[identity].times = times;
+      timerDOMCache[identity].dom.map(item => item.innerText = times);
+    }
+    for(let identity of identities) {
+      if(timerDOMCache[identity].times){
+        continue;
+      }
+      timerDOMCache[identity].dom.map(item => item.innerText = 1);
+      valineAPI.create(identity);
+    }
+  }).catch(error => console.log(error.message))
+}
+
+if(true){
+  calcAndWriteTimes();
+}
+</script>
+   
+
+</div>
+
+
+      <footer>
+  <p class="site-info">
+    博客已萌萌哒运行<span id="time-to-now"></span><span class="my-face">(●'◡'●)ﾉ♥</span>
+    <br>
+    Theme - <a href="https://github.com/dongyuanxin/theme-bmw">BMW</a> | Made With 💗 | Powered by <a href="https://godbmw.com/">GodBMW</a>
+    <br>
+    
+  </p>
 </footer>
 
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
+<script>
+const timeToNowDOM = document.querySelector("#time-to-now");
+const startTimestamp = new Date(2018, 1, 10).getTime();
 
-<div class="global-share" id="globalShare">
-    <ul class="reset share-icons">
-      
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://forever-sky.github.io/2020/03/25/JAVAEE%20%E5%85%B3%E4%BA%8Espring%E6%95%B4%E5%90%88struts2%E5%92%8Chibernate(%E8%B6%85%E8%AF%A6%E7%BB%86%EF%BC%8C%E9%99%84%E5%B8%A6%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%A4%BA%E4%BE%8B%E4%BB%A5%E5%8F%8A%E6%95%B4%E5%90%88struts%E5%87%BA%E7%8E%B0%E7%9A%84%E5%A5%87%E8%91%A9%E9%94%99%E8%AF%AF)/&title=《JAVAEE 关于spring整合struts2和hibernate(超详细，附带配置文件示例以及整合struts出现的奇葩错误)》 — skyeの博客&pic=http://forever-sky.github.io/img/pika.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://forever-sky.github.io/2020/03/25/JAVAEE%20%E5%85%B3%E4%BA%8Espring%E6%95%B4%E5%90%88struts2%E5%92%8Chibernate(%E8%B6%85%E8%AF%A6%E7%BB%86%EF%BC%8C%E9%99%84%E5%B8%A6%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%A4%BA%E4%BE%8B%E4%BB%A5%E5%8F%8A%E6%95%B4%E5%90%88struts%E5%87%BA%E7%8E%B0%E7%9A%84%E5%A5%87%E8%91%A9%E9%94%99%E8%AF%AF)/&title=《JAVAEE 关于spring整合struts2和hibernate(超详细，附带配置文件示例以及整合struts出现的奇葩错误)》 — skyeの博客&source=一、整合struts2要特别注意struts2、hibernate、spring的版本下述方法对于struts2.1、hibernate3.3.2、spr..." data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      
-    </ul>
- </div>
+const updateTimeStr = () => {
+  let offset = parseInt(
+      (new Date().getTime() - startTimestamp) / 1000,
+      10
+    ),
+    day = Math.floor(offset / 86400),
+    hour = Math.floor((offset % 86400) / 3600),
+    minute = Math.floor(((offset % 86400) % 3600) / 60),
+    second = Math.floor(((offset % 86400) % 3600) % 60);
+  timeToNowDOM.innerHTML =
+    day + "天" + hour + "小时" + minute + "分钟" + second + "秒";
+  setTimeout(updateTimeStr, 500);
+}
+
+setTimeout(updateTimeStr, 500);
+</script>
 
 
-<div class="page-modal wx-share" id="wxShare">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://forever-sky.github.io/2020/03/25/JAVAEE%20%E5%85%B3%E4%BA%8Espring%E6%95%B4%E5%90%88struts2%E5%92%8Chibernate(%E8%B6%85%E8%AF%A6%E7%BB%86%EF%BC%8C%E9%99%84%E5%B8%A6%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%A4%BA%E4%BE%8B%E4%BB%A5%E5%8F%8A%E6%95%B4%E5%90%88struts%E5%87%BA%E7%8E%B0%E7%9A%84%E5%A5%87%E8%91%A9%E9%94%99%E8%AF%AF)/" alt="微信分享二维码">
+      <div class="back-to-top hidden">
+  <span>
+    <i class="iconfont icon-60"></i><span></span>%
+  </span>
 </div>
 
+<script>
+const updateIconToTop = percent => {
+  let dom = document.querySelector(".back-to-top span span");
+  dom.innerText = percent;
+  if(percent < 1) {
+    document.querySelector(".back-to-top").className = "back-to-top hidden";
+  } else {
+    document.querySelector(".back-to-top").className = "back-to-top";
+  }
+}
 
-    
-    <!-- main-js -->
-<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
-<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.4"></script>
-<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.4"></script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
-
-<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
-
-<script type="text/javascript" src="/js/method.js?v=1.4.4"></script>
-<script type="text/javascript" src="/js/blog.js?v=1.4.4"></script>
-
-<!-- third-party -->
-
-
-
-
-
-
-<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.4"></script>
-<script type="text/javascript">
-	var search_path = "search.xml";
-	if (search_path.length === 0) {
-		search_path = "search.xml";
-	}
-	var path = "/" + search_path;
-	searchFunc(path, "local-search-input", "local-search-result");
-</script>
-
-
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-    
-    
-
-
-
-
-
-    <!-- mathjax config similar to math.stackexchange -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-            processEscapes: true,
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
+const handleScoll = () => {
+  let isRunning = false;
+  return () => {
+    if (isRunning) return;
+    isRunning = true;
+    window.requestAnimationFrame(timestamp => {
+      let scrollTop =
+          document.documentElement.scrollTop || document.body.scrollTop,
+        scrollHeight =
+          document.documentElement.scrollHeight ||
+          document.body.scrollHeight,
+        clientHeight =
+          document.documentElement.clientHeight ||
+          document.body.clientHeight;
+      isRunning = false;
+      if (scrollTop <= 1) {
+        updateIconToTop(0);
+        return;
+      }
+      if (scrollTop + clientHeight >= scrollHeight) {
+        updateIconToTop(100);
+      } else {
+        updateIconToTop(parseInt(
+          100 * scrollTop / (scrollHeight - clientHeight),
+          10
+        ));
+      }
     });
+  };
+}
+
+const backToTop = () => {
+  let scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop,
+    delay = 10,
+    time = 200;
+  if (scrollTop <= 20) {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    return;
+  }
+  let step = Math.ceil(scrollTop * delay / time);
+  let timer = setInterval(() => {
+    scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop;
+    if (scrollTop - step <= 0) {
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      clearInterval(timer);
+    } else {
+      document.documentElement.scrollTop = scrollTop - step;
+      document.body.scrollTop = scrollTop - step;
+    }
+  }, delay);
+}
+
+document.addEventListener("scroll", handleScoll(), false);
+
+document.querySelector(".back-to-top").addEventListener("click", backToTop, false);
+
 </script>
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-
-<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-
-
-
-
-
+    </div>
 
     
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+<script>
+  (() => {
+    const mathjaxConfig = {
+      showProcessingMessages: false, //关闭js加载过程信息
+      messageStyle: "none", //不显示信息
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]], //段内公式选择符
+        skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+      },
+      "HTML-CSS": {
+        availableFonts: ["STIX", "TeX"], //可选字体
+        showMathMenu: false //关闭右击菜单显示
+      }
+    }
+
+    let mathjaxInterval = setInterval(() => {
+      if(!window.MathJax){
+        return;
+      }
+      window.MathJax.Hub.Config(mathjaxConfig)
+      window.MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('app')])
+
+      clearInterval(mathjaxInterval)
+    }, 10)    
+  })()
+</script>
+    
+
+    <script src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script>
+<script async>
+  let fancyTimer = setInterval(function(){
+    if(!window.$){
+      return;
+    }
+    $(document).ready(function() {
+      $(".post img").each(function () {
+        if($(this).parent().get(0).tagName.toLowerCase() === "a") {
+          return;
+        }
+        // $(this).attr("data-fancybox", "gallery"); // if you add 'data-fancybox', img will display after showed
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "gallery");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      });
+      
+      clearInterval(fancyTimer);
+    });
+  }, 10);
+</script>
+
+    
+  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+
 </html>
