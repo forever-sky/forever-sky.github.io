@@ -8,12 +8,12 @@
   
   
   
-  <title>分类: CTF | skyeの博客</title>
+  <title>i春秋网络安全公益赛 web easythinking thinkphp6.0 session任意创建文件、getshell | skyeの博客</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="Hexo, theme-bmw" />
+    <meta name="keywords" content="CTF," />
   
 
   <script>
@@ -225,87 +225,306 @@
   })
 </script>
 
-      <div class="container">
-  <div class="timeline">
-  <span class="archive-move-on"></span>
-  <span class="archive-page-counter">
-    
-      <span>当前位于 1/1 页</span>
-    
-  </span>
+      
+
+
+
+
+
+
+
+
+<div class="container post-index">
+
   
+
+<div class="post">
+  <h1 class="article-title">
+    <span>i春秋网络安全公益赛 web easythinking thinkphp6.0 session任意创建文件、getshell</span>
+  </h1>
+  <div class="article-top-meta">
+    <span>
+      发布 : 
+      2020-03-26
+    </span>
+    
+      <span>
+        分类 : 
+          <a href="/categories/CTF/">
+            CTF
+          </a>
+      </span>
+    
+    
+      <span>
+        浏览 : <span class="article-timer" data-identity="i春秋网络安全公益赛 web easythinking thinkphp6.0 session任意创建文件、getshell"></span>
+      </span>
+    
+  </div>
+
   
-    <div class="collection-title">
-      <h2>
+
+  <div class="article-content">
+    <div class="markdown-body">
+      <br>首先进来看到url很熟悉，直接访问/user/member/index，发现爆错爆出了版本号<br><img src="https://img-blog.csdnimg.cn/20200224121830605.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200224122123362.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>随后去网上搜索thinkphp 6.0漏洞，发现了最近的下面这篇文章<br><a href="https://www.uedbox.com/post/65126/">https://www.uedbox.com/post/65126/</a><br><img src="https://img-blog.csdnimg.cn/20200224122239272.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>该漏洞可以在目标环境开启session的条件下任意创建文件，且在特定情况下可以getshell。<br>下面尝试了一下，大写的惊喜。<br><img src="https://img-blog.csdnimg.cn/20200224122945151.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTgsui4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>随后查看了phpinfo()、蚁剑进行连接,发现disable_function过滤了很多函数，直接上蚁剑的bypass插件绕过，在根目录下发现readflag，执行得到flag<br><img src="https://img-blog.csdnimg.cn/20200224123407699.png" alt="在这里插入图片描述"></p>
+    </div>
+  </div>
+  
+    <div class="copy-right">
+      <div class="markdown-body">
+        <blockquote>
         
-          <span>分类 : CTF</span>
         
-      </h2>
+          本文作者 : skye <br/>
+        
+        原文链接 : <a href="">http://forever-sky.github.io/2020/03/26/i%E6%98%A5%E7%A7%8B%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%85%AC%E7%9B%8A%E8%B5%9B%20web%20easythinking%20thinkphp6.0%20session%E4%BB%BB%E6%84%8F%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E3%80%81getshell/</a><br>
+        版权声明 : 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+        </blockquote>
+      </div>
     </div>
   
   
   
-  <article class="posts-collapse">
-    <header>
-      <h2>
-        <a href="/2020/03/26/i%E6%98%A5%E7%A7%8B%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%85%AC%E7%9B%8A%E8%B5%9B%20web%20easythinking%20thinkphp6.0%20session%E4%BB%BB%E6%84%8F%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E3%80%81getshell/">
-          <span>i春秋网络安全公益赛 web easythinking thinkphp6.0 session任意创建文件、getshell</span>
-        </a>
-      </h2>
-      <div class="post-meta">
-        03-26
-      </div>
-    </header>
-  </article>
+    <div class="social-share"
+  style="margin-top: -2rem"
+  data-wechat-qrcode-title="<p>微信扫一扫</p>"
+  data-wechat-qrcode-helper="<p>微信右上角, 扫一扫分享</p>"
+   data-sites="qzone, qq, weibo, wechat, douban, google, facebook, twitter" 
   
-  
-  <article class="posts-collapse">
-    <header>
-      <h2>
-        <a href="/2020/03/26/i%E6%98%A5%E7%A7%8B%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%85%AC%E7%9B%8A%E8%B5%9B%20web%20blacklist%E5%88%A9%E7%94%A8mysql%E7%89%B9%E6%80%A7handler%E8%BF%9B%E8%A1%8C%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5/">
-          <span>i春秋网络安全公益赛 web blacklist利用mysql特性handler进行堆叠注入</span>
-        </a>
-      </h2>
-      <div class="post-meta">
-        03-26
-      </div>
-    </header>
-  </article>
-  
-  
-  <article class="posts-collapse">
-    <header>
-      <h2>
-        <a href="/2020/03/26/BJDCTF-%E6%96%87%E4%BB%B6%E6%8E%A2%E6%B5%8B-ssrf+%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E/">
-          <span>BJDCTF-文件探测-ssrf+逻辑漏洞</span>
-        </a>
-      </h2>
-      <div class="post-meta">
-        03-26
-      </div>
-    </header>
-  </article>
-  
-  
-  <article class="posts-collapse">
-    <header>
-      <h2>
-        <a href="/2020/03/25/i%E6%98%A5%E7%A7%8B%E7%BD%91%E7%BB%9C%E5%86%85%E7%94%9F%E5%AE%89%E5%85%A8%E8%AF%95%E9%AA%8C%E5%9C%BACTF%E5%A4%BA%E6%97%97%E8%B5%9B%EF%BC%88%E7%AC%AC%E4%BA%8C%E5%AD%A3%EF%BC%89%E9%83%A8%E5%88%86wp/">
-          <span>i春秋网络内生安全试验场CTF夺旗赛（第二季）部分wp</span>
-        </a>
-      </h2>
-      <div class="post-meta">
-        03-25
-      </div>
-    </header>
-  </article>
-  
+>
+  <span style="color: #6b7487; font-size: 1.4rem;">分享到: </span>
 </div>
-  <nav class="page-navigation">
+<script src="https://cdn.bootcss.com/social-share.js/1.0.16/js/social-share.min.js" async>
+  
+
+  
+    <div id="reward">
+  
+    <p id="reward-meta">知识 & 情怀 | 二者兼得</p>
+  
+  <button id="reward-btn">
     
+    <span>投食</span>
+  </button>
+  <div id="reward-qrcode">
+    
+      <div class="reward-qrcode--container">
+        <img class="qrcode-img" src="/images/wechat.png" alt="微信扫一扫, 向我投食">
+        <p class="qrcode-meta">微信扫一扫, 向我投食</p>
+      </div>
+    
+      <div class="reward-qrcode--container">
+        <img class="qrcode-img" src="/images/alipay.png" alt="支付宝扫一扫, 向我投食">
+        <p class="qrcode-meta">支付宝扫一扫, 向我投食</p>
+      </div>
+    
+  </div>
+
+</div>
+
+<script>
+  (() => {
+    let button = document.querySelector('#reward-btn'),
+      qrcode = document.querySelector('#reward-qrcode'),
+      display = false;
+    
+    button.addEventListener('click', () => {
+      qrcode.style.display = display ? 'none' : 'block'
+      display = !display
+    }, false)
+  })()
+</script>
+  
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+      <span>
+        
+      </span>
+    </div>
+    <div class="article-meta pull-right">
+    </div>
+  </div>
+</div>
+
+
+  <aside id="sidebar">
+    <p id="sidebar-header"></p>
+    <ol id="sidebar-toc"></ol>
+  </aside>
+  <script async>setTimeout(generateToc, 10);</script>
+
+
+  <nav class="post-navigation">
+    
+      <div class="nav-pre">
+        <i class="iconfont icon-prev"></i>
+        上一篇:
+        <a href="/2020/03/26/i%E6%98%A5%E7%A7%8B%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%85%AC%E7%9B%8A%E8%B5%9B%20web%20blacklist%E5%88%A9%E7%94%A8mysql%E7%89%B9%E6%80%A7handler%E8%BF%9B%E8%A1%8C%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5/" target="_self">i春秋网络安全公益赛 web blacklist利用mysql特性handler进行堆叠注入</a>
+      </div>
+    
+    
+      <div class="nav-next">
+        下一篇:
+        <a href="/2020/03/26/STP%E4%B8%AD%E6%A0%B9%E8%B7%AF%E5%BE%84%E5%BC%80%E9%94%80%E5%92%8C%E6%9C%AC%E5%9C%B0%E8%B7%AF%E5%BE%84%E5%BC%80%E9%94%80%E7%9A%84%E5%8C%BA%E5%88%AB/" target="_self">STP中根路径开销和本地路径开销的区别</a>
+        <i class="iconfont icon-next"></i>
+      </div>
     
   </nav>
+
+  
+    <a href="#comment" class="comment-anchor"></a>
+<div class="comment-title"><i class="iconfont icon-footprint"></i> 留下足迹 <i class="iconfont icon-footprint"></i></div>
+<div id="vcomments"></div>
+
+<script defer>
+  if( true ) {
+    let path = getRealPath()
+    new Valine({
+      el: "#vcomments",
+      appId: "tuVbCvzf28wjrChEx7wuCX6b-gzGzoHsz",
+      appKey: "fxuHTXwaFtdx5WupGo3QdyVD",
+      notify: false,
+      verify: false,
+      avatar: "robohash",
+      placeholder: "正确填写邮箱, 才能及时收到回复哦♪(^∇^*)",
+      path
+    });
+  }
+</script>
+   
+
+  
+    <script defer>
+const valineAPI = (() => {
+  try {
+    AV.init("tuVbCvzf28wjrChEx7wuCX6b-gzGzoHsz", "fxuHTXwaFtdx5WupGo3QdyVD");
+  } catch(error) {}
+  const isExist = (identity) => {
+    identity = identity || getRealPath();
+    let query = new AV.Query('Timer');
+    return new Promise((resolve, reject) => {
+      query.equalTo("identity", identity);
+      query.find().then(results => {
+        resolve(results.length > 0);
+      }, error => reject(error));
+    })
+  }
+
+  const _get = (identity) => {
+    let query = null;
+    if(identity && identity instanceof Array){
+      let querys = [];
+      for(let i = 0; i < identity.length; ++i) {
+        querys[i] = new AV.Query('Timer');
+        querys[i].equalTo('identity', identity[i]);
+      }
+      query = AV.Query.or.apply(null ,querys);
+    } else {
+      identity = identity || getRealPath();
+      query = new AV.Query("Timer");
+      query.equalTo("identity", identity);
+    }
+
+    return new Promise((resolve, reject) => {
+      query.find()
+      .then(results => resolve(results))
+      .catch(error => reject(error))
+    })
+  }
+
+  const create = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+      let Todo = AV.Object.extend('Timer');
+      let todo = new Todo();
+      todo.set("times", 1);
+      todo.set("identity", identity);
+      todo.save().then(res => resolve(true), error => reject(error));
+    })
+  }
+
+  const update = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+      let query = new AV.Query('Timer');
+      query.equalTo("identity", identity);
+      query.find().then(todos => {
+        todos.forEach(todo => {
+          todo.set("times", todo.attributes.times + 1);
+        });
+        return AV.Object.saveAll(todos);
+      }).then(todos => resolve(true), error => reject(error));
+    })
+  }
+
+  return {
+    isExist,
+    _get,
+    update,
+    create
+  }
+})()
+
+const calcAndWriteTimes = () => {
+  let isPost = true;
+
+  let timerAllDOM = document.querySelectorAll(".article-timer");
+
+  if(isPost) {
+    let identity = timerAllDOM[0].getAttribute("data-identity");
+    valineAPI.isExist(identity)
+    .then(exist => {
+      if(exist) {
+        return valineAPI.update(identity);
+      }
+      return new Promise(resolve => resolve(true));
+    })
+    .then( succuess => valineAPI._get(identity))
+    .then( result => timerAllDOM[0].innerText = result[0].attributes.times)
+    .catch(error => console.log(error.message))
+    return ;
+  }
+
+  let timerDOMCache = {};
+
+  for(let timerDOM of timerAllDOM) {
+    let identity = timerDOM.getAttribute("data-identity");
+    if(timerDOMCache.hasOwnProperty(identity)){
+      timerDOMCache[identity].dom.push(timerDOM);
+    }else{
+      timerDOMCache[identity] = {
+        dom: [timerDOM],
+        times: undefined
+      };
+    }
+  }
+
+  let identities = Object.keys(timerDOMCache);
+  valineAPI._get(identities).then(results => {
+    for(let result of results) {
+      let {identity, times} = result.attributes;
+      timerDOMCache[identity].times = times;
+      timerDOMCache[identity].dom.map(item => item.innerText = times);
+    }
+    for(let identity of identities) {
+      if(timerDOMCache[identity].times){
+        continue;
+      }
+      timerDOMCache[identity].dom.map(item => item.innerText = 1);
+      valineAPI.create(identity);
+    }
+  }).catch(error => console.log(error.message))
+}
+
+if(true){
+  calcAndWriteTimes();
+}
+</script>
+   
+
 </div>
+
 
       <footer>
   <p class="site-info">

