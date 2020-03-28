@@ -547,11 +547,11 @@
     
         var oOpenInNew = {
             
+             title: "a.article-title, .article-more-link a", 
             
             
             
-            
-            
+             articleNav: "#article-nav a, #post-nav-button a", 
              archives: ".archive-article-title", 
              miniArchives: "a.post-list-link", 
             
@@ -563,6 +563,23 @@
         }
     
 </script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
