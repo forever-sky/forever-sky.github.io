@@ -265,8 +265,7 @@
     <!-- 文章简介 -->
     <div class="article-content">
       <div class="markdown-body article-content--inner" v-html="mdToHtml(psg.summary)">
-        <p>1、<strong>RIP路由更新时</strong>,对本路由表中已有的路由项,<strong>当发送报文的网关相同时</strong>,<strong>不论度量值增大或是减少,都更新该路由项</strong>(度量值相同时只将其老化定时器清零)。</p>
-<p>2、相同的路由来源提供了多条到达相同目的地的路由，路由器通过<strong>路由的度量值</strong>来确定使用哪一条路由。</p>
+        
       </div>
     </div>
     <div class="article-footer">
@@ -329,8 +328,7 @@
     <!-- 文章简介 -->
     <div class="article-content">
       <div class="markdown-body article-content--inner" v-html="mdToHtml(psg.summary)">
-        <h2 id="1、Hello报文的作用是什么？"><a href="#1、Hello报文的作用是什么？" class="headerlink" title="1、Hello报文的作用是什么？"></a>1、Hello报文的作用是什么？</h2><p>发现及维持邻居关系，选举DR、BDR。</p>
-<h2 id="2、路由器间的邻接关系是怎样建立的？"><a href="#2、路由器间的邻接关系是怎样建立的？" class="headerlink" title="2、路由器间的邻接关系是怎样建立的？"></a>2、路由器间的邻接关系是怎样建立的？</h2><p>路由器首先发送拥有自身ID信息（Loopback端口或最大的IP地址）的Hello报文。与之相邻的路由器如果收到这个Hello报文，就将这个报文内的ID信息加入到自己的Hello报文内。如果路由器的某端口收到从其他路由器发送的含有自身ID信息的Hello报文，则它根据该端口所在网络类型确定是否可以建立邻接关系。</p>
+        
       </div>
     </div>
     <div class="article-footer">
@@ -519,7 +517,7 @@
     <!-- 文章简介 -->
     <div class="article-content">
       <div class="markdown-body article-content--inner" v-html="mdToHtml(psg.summary)">
-        <h2 id="sudo-apt-install-nfs-kernel-server"><a href="#sudo-apt-install-nfs-kernel-server" class="headerlink" title="sudo apt install nfs-kernel-server"></a>sudo apt install nfs-kernel-server</h2><h2 id="sudo-vi-etc-exports-一般修改NFS配置文档后，是不需要重启NFS的，直接在命令执行-etc-init-d-nfs-reload或exportfs-–rv即可使修改的-etc-exports生效。"><a href="#sudo-vi-etc-exports-一般修改NFS配置文档后，是不需要重启NFS的，直接在命令执行-etc-init-d-nfs-reload或exportfs-–rv即可使修改的-etc-exports生效。" class="headerlink" title="sudo vi /etc/exports    (一般修改NFS配置文档后，是不需要重启NFS的，直接在命令执行/etc/init.d/nfs  reload或exportfs –rv即可使修改的/etc/exports生效。)"></a>sudo vi /etc/exports    (一般修改NFS配置文档后，是不需要重启NFS的，直接在命令执行/etc/init.d/nfs  reload或exportfs –rv即可使修改的/etc/exports生效。)</h2><p>/home/share 目录可读写，并且不限制用户身份，共享给192.168.8.0/24网段的所有主机；但仅有该文件/目录的建立者与root能够删除自己的目录或文件。</p>
+        
       </div>
     </div>
     <div class="article-footer">
@@ -582,8 +580,7 @@
     <!-- 文章简介 -->
     <div class="article-content">
       <div class="markdown-body article-content--inner" v-html="mdToHtml(psg.summary)">
-        <h2 id="一、邻接关系和邻居关系的理解"><a href="#一、邻接关系和邻居关系的理解" class="headerlink" title="一、邻接关系和邻居关系的理解"></a>一、邻接关系和邻居关系的理解</h2><p><strong>1、邻居关系</strong>：OSPF设备启动后，会通过OSPF接口向外发送Hello报文，收到Hello报文的OSPF设备会检查报文中所定义的参数(RID等是否重复)，如果双方一致就会形成邻居关系，两端设备互为邻居。</p>
-<p><strong>2、邻接关系</strong>：形成邻居关系后，如果两端设备成功交换DD报文和LSA，才建立邻接关系。</p>
+        
       </div>
     </div>
     <div class="article-footer">
@@ -646,8 +643,7 @@
     <!-- 文章简介 -->
     <div class="article-content">
       <div class="markdown-body article-content--inner" v-html="mdToHtml(psg.summary)">
-        <h2 id="一、整合struts2"><a href="#一、整合struts2" class="headerlink" title="一、整合struts2"></a>一、整合struts2</h2><p><strong>要特别注意struts2、hibernate、spring的版本下述方法对于struts2.1、hibernate3.3.2、spring3.0.5有效</strong>(版本不匹配会导致很多问题，卡了俺超长时间)</p>
-<p><strong>遇到下述问题：</strong><br><img src="https://img-blog.csdnimg.cn/20191230145716685.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>将applicationContext.xml文件复制到src目录下一份即可解决。</strong></p>
+        
       </div>
     </div>
     <div class="article-footer">

@@ -266,7 +266,9 @@
 
   <div class="article-content">
     <div class="markdown-body">
-      <h2 id="二、邻居关系的建立和邻接关系的建立"><a href="#二、邻居关系的建立和邻接关系的建立" class="headerlink" title="二、邻居关系的建立和邻接关系的建立"></a>二、邻居关系的建立和邻接关系的建立</h2><p><strong>邻居关系的建立：</strong><br>收到的hello报文中包含有自己的RID时，就已经是建立了邻居关系。</p>
+      <h2 id="一、邻接关系和邻居关系的理解"><a href="#一、邻接关系和邻居关系的理解" class="headerlink" title="一、邻接关系和邻居关系的理解"></a>一、邻接关系和邻居关系的理解</h2><p><strong>1、邻居关系</strong>：OSPF设备启动后，会通过OSPF接口向外发送Hello报文，收到Hello报文的OSPF设备会检查报文中所定义的参数(RID等是否重复)，如果双方一致就会形成邻居关系，两端设备互为邻居。</p>
+<p><strong>2、邻接关系</strong>：形成邻居关系后，如果两端设备成功交换DD报文和LSA，才建立邻接关系。</p>
+<h2 id="二、邻居关系的建立和邻接关系的建立"><a href="#二、邻居关系的建立和邻接关系的建立" class="headerlink" title="二、邻居关系的建立和邻接关系的建立"></a>二、邻居关系的建立和邻接关系的建立</h2><p><strong>邻居关系的建立：</strong><br>收到的hello报文中包含有自己的RID时，就已经是建立了邻居关系。</p>
 <p><strong>邻接关系的建立：</strong><br><img src="https://img-blog.csdnimg.cn/20191229223935144.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>邻接状态建立的七个状态过程：</p>
 <p>① <strong>down:</strong> 开始发送hello包前的状态</p>
 <p>② <strong>init</strong>：开始向外发送hello包</p>
@@ -280,6 +282,7 @@
 <p><strong>主干路由器：</strong>连接有主干区域接口的路由器  (主干路由器可同时为区域边界路由器)</p>
 <p><strong>区域边界路由器（ABR）</strong>：在区域的边界，连接多个区域的路由器</p>
 <p><strong>自治系统边界路由器（ASBR）</strong>：至少连接有多个外部自治系统的路由器（使用非ospf的网络协议），将非ospf路由协议信息传进ospf区域内</p>
+
     </div>
   </div>
   

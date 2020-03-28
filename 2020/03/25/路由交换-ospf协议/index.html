@@ -266,10 +266,13 @@
 
   <div class="article-content">
     <div class="markdown-body">
-      <h2 id="3、指定路由器-DR-、备份指定路由器-BDR-是怎样选举出来的？"><a href="#3、指定路由器-DR-、备份指定路由器-BDR-是怎样选举出来的？" class="headerlink" title="3、指定路由器(DR)、备份指定路由器(BDR)是怎样选举出来的？"></a>3、指定路由器(DR)、备份指定路由器(BDR)是怎样选举出来的？</h2><p>选举利用Hello报文内的ID和优先权(Priority)字段值来确定。先看优先级，再看rid 谁大听谁的。</p>
+      <h2 id="1、Hello报文的作用是什么？"><a href="#1、Hello报文的作用是什么？" class="headerlink" title="1、Hello报文的作用是什么？"></a>1、Hello报文的作用是什么？</h2><p>发现及维持邻居关系，选举DR、BDR。</p>
+<h2 id="2、路由器间的邻接关系是怎样建立的？"><a href="#2、路由器间的邻接关系是怎样建立的？" class="headerlink" title="2、路由器间的邻接关系是怎样建立的？"></a>2、路由器间的邻接关系是怎样建立的？</h2><p>路由器首先发送拥有自身ID信息（Loopback端口或最大的IP地址）的Hello报文。与之相邻的路由器如果收到这个Hello报文，就将这个报文内的ID信息加入到自己的Hello报文内。如果路由器的某端口收到从其他路由器发送的含有自身ID信息的Hello报文，则它根据该端口所在网络类型确定是否可以建立邻接关系。</p>
+<h2 id="3、指定路由器-DR-、备份指定路由器-BDR-是怎样选举出来的？"><a href="#3、指定路由器-DR-、备份指定路由器-BDR-是怎样选举出来的？" class="headerlink" title="3、指定路由器(DR)、备份指定路由器(BDR)是怎样选举出来的？"></a>3、指定路由器(DR)、备份指定路由器(BDR)是怎样选举出来的？</h2><p>选举利用Hello报文内的ID和优先权(Priority)字段值来确定。先看优先级，再看rid 谁大听谁的。</p>
 <h2 id="4、Database-Description报文的作用是什么？"><a href="#4、Database-Description报文的作用是什么？" class="headerlink" title="4、Database Description报文的作用是什么？"></a>4、Database Description报文的作用是什么？</h2><p>描述本地LSDB的情况。</p>
 <h2 id="5、Link-State-Request报文的作用是什么？"><a href="#5、Link-State-Request报文的作用是什么？" class="headerlink" title="5、Link State Request报文的作用是什么？"></a>5、Link State Request报文的作用是什么？</h2><p>向对端请求本端没有或对端更新的LSA。</p>
 <h2 id="6、Link-State-Acknowledge报文的作用是什么？"><a href="#6、Link-State-Acknowledge报文的作用是什么？" class="headerlink" title="6、Link State Acknowledge报文的作用是什么？"></a>6、Link State Acknowledge报文的作用是什么？</h2><p>收到LSU报文后，进行确认。</p>
+
     </div>
   </div>
   
