@@ -333,7 +333,20 @@
   <entry>
     <title>期末 冲冲冲</title>
     <url>/2020/03/25/%E5%A4%A7%E4%B8%89%E4%B8%8B/</url>
-    <content><![CDATA[<h2 id="冲呀"><a href="#冲呀" class="headerlink" title="冲呀"></a>冲呀</h2>]]></content>
+    <content><![CDATA[<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<div id="hbe-security">
+  <div class="hbe-input-container">
+  <input type="password" class="hbe-form-control" id="pass" placeholder="Welcome to my blog, enter password to read." />
+    <label for="pass">Welcome to my blog, enter password to read.</label>
+    <div class="bottom-line"></div>
+  </div>
+</div>
+<div id="decryptionError" style="display: none;">Incorrect Password!</div>
+<div id="noContentError" style="display: none;">No content to display!</div>
+<div id="encrypt-blog" style="display:none">
+U2FsdGVkX1+fnyaINuu4zgkwlZlr6NHSQnQyyVAXQd4oY9rwvoxtOKpDN8CoSnQSGGPwKDbL9iW4HCz+qKIehJJ9RC9gvVcod2KgITFpk5ml7SczZjqKYSEw4MBwQh2oU+9kgMduqe0AfXHcoWTbMOZTVKhbUCH52f/Fq5PyYAplYxTPi6CaAfQuyaY48YU2HfqDOAJ77UlYkLotre1zUxDzLDI4A/FgJNm1AuGiVqrX/A1c2aoifEmcerR8ClDrc0jsbojXOjxFuPfrvbo62PqpfVuiX+RWp1V9bJJbSgE62B2IwEB3eBvp69iR3ePP
+</div>
+<script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
       <categories>
         <category>日常生活</category>
       </categories>
