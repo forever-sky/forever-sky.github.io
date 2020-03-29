@@ -87,13 +87,17 @@
 </script>
 
 
-    <script> yiliaConfig.jquery_ui = [false]; </script>
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
 
 
 
     <script> yiliaConfig.rootUrl = "\/";</script>
 
 
+
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e7f3bb274c1960d"></script>
 
 
 
@@ -432,8 +436,8 @@
         .left-col .switch-area {
             display: none;
         }
-        .toc-level-3 i,
-        .toc-level-3 ol {
+        .toc-level-5 i,
+        .toc-level-5 ol {
             display: none !important;
         }
     </style>
@@ -464,6 +468,8 @@
         </script>
     
 
+    
+        <div class="addthis_sharing_toolbox"></div>
     
 </div>
 
@@ -579,10 +585,6 @@
         <span id="busuanzi_container_site_pv">
                 本站总访问量<span id="busuanzi_value_site_pv"></span>次
         </span>
-        <span class="post-meta-divider">|</span>
-        <span id="busuanzi_container_site_uv" style='display:none'>
-                本站访客数<span id="busuanzi_value_site_uv"></span>人
-        </span>
         <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   
 
@@ -643,11 +645,11 @@
         var titleTime;
         document.addEventListener("visibilitychange", function() {
             if (document.hidden) {
-                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                document.title = "(つェ⊂) 你快回来~ " + originTitle;
                 clearTimeout(titleTime);
             }
             else {
-                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                document.title = "(*´∇｀*) 欢迎来到Forever-星空的博客~ " + originTitle;
                 titleTime = setTimeout(function() {
                     document.title = originTitle;
                 }, 2000);

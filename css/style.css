@@ -118,7 +118,7 @@ button::-moz-focus-inner {
   padding: 0;
 }
 html {
-  font-size: 18px;
+  font-size: 19px;
 }
 body {
   font-family: "Lucida Grande", Verdana, "Helvetica Neue", Arial, "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
@@ -552,7 +552,7 @@ a {
   text-align: center;
   margin: 13px 0;
   font-family: Times, Georgia, serif;
-  font-size: 32px;
+  font-size: 33px;
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
   -ms-transition: 0.3s;
@@ -572,8 +572,8 @@ a {
   display: block;
   border: 5px solid #fff;
   border-radius: 50%;
-  width: 130px;
-  height: 130px;
+  width: 131px;
+  height: 131px;
   margin: 0 auto;
   position: relative;
   overflow: hidden;
@@ -751,13 +751,13 @@ a {
   font-family: Arial;
 }
 #header .header-nav .social a {
-  width: 39px;
-  height: 39px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   margin: 0 2px 6px;
   vertical-align: middle;
-  font-size: 25.740000000000002px;
-  line-height: 39px;
+  font-size: 26.400000000000002px;
+  line-height: 40px;
   text-align: center;
   color: #fff;
   background: #6f7170;
@@ -1078,6 +1078,19 @@ color
 .post-list li:hover a {
   color: #88acdb;
 }
+.ui-tooltip {
+  padding: 6px;
+  max-width: 30em;
+  -webkit-box-shadow: 0 0 0.8em rgba(0,0,0,0.6);
+  box-shadow: 0 0 0.8em rgba(0,0,0,0.6);
+  color: #fff;
+  font-family: "Lucida Grande", Verdana, "Helvetica Neue", Arial, "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+  font-size: 0.9em;
+  background: rgba(0,0,0,0.65);
+}
+body .ui-tooltip {
+  border: 1px solid #fff;
+}
 .pace .pace-progress {
   background: #77b6ff;
   -webkit-box-shadow: 0 0 10px rgba(119,182,255,0.7);
@@ -1210,7 +1223,7 @@ color
   color: #999;
   position: relative;
   margin-right: 10px;
-  font: 18px FontAwesome;
+  font: 19px FontAwesome;
 }
 .archive-article-inner .article-meta .article-category:before {
   float: left;
@@ -1701,7 +1714,7 @@ li:hover {
   bottom: 1em;
   left: 0;
   margin-left: 0;
-  padding: 6px 10px 10px 46px;
+  padding: 6px 10px 10px 44px;
   border-radius: 2.8%;
   overflow: auto;
 }
@@ -2066,7 +2079,7 @@ aside.comment-bar:active {
   color: #999;
   position: relative;
   margin-right: 10px;
-  font: 18px FontAwesome;
+  font: 19px FontAwesome;
 }
 .archive-article-inner .article-meta .article-category:before {
   float: left;
@@ -2383,6 +2396,10 @@ pre .javascript .function {
 }
 .bdsharebuttonbox .bds_twi {
   background: #21abf4 !important;
+}
+.addthis_sharing_toolbox {
+  margin-top: 0.5em;
+  margin-left: -2px;
 }
 #page-nav {
   text-align: center;
@@ -2843,7 +2860,7 @@ pre .javascript .function {
 .article-category::before {
   float: left;
   color: #999;
-  font: 18px FontAwesome;
+  font: 19px FontAwesome;
   margin-right: 5px;
   margin-top: 0.333333333333333rem;
 }
@@ -2860,7 +2877,7 @@ pre .javascript .function {
 .article-pop-out:before {
   color: #999;
   content: "\f08d";
-  font: 18px FontAwesome;
+  font: 19px FontAwesome;
   float: left;
   margin-right: 5px;
   margin-top: 0.333333333333333rem;

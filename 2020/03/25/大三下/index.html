@@ -81,13 +81,17 @@
 </script>
 
 
-    <script> yiliaConfig.jquery_ui = [false]; </script>
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
 
 
 
     <script> yiliaConfig.rootUrl = "\/";</script>
 
 
+
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e7f3bb274c1960d"></script>
 
 
 
@@ -320,7 +324,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">22字</span>
+        <span class="post-count">25字</span>
       </span>
     </span>
 
@@ -362,7 +366,7 @@
 <div id="decryptionError" style="display: none;">Incorrect Password!</div>
 <div id="noContentError" style="display: none;">No content to display!</div>
 <div id="encrypt-blog" style="display:none">
-U2FsdGVkX1+T5vw4vr9pt36xXazkwg8u9nJLj/w6ZpQSF+yE+Q6iQlJiuUf6xYH7AnXmEfFgFduLf2/uqYzxN2xGSz89LBiQF5hIujP0Rd0jtinUWVGdMCF98yfl/vasQrkiUf9PwDTa9acL87c86arkK4PY2wXdhDMCrH/caBXm3ITNFcanX4oKnKFdeJwwU8Py82E8qyqYVVfJnD3mGZS0MT2X09FFwdDeiww2hXeLofZ9WDpQVQUln5o5wNoHdp90qU2wDmriE3Voy9S8L0w5IeMrDe3HF7qgORMXXRH8zuDaGpyOWNpfrtm8rJHp
+U2FsdGVkX1+2rm9fmMOYqSu6zLeGpCLBRXwLadqPeBElI3A0CVQ2S4A8/7K2l3Jo2GKTafdWUfV+rm/QIROtmGVRXgYge9iV1wWYBLGt/lLwLLdd2qUO575A+AihDoNdr7S3as3blwFg2gjLR969K3XF4oXyKvPMGFouk30fZvJYKkGPZx4s9Z8VaId6A9zNsDLXgUyQ5jzQujk31xA4XKozNPj4whHSpmhV4pFOThs0ytiff804p91U9GSf/gyHeu++IXMmr5wOzeKx0Y2KYUGbltDTOPJNeOF32grgPdFE/x1/D6TVL4H52W5Ne3Vg
 </div>
 <script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
       
@@ -419,8 +423,8 @@ U2FsdGVkX1+T5vw4vr9pt36xXazkwg8u9nJLj/w6ZpQSF+yE+Q6iQlJiuUf6xYH7AnXmEfFgFduLf2/u
         .left-col .switch-area {
             display: none;
         }
-        .toc-level-3 i,
-        .toc-level-3 ol {
+        .toc-level-5 i,
+        .toc-level-5 ol {
             display: none !important;
         }
     </style>
@@ -451,6 +455,8 @@ U2FsdGVkX1+T5vw4vr9pt36xXazkwg8u9nJLj/w6ZpQSF+yE+Q6iQlJiuUf6xYH7AnXmEfFgFduLf2/u
         </script>
     
 
+    
+        <div class="addthis_sharing_toolbox"></div>
     
 </div>
 
@@ -566,10 +572,6 @@ U2FsdGVkX1+T5vw4vr9pt36xXazkwg8u9nJLj/w6ZpQSF+yE+Q6iQlJiuUf6xYH7AnXmEfFgFduLf2/u
         <span id="busuanzi_container_site_pv">
                 本站总访问量<span id="busuanzi_value_site_pv"></span>次
         </span>
-        <span class="post-meta-divider">|</span>
-        <span id="busuanzi_container_site_uv" style='display:none'>
-                本站访客数<span id="busuanzi_value_site_uv"></span>人
-        </span>
         <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   
 
@@ -630,11 +632,11 @@ U2FsdGVkX1+T5vw4vr9pt36xXazkwg8u9nJLj/w6ZpQSF+yE+Q6iQlJiuUf6xYH7AnXmEfFgFduLf2/u
         var titleTime;
         document.addEventListener("visibilitychange", function() {
             if (document.hidden) {
-                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                document.title = "(つェ⊂) 你快回来~ " + originTitle;
                 clearTimeout(titleTime);
             }
             else {
-                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                document.title = "(*´∇｀*) 欢迎来到Forever-星空的博客~ " + originTitle;
                 titleTime = setTimeout(function() {
                     document.title = originTitle;
                 }, 2000);
