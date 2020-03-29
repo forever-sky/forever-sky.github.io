@@ -33,8 +33,8 @@
     </summary>
     
     
-      <category term="Linux提权" scheme="http://forever-sky.github.io/categories/Linux%E6%8F%90%E6%9D%83/"/>
     
+      <category term="Linux提权" scheme="http://forever-sky.github.io/tags/Linux%E6%8F%90%E6%9D%83/"/>
     
   </entry>
   
@@ -320,7 +320,7 @@
     <published>2020-03-25T00:01:14.406Z</published>
     <updated>2020-03-25T00:01:14.406Z</updated>
     
-    <content type="html"><![CDATA[<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><div id="hbe-security">  <div class="hbe-input-container">  <input type="password" class="hbe-form-control" id="pass" placeholder="Welcome to my blog, enter password to read." />    <label for="pass">Welcome to my blog, enter password to read.</label>    <div class="bottom-line"></div>  </div></div><div id="decryptionError" style="display: none;">Incorrect Password!</div><div id="noContentError" style="display: none;">No content to display!</div><div id="encrypt-blog" style="display:none">U2FsdGVkX1/HCiLNNC/2ad1l2z1CAPDW5yBiJd1Tecy6CiUeGS+xvepWKa6BpSrvdVm/ntSqRbrfLn0ZHXSgJfaILi4/ahIqyH/VLMb773sej+nhPkBi3SMp53fyw4ojSSMr8ufPoMFG/mFp51LBK0NiYZrB6zZXlj/7RB0y1hz22IL+Cr21+0Vlwk6pkE+GNuPH5qOJYsf6uWGH6wrpiKINlKZuWrJa+4USrwkPQ4v+/bcTrFgiljZ8qPdUjE7ms5iIrkN9GdXr6t1mFtKdEDlEM5TZ+i9OMMqzePsDHr5K0SrOnuUINVrQhfmUszR+</div><script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
+    <content type="html"><![CDATA[<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><div id="hbe-security">  <div class="hbe-input-container">  <input type="password" class="hbe-form-control" id="pass" placeholder="Welcome to my blog, enter password to read." />    <label for="pass">Welcome to my blog, enter password to read.</label>    <div class="bottom-line"></div>  </div></div><div id="decryptionError" style="display: none;">Incorrect Password!</div><div id="noContentError" style="display: none;">No content to display!</div><div id="encrypt-blog" style="display:none">U2FsdGVkX19UyVnyltdFgbfRICRnJAvA2g2OQ1v01U/IZyAZGZt8sNjSW5z5A/p3gTHV8MHWCGKyVL3QcOjEOgSKgz7KbwZn7zyBSeUvdH/AzGASXNTXbV6ryTvijgAGzOEIhnKPrqU29ztlbhIpsg74mXLJNzfxZL4bsIlCtIRlD/T8gf60dCMxC9eVgXEm6jvQCAqqhdm7MrbAI3YQn3hozREzwpWORHAf/6vbpRz5o8R6UlHRa3p795j4NOPkMqjyhF54xs8Lfy9w0hbJ7CpXCOUPe37SxNr4No8NEDFLGKB/wC/Guw08GCuMheXd</div><script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
     
     <summary type="html">
     
