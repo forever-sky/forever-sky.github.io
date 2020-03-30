@@ -1314,7 +1314,7 @@ body .ui-tooltip {
 }
 .article-index .brief {
   display: block;
-  color: #a8a8a8;
+  color: #f00;
   font-size: 12px;
   line-height: 14px;
   height: 7px;
