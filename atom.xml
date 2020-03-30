@@ -56,6 +56,8 @@
     </summary>
     
     
+      <category term="CTF" scheme="http://forever-sky.github.io/categories/CTF/"/>
+    
     
   </entry>
   
@@ -77,6 +79,8 @@
     
     </summary>
     
+    
+      <category term="CTF" scheme="http://forever-sky.github.io/categories/CTF/"/>
     
     
   </entry>
@@ -387,7 +391,7 @@
     <published>2020-03-25T00:01:14.406Z</published>
     <updated>2020-03-25T00:01:14.406Z</updated>
     
-    <content type="html"><![CDATA[<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><div id="hbe-security">  <div class="hbe-input-container">  <input type="password" class="hbe-form-control" id="pass" placeholder="Welcome to my blog, enter password to read." />    <label for="pass">Welcome to my blog, enter password to read.</label>    <div class="bottom-line"></div>  </div></div><div id="decryptionError" style="display: none;">Incorrect Password!</div><div id="noContentError" style="display: none;">No content to display!</div><div id="encrypt-blog" style="display:none">U2FsdGVkX1/SdGNoPSfbMJ+bdor7uZ7u0JsGh7WKwV2v81pfgreJZYrkhthWsXbBGef5mUwjor/m+WxQPBhyq9kubETs+zkikrTb2e6LaeTeBRaJZyC8MwZIW7jIqVkcs8WUPbbT9smNWqzMSsWYWPBTa0nMbCpRQQlBH4RRPVPXo1kLX3M5exjLjvainMmf6LrSiMbAlsJis24R/GFPAhpz/GvfsbacOlvK2PSU1qDYQbW82JomfgRx1duhcXCHW11wfsBq5eRV2LmY4PGta5vqyhbr/kE3dhgNQudzm1CCAXh6yoaAeDROgjgHS2vZ</div><script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
+    <content type="html"><![CDATA[<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><div id="hbe-security">  <div class="hbe-input-container">  <input type="password" class="hbe-form-control" id="pass" placeholder="Welcome to my blog, enter password to read." />    <label for="pass">Welcome to my blog, enter password to read.</label>    <div class="bottom-line"></div>  </div></div><div id="decryptionError" style="display: none;">Incorrect Password!</div><div id="noContentError" style="display: none;">No content to display!</div><div id="encrypt-blog" style="display:none">U2FsdGVkX1/DifKmbqbmc7V1voV9UdVVR/5TVnmQ0BaXpaaG5Ic+YJ1Lv838zsrVAuFQWRQOOkYdkz2sSFOmJIqDO1Iuqfk+6MWEkIvn8WYqvHOhGOWpfkP4u9S+Zx4jassQsrojq9b8nnT+IudayWkwbFoaHyrrdInJfoLMX04x6mpylLo9YZjLHlt53c/UTP2VP3LuRbQW9xLTRbPDjmw7sQ2KQJmvHFUkwkTP1Ir0FohV76g1IqSS/+yJpglt5eT9GViBPSc47WnGDIlUOfzIiwGknSBzOfGVjrluUmHGkDUICTwCm5g0wBbBMmI5</div><script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
     
     <summary type="html">
     

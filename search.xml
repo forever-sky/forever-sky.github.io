@@ -42,6 +42,9 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">python -c ‘<span class="keyword">import</span> pty; pty.spawn(“/bin/bash”)’</span><br></pre></td></tr></table></figure>
 <p>获取一个交互式shell，flag在根目录下可以找到</p>
 ]]></content>
+      <categories>
+        <category>CTF</category>
+      </categories>
   </entry>
   <entry>
     <title>WUST-CTF 朴实无华-简单审计</title>
@@ -50,6 +53,9 @@
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">header(<span class="string">'Content-type:text/html;charset=utf-8'</span>);</span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line">highlight_file(<span class="keyword">__file__</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//level 1</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_GET[<span class="string">'num'</span>]))&#123;</span><br><span class="line">    $num = $_GET[<span class="string">'num'</span>];</span><br><span class="line">    <span class="keyword">if</span>(intval($num) &lt; <span class="number">2020</span> &amp;&amp; intval($num + <span class="number">1</span>) &gt; <span class="number">2021</span>)&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"我不经意间看了看我的劳力士, 不是想看时间, 只是想不经意间, 让你知道我过得比你好.&lt;/br&gt;"</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">"金钱解决不了穷人的本质问题"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">"去非洲吧"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//level 2</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_GET[<span class="string">'md5'</span>]))&#123;</span><br><span class="line">   $md5=$_GET[<span class="string">'md5'</span>];</span><br><span class="line">   <span class="keyword">if</span> ($md5==md5($md5))</span><br><span class="line">       <span class="keyword">echo</span> <span class="string">"想到这个CTFer拿到flag后, 感激涕零, 跑去东澜岸, 找一家餐厅, 把厨师轰出去, 自己炒两个拿手小菜, 倒一杯散装白酒, 致富有道, 别学小暴.&lt;/br&gt;"</span>;</span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">       <span class="keyword">die</span>(<span class="string">"我赶紧喊来我的酒肉朋友, 他打了个电话, 把他一家安排到了非洲"</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">"去非洲吧"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//get flag</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_GET[<span class="string">'get_flag'</span>]))&#123;</span><br><span class="line">    $get_flag = $_GET[<span class="string">'get_flag'</span>];</span><br><span class="line">    <span class="keyword">if</span>(!strstr($get_flag,<span class="string">" "</span>))&#123;</span><br><span class="line">        $get_flag = str_ireplace(<span class="string">"cat"</span>, <span class="string">"wctf2020"</span>, $get_flag);</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"想到这里, 我充实而欣慰, 有钱人的快乐往往就是这么的朴实无华, 且枯燥.&lt;/br&gt;"</span>;</span><br><span class="line">        system($get_flag);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">"快到非洲了"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">"去非洲吧"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 <p>1、intval在转换十六进制值会出现问题，所以采用0xfffffffffffff绕过<br>2、找一个md5后还是0e开头后面接数字的值，google一下就有<br>3、过滤了cat，可以用more；过滤了空格，可以用$IFS$9</p>
 ]]></content>
+      <categories>
+        <category>CTF</category>
+      </categories>
   </entry>
   <entry>
     <title>Linux提权方式总结</title>
@@ -398,7 +404,7 @@
 <div id="decryptionError" style="display: none;">Incorrect Password!</div>
 <div id="noContentError" style="display: none;">No content to display!</div>
 <div id="encrypt-blog" style="display:none">
-U2FsdGVkX1/SdGNoPSfbMJ+bdor7uZ7u0JsGh7WKwV2v81pfgreJZYrkhthWsXbBGef5mUwjor/m+WxQPBhyq9kubETs+zkikrTb2e6LaeTeBRaJZyC8MwZIW7jIqVkcs8WUPbbT9smNWqzMSsWYWPBTa0nMbCpRQQlBH4RRPVPXo1kLX3M5exjLjvainMmf6LrSiMbAlsJis24R/GFPAhpz/GvfsbacOlvK2PSU1qDYQbW82JomfgRx1duhcXCHW11wfsBq5eRV2LmY4PGta5vqyhbr/kE3dhgNQudzm1CCAXh6yoaAeDROgjgHS2vZ
+U2FsdGVkX1/DifKmbqbmc7V1voV9UdVVR/5TVnmQ0BaXpaaG5Ic+YJ1Lv838zsrVAuFQWRQOOkYdkz2sSFOmJIqDO1Iuqfk+6MWEkIvn8WYqvHOhGOWpfkP4u9S+Zx4jassQsrojq9b8nnT+IudayWkwbFoaHyrrdInJfoLMX04x6mpylLo9YZjLHlt53c/UTP2VP3LuRbQW9xLTRbPDjmw7sQ2KQJmvHFUkwkTP1Ir0FohV76g1IqSS/+yJpglt5eT9GViBPSc47WnGDIlUOfzIiwGknSBzOfGVjrluUmHGkDUICTwCm5g0wBbBMmI5
 </div>
 <script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
       <categories>
