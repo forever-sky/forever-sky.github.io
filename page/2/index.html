@@ -581,7 +581,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">execute <span class="comment">#在目标机中执行文件</span></span><br><span class="line">execute -H -i -f cmd.exe <span class="comment"># 创建新进程cmd.exe，-H不可见，-i交互</span></span><br></pre></td></tr></table></figure>
 
 
-<p><strong>5）migrate进程迁移</strong></p>
+<p><strong>5）migrate进程迁移</strong><br>可以迁移到 ：winlogon.exe</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">getpid    <span class="comment"># 获取当前进程的pid</span></span><br><span class="line">ps   <span class="comment"># 查看当前活跃进程</span></span><br><span class="line">migrate &lt;pid值&gt;    <span class="comment">#将Meterpreter会话移植到指定pid值进程中</span></span><br><span class="line">kill &lt;pid值&gt;   <span class="comment">#杀死进程</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>6）clearav清除日志</strong></p>
@@ -1063,7 +1063,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">19字</span>
+        <span class="post-count">23字</span>
       </span>
     </span>
 
