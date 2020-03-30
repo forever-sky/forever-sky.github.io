@@ -15,12 +15,12 @@
 
 
 
-<meta name="description" content="题目针对CNVD-10487提供了一个上传条件。具体可查看清水samny师傅的文章【转】https:&#x2F;&#x2F;blog.csdn.net&#x2F;sun1318578251&#x2F;article&#x2F;details&#x2F;104433346随后在vps监听端口即可获得一个shell，使用 1python -c ‘import pty; pty.spawn(“&#x2F;bin&#x2F;bash”)’ 获取一个交互式shell，flag在根目录下">
+<meta name="description" content="题目针对CNVD-10487提供了一个上传条件。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="WUST-CTF easy-web tomcat CNVD-10487利用">
 <meta property="og:url" content="http://forever-sky.github.io/2020/03/30/WUST-CTF%20easy-web%20tomcat%20CNVD-10487%E5%88%A9%E7%94%A8/index.html">
 <meta property="og:site_name" content="skyeの博客">
-<meta property="og:description" content="题目针对CNVD-10487提供了一个上传条件。具体可查看清水samny师傅的文章【转】https:&#x2F;&#x2F;blog.csdn.net&#x2F;sun1318578251&#x2F;article&#x2F;details&#x2F;104433346随后在vps监听端口即可获得一个shell，使用 1python -c ‘import pty; pty.spawn(“&#x2F;bin&#x2F;bash”)’ 获取一个交互式shell，flag在根目录下">
+<meta property="og:description" content="题目针对CNVD-10487提供了一个上传条件。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200330002421211.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70">
 <meta property="article:published_time" content="2020-03-29T16:27:27.945Z">
@@ -367,7 +367,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>题目针对CNVD-10487提供了一个上传条件。<br>具体可查看清水samny师傅的文章<br>【转】<a href="https://blog.csdn.net/sun1318578251/article/details/104433346">https://blog.csdn.net/sun1318578251/article/details/104433346</a><br><img src="https://img-blog.csdnimg.cn/20200330002421211.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>随后在vps监听端口即可获得一个shell，使用</p>
+        <p>题目针对CNVD-10487提供了一个上传条件。</p>
+<a id="more"></a>
+<p>具体可查看清水samny师傅的文章<br>【转】<a href="https://blog.csdn.net/sun1318578251/article/details/104433346">https://blog.csdn.net/sun1318578251/article/details/104433346</a><br><img src="https://img-blog.csdnimg.cn/20200330002421211.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTg4MTY4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>随后在vps监听端口即可获得一个shell，使用</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c ‘<span class="keyword">import</span> pty; pty.spawn(“/bin/bash”)’</span><br></pre></td></tr></table></figure>
 <p>获取一个交互式shell，flag在根目录下可以找到</p>
 
