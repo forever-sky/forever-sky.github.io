@@ -1515,7 +1515,7 @@ body .ui-tooltip {
 }
 .article-entry h2 {
   margin: 0.5em auto;
-  color: #66be66;
+  color: #f00;
   padding-bottom: 5px;
   border-bottom: 1px solid #ddd;
   text-align: center;
@@ -1531,7 +1531,7 @@ body .ui-tooltip {
 }
 .article-entry h3 {
   margin: 0.5em auto;
-  color: #438aac;
+  color: #ff4500;
   background: rgba(243,248,253,0.6);
   border: 1px solid #00008b;
   padding: 0.2em 0.6em;
