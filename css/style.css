@@ -1520,7 +1520,7 @@ body .ui-tooltip {
   padding-bottom: 5px;
   border-bottom: 1px solid #ddd;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 .article-entry h2:hover {
   color: #f00;
@@ -1535,7 +1535,7 @@ body .ui-tooltip {
   color: #000;
   background: rgba(243,248,253,0.6);
   border: 1px solid #00008b;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   padding: 0.2em 0.6em;
   -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.15);
   box-shadow: 1px 1px 1px rgba(0,0,0,0.15);
@@ -1551,7 +1551,7 @@ body .ui-tooltip {
 .article-entry h6 {
   margin-top: 20px;
   color: #000;
-  font-size: 0.5rem;
+  font-size: 1rem;
   padding-bottom: 5px;
   border-bottom: 1px solid #ddd;
 }
