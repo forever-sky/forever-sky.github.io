@@ -20,10 +20,9 @@
       </categories>
   </entry>
   <entry>
-    <title>移动应用开发课-----页面布局篇</title>
+    <title>移动应用开发之页面布局篇</title>
     <url>/2020/04/03/%E7%A7%BB%E5%8A%A8%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E8%AF%BE-----%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80%E7%AF%87/</url>
-    <content><![CDATA[<p>title: 移动应用开发之页面布局篇<br>categories: 移动应用</p>
-<h2 id="Linear布局"><a href="#Linear布局" class="headerlink" title="Linear布局"></a>Linear布局</h2><p><strong>布局可以嵌套，可以直接在界面拉过来</strong><br>里面可以嵌套其他布局，如下： </p>
+    <content><![CDATA[<h2 id="Linear布局"><a href="#Linear布局" class="headerlink" title="Linear布局"></a>Linear布局</h2><p><strong>布局可以嵌套，可以直接在界面拉过来</strong><br>里面可以嵌套其他布局，如下： </p>
 <a id="more"></a>
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;LinearLayout </span><br><span class="line">	android:orientation=<span class="string">"vertical（垂直）/horizontal(水平)"</span> </span><br><span class="line">	android:gravity=<span class="string">"center/left/right"</span>&gt;	<span class="comment">//界面元素排版</span></span><br><span class="line"></span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
 
@@ -34,6 +33,9 @@
 
 <h2 id="帧布局"><a href="#帧布局" class="headerlink" title="帧布局"></a>帧布局</h2><p>控件重叠，用在两个图片重合。<br><FrameLayout><br></FrameLayout></p>
 ]]></content>
+      <categories>
+        <category>移动应用</category>
+      </categories>
   </entry>
   <entry>
     <title>移动应用开发之界面控件篇（二）</title>
@@ -492,7 +494,7 @@
 <div id="decryptionError" style="display: none;">Incorrect Password!</div>
 <div id="noContentError" style="display: none;">No content to display!</div>
 <div id="encrypt-blog" style="display:none">
-U2FsdGVkX19ZCZSeTttZgUznd+iOp+rBlGk57Y9yG8RU6SFMdbQSTm0ii2oaBhYETnCKfY6lfzEa6++SNBpfZN08YAu6D0YlkMLqacsaSuR13j7MVKehKmg/16eIHrzdK5NqlmDIpSBJpxCfXY4K4hFvI699YASsLu2g0r51vqOMm84uFhMtKe8fQu/sGkzE+x9PDB3IcqwGtvOvPwVPu7LTqO90eIZ0k392CxUOfRw55bwHjIHtJevaxNCwH/fm99QIc1bjJvK1ihT17I3NV74TlkuNp5KBjf5uF7FOC049WcG6x5OyFkvraDlScP+O
+U2FsdGVkX1+fzN7qsJw7KJu2cymHkLPGNDLRoOqooL7RwGOslcF8AYvIK1C7bYXU90r1X31fZQ90TlArni0IX13v4XIfkz/RufzqzMamzFuBffuLogbY6PhDOrT0vn20b+F03m9j/7mLJ73AHQCSpo6b//8tZlgQaQG08u5zlZJ1/mT7EEZIafdIxneDqTkaZO6E2bY5wedXz9phkC9eY+yuoiE/TEny4jhyerkhP+bqWfiYHZNcbtelEU6qW7lWHgJwzI/OZmv+RDKDXdMN6Z3yZTQ0ngdtIv7YQtyZ7VRDe5+IWi4ANJqw62UNQ+KS
 </div>
 <script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
       <categories>
