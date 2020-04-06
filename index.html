@@ -304,6 +304,134 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Getshell后的信息收集之Linux" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      
+<a href="/2020/04/06/Getshell%E5%90%8E%E7%9A%84%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E4%B9%8BLinux/" class="article-date">
+      <time datetime="2020-04-06T11:12:23.323Z" itemprop="datePublished">2020-04-06</time>
+</a>
+
+ 
+    <a href="/2020/04/06/Getshell%E5%90%8E%E7%9A%84%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E4%B9%8BLinux/#comments" title="查看评论">
+        <i class="fa fa-comments-o" aria-hidden="true"></i>
+        <span class="count-comment"></span>
+        
+        
+            <span class="disqus-comment-count" data-disqus-identifier="2020/04/06/Getshell后的信息收集之Linux/"></span>
+        
+    </a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/06/Getshell%E5%90%8E%E7%9A%84%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E4%B9%8BLinux/">Getshell后的信息收集之Linux</a>
+    </h1>
+  
+
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">354字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">1分</span>
+      </span>
+    </span>
+</div>
+        
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">find / -user technawi -type f <span class="number">2</span>&gt;&amp; <span class="number">1</span> | grep -v <span class="string">"Permission"</span> | grep -v <span class="string">"No such"</span>     查看用户创建过的文件</span><br><span class="line"></span><br><span class="line">lastlog            查看登录过的用户名</span><br><span class="line">sudo -l         显示自己的权限</span><br><span class="line">id</span><br><span class="line">last</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看环境变量"><a href="#查看环境变量" class="headerlink" title="查看环境变量"></a>查看环境变量</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/profile</span><br><span class="line">cat /etc/bashrc</span><br><span class="line">cat ~/.bash_profile</span><br><span class="line">cat ~/.bashrc</span><br><span class="line">cat ~/.bash_logout</span><br><span class="line">env</span><br><span class="line">set</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看敏感信息"><a href="#查看敏感信息" class="headerlink" title="查看敏感信息"></a>查看敏感信息</h2><h3 id="查找文本用户名"><a href="#查找文本用户名" class="headerlink" title="查找文本用户名"></a>查找文本用户名</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">grep -i user [filename]</span><br><span class="line">grep -i pass [filename]</span><br><span class="line">grep -C <span class="number">5</span> <span class="string">"password"</span> [filename]</span><br><span class="line">find . -name "*.php" -print0 | xargs -0 grep -i -n "var $password"   # Joomla</span><br></pre></td></tr></table></figure>
+
+<h3 id="查找敏感文件"><a href="#查找敏感文件" class="headerlink" title="查找敏感文件"></a>查找敏感文件</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/passwd</span><br><span class="line">cat /etc/group</span><br><span class="line">cat /etc/shadow</span><br><span class="line">ls -alh /<span class="keyword">var</span>/mail/</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看用户历史记录"><a href="#查看用户历史记录" class="headerlink" title="查看用户历史记录"></a>查看用户历史记录</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cat ~/.bash_history</span><br><span class="line">cat ~/.nano_history</span><br><span class="line">cat ~/.atftp_history</span><br><span class="line">cat ~/.mysql_history</span><br><span class="line">cat ~/.php_history</span><br></pre></td></tr></table></figure>
+
+<h3 id="查找用户信息"><a href="#查找用户信息" class="headerlink" title="查找用户信息"></a>查找用户信息</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat ~/.bashrc</span><br><span class="line">cat ~/.profile</span><br><span class="line">cat /<span class="keyword">var</span>/mail/root</span><br><span class="line">cat /<span class="keyword">var</span>/spool/mail/root</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h2 id="应用与服务"><a href="#应用与服务" class="headerlink" title="应用与服务"></a>应用与服务</h2><h3 id="查看是否有打印机"><a href="#查看是否有打印机" class="headerlink" title="查看是否有打印机"></a>查看是否有打印机</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lpstat -a</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看正在运行的服务"><a href="#查看正在运行的服务" class="headerlink" title="查看正在运行的服务"></a>查看正在运行的服务</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ps aux</span><br><span class="line">ps -ef</span><br><span class="line">top</span><br><span class="line">cat /etc/service</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="查看具有root权限的服务"><a href="#查看具有root权限的服务" class="headerlink" title="查看具有root权限的服务"></a>查看具有root权限的服务</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep root</span><br><span class="line">ps -ef | grep root</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="查看安装的应用程序和版本，以及是否当前正在运行"><a href="#查看安装的应用程序和版本，以及是否当前正在运行" class="headerlink" title="查看安装的应用程序和版本，以及是否当前正在运行"></a>查看安装的应用程序和版本，以及是否当前正在运行</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ls -alh /usr/bin/</span><br><span class="line">ls -alh /sbin/</span><br><span class="line">dpkg -l</span><br><span class="line">rpm -qa</span><br><span class="line">ls -alh /<span class="keyword">var</span>/cache/apt/archivesO</span><br><span class="line">ls -alh /<span class="keyword">var</span>/cache/yum/</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="查看服务有没有错误配置，或者有漏洞的插件"><a href="#查看服务有没有错误配置，或者有漏洞的插件" class="headerlink" title="查看服务有没有错误配置，或者有漏洞的插件"></a>查看服务有没有错误配置，或者有漏洞的插件</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/syslog.conf</span><br><span class="line">cat /etc/chttp.conf</span><br><span class="line">cat /etc/lighttpd.conf</span><br><span class="line">cat /etc/cups/cupsd.conf</span><br><span class="line">cat /etc/inetd.conf</span><br><span class="line">cat /etc/apache2/apache2.conf</span><br><span class="line">cat /etc/my.conf</span><br><span class="line">cat /etc/httpd/conf/httpd.conf</span><br><span class="line">cat /opt/lampp/etc/httpd.conf</span><br><span class="line">ls -aRl /etc/ | awk ‘$<span class="number">1</span> ~ /^.*r.*/</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看主机上的工作计划"><a href="#查看主机上的工作计划" class="headerlink" title="查看主机上的工作计划"></a>查看主机上的工作计划</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">crontab -l</span><br><span class="line">ls -alh /<span class="keyword">var</span>/spool/cron</span><br><span class="line">ls -al /etc/ | grep cron</span><br><span class="line">ls -al /etc/cron*</span><br><span class="line">cat /etc/cron*</span><br><span class="line">cat /etc/at.allow</span><br><span class="line">cat /etc/at.deny</span><br><span class="line">cat /etc/cron.allow</span><br><span class="line">cat /etc/cron.deny</span><br><span class="line">cat /etc/crontab</span><br><span class="line">cat /etc/anacrontab</span><br><span class="line">cat /<span class="keyword">var</span>/spool/cron/crontabs/root</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><h3 id="网络配置查询"><a href="#网络配置查询" class="headerlink" title="网络配置查询"></a>网络配置查询</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/resolv.conf</span><br><span class="line">cat /etc/sysconfig/network</span><br><span class="line">cat /etc/networks</span><br><span class="line">iptables -L</span><br><span class="line">hostname</span><br><span class="line">dnsdomainname</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/%E5%90%8E%E6%B8%97%E9%80%8F/">后渗透</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-移动应用开发课----界面控件篇(一)" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1136,97 +1264,6 @@
         <p class="article-more-link">
           <a href="/2020/03/27/%E6%8F%90%E6%9D%83------_iis6.exe%E6%BA%A2%E5%87%BA%E6%8F%90%E6%9D%83/#more">more >></a>
         </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-xmind制作思维导图----记录操作" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      
-<a href="/2020/03/26/xmind%E5%88%B6%E4%BD%9C%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE----%E8%AE%B0%E5%BD%95%E6%93%8D%E4%BD%9C/" class="article-date">
-      <time datetime="2020-03-26T10:15:05.615Z" itemprop="datePublished">2020-03-26</time>
-</a>
-
- 
-    <a href="/2020/03/26/xmind%E5%88%B6%E4%BD%9C%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE----%E8%AE%B0%E5%BD%95%E6%93%8D%E4%BD%9C/#comments" title="查看评论">
-        <i class="fa fa-comments-o" aria-hidden="true"></i>
-        <span class="count-comment"></span>
-        
-        
-            <span class="disqus-comment-count" data-disqus-identifier="2020/03/26/xmind制作思维导图----记录操作/"></span>
-        
-    </a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/26/xmind%E5%88%B6%E4%BD%9C%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE----%E8%AE%B0%E5%BD%95%E6%93%8D%E4%BD%9C/">xmind制作思维导图----记录操作</a>
-    </h1>
-  
-
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">77字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
-      </span>
-    </span>
-</div>
-        
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>xmind—&gt;&gt;&gt;使用笔记<br>渗透测试思维导图在博客目录下</p>
-<h2 id="1、新建一个主题"><a href="#1、新建一个主题" class="headerlink" title="1、新建一个主题"></a>1、新建一个主题</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">按住enter键 可以建同级分支</span><br><span class="line">按住tab键 可以建子级分支</span><br></pre></td></tr></table></figure>
-<h2 id="2、选中主题-按住-command-shift-数字-可以-建立-优先级"><a href="#2、选中主题-按住-command-shift-数字-可以-建立-优先级" class="headerlink" title="2、选中主题  按住 command+shift+数字  可以 建立 优先级"></a>2、选中主题  按住 command+shift+数字  可以 建立 优先级</h2><h2 id="3、点击右键加外框"><a href="#3、点击右键加外框" class="headerlink" title="3、点击右键加外框"></a>3、点击右键加外框</h2>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/">日常生活</a>
-    </div>
-
-
-      
       
       <div class="clearfix"></div>
     </div>

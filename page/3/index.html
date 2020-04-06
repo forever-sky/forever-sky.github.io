@@ -304,6 +304,97 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-记录下Python中修改文件中的字符" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      
+<a href="/2020/03/25/%E8%AE%B0%E5%BD%95%E4%B8%8BPython%E4%B8%AD%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E5%AD%97%E7%AC%A6/" class="article-date">
+      <time datetime="2020-03-25T00:01:14.408Z" itemprop="datePublished">2020-03-25</time>
+</a>
+
+ 
+    <a href="/2020/03/25/%E8%AE%B0%E5%BD%95%E4%B8%8BPython%E4%B8%AD%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E5%AD%97%E7%AC%A6/#comments" title="查看评论">
+        <i class="fa fa-comments-o" aria-hidden="true"></i>
+        <span class="count-comment"></span>
+        
+        
+            <span class="disqus-comment-count" data-disqus-identifier="2020/03/25/记录下Python中修改文件中的字符/"></span>
+        
+    </a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/25/%E8%AE%B0%E5%BD%95%E4%B8%8BPython%E4%B8%AD%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E5%AD%97%E7%AC%A6/">Python修改文件中的内容</a>
+    </h1>
+  
+
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">155字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">1分</span>
+      </span>
+    </span>
+</div>
+        
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">split()去除空行</span></span><br><span class="line"><span class="string">import os</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">name = input("输入文件名(.txt):")</span></span><br><span class="line"><span class="string">s = name.split('.')</span></span><br><span class="line"><span class="string">if s[1] == 'txt':</span></span><br><span class="line"><span class="string">    with open(name, "r") as f,open("&#123;&#125;.bak".format(name),'w') as f1:</span></span><br><span class="line"><span class="string">        for line in f.readlines():</span></span><br><span class="line"><span class="string">            </span></span><br><span class="line"><span class="string">            if line.split():</span></span><br><span class="line"><span class="string">                f1.write(line)</span></span><br><span class="line"><span class="string">    os.remove(name)</span></span><br><span class="line"><span class="string">    os.rename(f"&#123;name&#125;.bak", name)</span></span><br><span class="line"><span class="string">else:</span></span><br><span class="line"><span class="string">    print("检查文件名")</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">alter</span><span class="params">(file,old_str,new_str)</span>:</span></span><br><span class="line"><span class="comment">#   :param file: 文件路径</span></span><br><span class="line"><span class="comment">#   :param old_str: 需要替换的字符串</span></span><br><span class="line"><span class="comment">#   :param new_str: 替换的字符串</span></span><br><span class="line">    <span class="keyword">with</span> open(file, <span class="string">"r"</span>, encoding=<span class="string">"utf-8"</span>) <span class="keyword">as</span> f1,open(<span class="string">"%s.bak"</span> % file, <span class="string">"w"</span>, encoding=<span class="string">"utf-8"</span>) <span class="keyword">as</span> f2:</span><br><span class="line">        le=<span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> lin <span class="keyword">in</span> f1:</span><br><span class="line">            <span class="keyword">if</span> le&gt;=<span class="number">5</span>:</span><br><span class="line">                s = lin.split(<span class="string">" "</span>)</span><br><span class="line">                lin = s[<span class="number">0</span>] + <span class="string">" "</span>+s[<span class="number">2</span>]+<span class="string">"\n"</span>            </span><br><span class="line">            le+=<span class="number">1</span></span><br><span class="line">            f2.write(lin)</span><br><span class="line">    os.remove(file)</span><br><span class="line">    os.rename(<span class="string">f"<span class="subst">&#123;file&#125;</span>.bak"</span>, file)</span><br><span class="line"></span><br><span class="line">alter(<span class="string">r"1.txt"</span>)</span><br></pre></td></tr></table></figure>
+<p>y</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-大三下" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -343,7 +434,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">24字</span>
+        <span class="post-count">31字</span>
       </span>
     </span>
 
