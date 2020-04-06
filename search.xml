@@ -3,7 +3,8 @@
   <entry>
     <title>Getshell后的信息收集之Linux</title>
     <url>/2020/04/06/Getshell%E5%90%8E%E7%9A%84%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E4%B9%8BLinux/</url>
-    <content><![CDATA[<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">find / -user technawi -type f <span class="number">2</span>&gt;&amp; <span class="number">1</span> | grep -v <span class="string">"Permission"</span> | grep -v <span class="string">"No such"</span>     查看用户创建过的文件</span><br><span class="line"></span><br><span class="line">lastlog            查看登录过的用户名</span><br><span class="line">sudo -l         显示自己的权限</span><br><span class="line">id</span><br><span class="line">last</span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<p>使用unix-privesc-check-1.4脚本对错误配置可导致的权限问题进行检查</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">find / -user technawi -type f <span class="number">2</span>&gt;&amp; <span class="number">1</span> | grep -v <span class="string">"Permission"</span> | grep -v <span class="string">"No such"</span>     查看用户创建过的文件</span><br><span class="line"></span><br><span class="line">lastlog            查看登录过的用户名</span><br><span class="line">sudo -l         显示自己的权限</span><br><span class="line">id</span><br><span class="line">last</span><br></pre></td></tr></table></figure>
 
 <h2 id="查看环境变量"><a href="#查看环境变量" class="headerlink" title="查看环境变量"></a>查看环境变量</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">cat /etc/profile</span><br><span class="line">cat /etc/bashrc</span><br><span class="line">cat ~/.bash_profile</span><br><span class="line">cat ~/.bashrc</span><br><span class="line">cat ~/.bash_logout</span><br><span class="line">env</span><br><span class="line">set</span><br></pre></td></tr></table></figure>
 
@@ -541,7 +542,7 @@
 <div id="decryptionError" style="display: none;">Incorrect Password!</div>
 <div id="noContentError" style="display: none;">No content to display!</div>
 <div id="encrypt-blog" style="display:none">
-U2FsdGVkX1+uJMnos0y88F25op7254E0wi00LZM8SiwpkQ6VYzEH167c/nvW9FnZP67KIQE18kCVlqR7N+/PqeiYWMPNKT1z8SGPhpnm3hjEqln5yscYtM132kYtFyH6aqG+zRL9sgE24KiV/uRxJW5s2mePm7QatsPut13BvVWYxOT//mM+CbrY7D1ch+n11lLPFQTztK+ejML2mV7fJ63C5mVvjrLg/pIoLT2CuXBHFCzjF3S+tRSSdOScxoGXAVn0m+mxBUoJH912DdJpaSgvjDwn29qNr1Pbxa+ALAHB4ax/QtcQ/fSh/gC4xEGq
+U2FsdGVkX19P6XSzTOG1kUIWjtfdwTvi4sPTOoKAIWIX32/jcSxeXgAM8Gle6AIbiXxV57l7PEAHRuNrZMWiIqfReu3WYaZ/xysG+6OHzNgNOVPUFxeHzO0VIlk5a1dX10KhgvT72RFyXwJsGuoh0LQQFpNSCQtEVtas6O/eMZCOjZVcy+f/Zpy/OKJBbPJFCEfY/wKoWehIn/JYi83Co/xV2ZtpNzNNSZkU9I7UlWibgB239bXYLL/MrDT/j5kC6S52j4uDcIWdSVbkTMpuujAfpt/AotzmPzyh372w6HBrb+HuR5NUMAzQm22iPR/h
 </div>
 <script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
       <categories>
