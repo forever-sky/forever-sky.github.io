@@ -506,10 +506,7 @@
 
 <h2 id="扫描脚本"><a href="#扫描脚本" class="headerlink" title="扫描脚本"></a><strong>扫描脚本</strong></h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">扫描的脚本位于：</span><br><span class="line">/usr/share/metasploit-framework/modules/auxiliary/scanner/</span><br><span class="line">扫描的脚本较多，仅列几个代表：</span><br><span class="line"></span><br><span class="line">use auxiliary/scanner/http/dir_scanner</span><br><span class="line">use auxiliary/scanner/http/jboss_vulnscan</span><br><span class="line">use auxiliary/scanner/mssql/mssql_login</span><br><span class="line">use auxiliary/scanner/mysql/mysql_version</span><br><span class="line">use auxiliary/scanner/oracle/oracle_login</span><br></pre></td></tr></table></figure>
 
-
-
-
-
+<h2 id="域"><a href="#域" class="headerlink" title="域"></a><strong>域</strong></h2><h3 id="定位域控"><a href="#定位域控" class="headerlink" title="定位域控"></a>定位域控</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">run post/windows/gather/enum_domain</span><br><span class="line">run post/windows/gather/enum_ad_computers</span><br></pre></td></tr></table></figure>
 
 
 
@@ -573,7 +570,7 @@
 <div id="decryptionError" style="display: none;">Incorrect Password!</div>
 <div id="noContentError" style="display: none;">No content to display!</div>
 <div id="encrypt-blog" style="display:none">
-U2FsdGVkX1+65+TgnPX2t87aSTTny2pPpeUAMcHf19eCM4e8w+5FhstGY5/roVUnrH62EUYk38Y7j9Sb1TxQZdxB8Y7pGc7simYLMJRfTIgZ2i5vXw/2cIG8xXV526cOhPOn+OdGP+HF4/mQSEUNCbFR4rWlgGmGHM6zj8HGhA9AlXhb1JA+EoFGbdtrQnYzFb7MhsAcfYAxn88LZZpuSeA7RMbl8XwhVW40XEqg81umTsWHhFdDBVNiU4MCUtwvHU1pDF7hDfxenGw57D76xosGxc4tv3gk9lN2JVge4RWSu75CNSyZJT/k+oIRYOW5
+U2FsdGVkX184PRheX0ejY2z2pBn9hfmiv+hC0uJk3huuM44GFZwpNE8qEJ0z0xKx+1korKqRMfzGlZzh3CDbnpgGCk3syYL5oPBq7RhW8B469eK1EEubgmPLueE0wLIsYCQz/EMkqQ53K4kAaFCRuclqGB2IWRNBXEGnnL5IrP7eKgVm8EhAq9b9gkzT7LZZqxWgr5JftB7CJMKcCqtKvqj2xtDDBOa1319m6WOBuhObbLgAGKnOIszw05pi8LG8sgR16AN1VEORKwrvxjPyLKXVkb4D200VIE3gi2HIGgVzEtJoPStHjVx06H90lsYz
 </div>
 <script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
       <categories>
